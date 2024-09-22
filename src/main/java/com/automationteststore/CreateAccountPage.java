@@ -63,6 +63,25 @@ public class CreateAccountPage extends BasePage{
     //account creation success message web element
     @FindBy(xpath = "//span[@class='maintext']")
     private WebElement accountCreationSuccessMessage;
+    //invalid user data input message web elements
+    @FindBy(xpath = "//span[.='First Name must be between 1 and 32 characters!']")
+    private WebElement invalidFirstNameLengthMessage;
+    @FindBy(xpath = "//span[.='Last Name must be between 1 and 32 characters!']")
+    private WebElement invalidLastNameLengthMessage;
+    @FindBy(xpath = "//span[.='Email Address does not appear to be valid!']")
+    private WebElement invalidEmailAddressMessage;
+    @FindBy(xpath = "//span[.='Address 1 must be between 3 and 128 characters!']")
+    private WebElement invalidAddress1LengthMessage;
+    @FindBy(xpath = "//span[.='City must be between 3 and 128 characters!']")
+    private WebElement invalidCityNameLengthMessage;
+    @FindBy(xpath = "//span[.='Zip/postal code must be between 3 and 10 characters!']")
+    private WebElement invalidZipCodeLengthMessage;
+    @FindBy(xpath = "//span[.='Login name must be alphanumeric only and between 5 and 64 characters!']")
+    private WebElement invalidLoginUsernameLengthMessage;
+    @FindBy(xpath = "//span[.='Password must be between 4 and 20 characters!']")
+    private WebElement invalidPasswordLengthMessage;
+    @FindBy(xpath = "//div[@class='alert alert-error alert-danger']")
+    private WebElement clickAgreeToTermsErrorMessage;
 
     //valid user input data
     private String firstName;
@@ -73,6 +92,17 @@ public class CreateAccountPage extends BasePage{
     private int zipCode;
     private String loginUsername;
     private String password;
+
+    //invalid (no singular input) user data
+    private String noFirstName;
+    private String noLastName;
+    private String noEmailAddress;
+    private String noAddress1;
+    private String noCity;
+    private int noZipCode;
+    private String noLoginUsername;
+    private String noPassword;
+    private String noConfirmPassword;
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);
@@ -196,8 +226,41 @@ public class CreateAccountPage extends BasePage{
         continueButton.click();
     }
 
+    //invalid user data getter method (no first name)
+    public void getUserInputDataNoFirstName(){
+        noFirstName = "";
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("No first name: " + noFirstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+
+    //valid data input methods
+    public void inputNoFirstName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(noFirstName);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
+
+    //login page invalid input message getters
+    public String getInvalidFirstNameLengthMessage(){return invalidFirstNameLengthMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}
