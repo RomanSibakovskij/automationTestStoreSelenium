@@ -9,6 +9,6 @@ public class HomePageTest extends TestMethods{
     @Tag("Go_To_Login_Register_Page")
     void navigateToLoginRegisterPage(){
         HomePage homePage = new HomePage(driver);
-        goToLoginRegisterPage(homePage);
+        goToLoginRegisterPageTest(homePage);
     }
 }

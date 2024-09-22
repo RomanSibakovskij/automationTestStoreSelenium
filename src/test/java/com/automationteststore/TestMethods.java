@@ -8,8 +8,8 @@ public class TestMethods extends BaseTest{
 
     protected static final Logger logger = LoggerFactory.getLogger(TestMethods.class);
 
-    //homepage test methods
-    protected void goToLoginRegisterPage(HomePage homePage){
+    //go to login/register page from homepage test method
+    protected void goToLoginRegisterPageTest(HomePage homePage){
         //web element assert
         isHomPageWebElementDisplayed(homePage);
         //click login/register link
@@ -17,6 +17,15 @@ public class TestMethods extends BaseTest{
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
         //assert the user got navigated to login/register page
         assertEquals("ACCOUNT LOGIN", loginRegisterPage.getAccountLoginPageTitleText(), "The login/register page title isn't displayed or user is on the wrong page");
+    }
+
+    //valid user account registration test method
+    protected void validUserAccountCreationTest(){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
     }
 
     //homepage web element assert
@@ -75,6 +84,14 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isLargeVarietyLabelDisplayed(), "The large variety label is not displayed");
         //assert homepage welcome section is displayed
         assertTrue(homePage.isWelcomeMessageSectionDisplayed(), "The welcome message section is not displayed");
+    }
+
+    //login/register page web element assert
+    protected void isLoginRegisterPageWebElementDisplayed(LoginRegisterPage loginRegisterPage){
+        //assert the login/register login section title is displayed
+        assertTrue(loginRegisterPage.isAccountLoginPageTitleDisplayed(), "The account login page title is not displayed");
+        //assert the register button is displayed
+        assertTrue(loginRegisterPage.isRegisterButtonDisplayed(), "The register button is not displayed");
     }
 
 
