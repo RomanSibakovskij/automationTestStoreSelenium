@@ -101,7 +101,46 @@ public class TestMethods extends BaseTest{
     //create page web element assert
     protected void isCreateAccountPageWebElementDisplayed(CreateAccountPage createAccountPage){
         //assert the create account page title is displayed
-        assertTrue(createAccountPage.isCreateAccountPageTitleIsDisplayed(), "The create account page title is not displayed");
+        assertTrue(createAccountPage.isCreateAccountPageTitleDisplayed(), "The create account page title is not displayed");
+        //assert the first name input field is displayed
+        assertTrue(createAccountPage.isFirstNameInputFieldDisplayed(), "The first name input field is not displayed");
+        //assert the last name input field is displayed
+        assertTrue(createAccountPage.isLastNameInputFieldDisplayed(), "The last name input field is not displayed");
+        //assert email input field is displayed
+        assertTrue(createAccountPage.isEmailInputFieldDisplayed(), "The email input field is not displayed");
+        //assert phone number input field is displayed
+        assertTrue(createAccountPage.isPhoneNumberInputFieldDisplayed(), "The password input field is not displayed");
+        //assert fax input field is displayed
+        assertTrue(createAccountPage.isFaxInputFieldDisplayed(), "The fax input field is not displayed");
+        //assert company input field is displayed
+        assertTrue(createAccountPage.isCompanyInputFieldDisplayed(), "The company input field is not displayed");
+        //assert address1 input field is displayed
+        assertTrue(createAccountPage.isAddress1InputFieldDisplayed(), "The address1 input field is not displayed");
+        //assert address2 input field is displayed
+        assertTrue(createAccountPage.isAddress2InputFieldDisplayed(), "The address2 input field is not displayed");
+        //assert city input field is displayed
+        assertTrue(createAccountPage.isCityInputFieldDisplayed(), "The city input field is not displayed");
+        //assert state dropdown menu is displayed
+        assertTrue(createAccountPage.isStateDropdownMenuDisplayed(), "The state dropdown menu is not displayed");
+        //assert zip code input field is displayed
+        assertTrue(createAccountPage.isZipCodeInputFieldDisplayed(), "The zip code input field is not displayed");
+        //assert country dropdown menu is displayed
+        assertTrue(createAccountPage.isCountryDropdownMenuDisplayed(), "The country dropdown menu is not displayed");
+        //assert login username input field is displayed
+        assertTrue(createAccountPage.isLoginUsernameInputFieldDisplayed(), "The login username input field is not displayed");
+        //assert password input field is displayed
+        assertTrue(createAccountPage.isPasswordInputFieldDisplayed(), "The password input is not displayed");
+        //assert confirm password input field is displayed
+        assertTrue(createAccountPage.isConfirmPasswordInputFieldDisplayed(), "The confirm password input field is not displayed");
+        //assert subscribe to newsletter checkbox is displayed
+        assertTrue(createAccountPage.isSubscribeToNewsletterCheckboxDisplayed(), "The 'subscribe' checkbox is not displayed");
+        //assert don't subscribe to newsletter checkbox is displayed
+        assertTrue(createAccountPage.isDoNotSubscribeToNewsletterCheckboxDisplayed(), "The 'do not subscribe' checkbox is not displayed");
+        //assert agree to terms checkbox is displayed
+        assertTrue(createAccountPage.isAgreeToTermsCheckboxDisplayed(), "The 'agree to terms' checkbox is not displayed");
+        //assert continue button is displayed
+        assertTrue(createAccountPage.isContinueButtonDisplayed(), "The continue button is not displayed");
+
     }
 
 
