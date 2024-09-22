@@ -312,6 +312,35 @@ public class CreateAccountPage extends BasePage{
         emailInputField.sendKeys(noEmailAddress);
     }
 
+    //invalid user data getter method (no address1)
+    public void getUserInputDataNoAddress1(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        noAddress1 = "";
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("No address: " + noAddress1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - no user address
+    public void inputNoAddress1(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(address1InputField));
+        address1InputField.sendKeys(noAddress1);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 
@@ -319,6 +348,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidFirstNameLengthMessage(){return invalidFirstNameLengthMessage.getText();}
     public String getInvalidLastNameLengthMessage(){return invalidLastNameLengthMessage.getText();}
     public String getInvalidEmailAddressMessage(){return invalidEmailAddressMessage.getText();}
+    public String getInvalidAddress1Message(){return invalidAddress1LengthMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}

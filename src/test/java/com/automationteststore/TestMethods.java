@@ -179,6 +179,46 @@ public class TestMethods extends BaseTest{
         assertEquals("Email Address does not appear to be valid!", createAccountPage.getInvalidEmailAddressMessage(), "The expected error didn't appear"); //it seems to be a general error message
     }
 
+    //invalid user account registration test method (no user address (address 1))
+    protected void userAccountCreationNoAddress1Test(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter
+        createAccountPage.getUserInputDataNoAddress1();
+        //valid user data input methods
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputNoAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Address 1 must be between 3 and 128 characters!", createAccountPage.getInvalidAddress1Message(), "The expected error didn't appear");
+    }
+
     //homepage web element assert
     protected void isHomPageWebElementDisplayed(HomePage homePage){
         //assert the automation store logo is visible
