@@ -296,6 +296,43 @@ public class TestMethods extends BaseTest{
         assertEquals("Please select a region / state!", createAccountPage.getSelectStateMessage(), "The expected error didn't appear");
     }
 
+    //invalid user account registration test method (no user country selection)
+    protected void userAccountCreationNoCountryTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter
+        createAccountPage.getValidUserInputData();
+        //valid user data input methods  (omit user city)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //omit clicking state dropdown menu
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'Please select' option since default is United Kingdom
+        createAccountPage.selectPleaseSelectOption();
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Please select a country!", createAccountPage.getSelectCountryMessage(), "The expected error didn't appear");
+    }
+
     //homepage web element assert
     protected void isHomePageWebElementDisplayed(HomePage homePage){
         //assert the automation store logo is visible

@@ -86,6 +86,9 @@ public class CreateAccountPage extends BasePage{
     private WebElement invalidPasswordLengthMessage;
     @FindBy(xpath = "//div[@class='alert alert-error alert-danger']")
     private WebElement clickAgreeToTermsErrorMessage;
+    //please select country option web element (since default is UK)
+    @FindBy(xpath = "//select[@id='AccountFrm_country_id']/option[@value='FALSE']")
+    private WebElement pleaseSelectOption;
 
     //valid user input data
     private String firstName;
@@ -103,10 +106,12 @@ public class CreateAccountPage extends BasePage{
     private String noEmailAddress;
     private String noAddress1;
     private String noCity;
-    private int noZipCode;
     private String noLoginUsername;
     private String noPassword;
     private String noConfirmPassword;
+
+    //invalid singular input user data
+    private int tooShortZipCode;
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);
@@ -182,7 +187,7 @@ public class CreateAccountPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(countryDropdownMenu));
         countryDropdownMenu.click();
     }
-    //select United Stated method
+    //select United States method
     public void selectUSOption(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.elementToBeClickable(usCountryOption));
@@ -373,6 +378,12 @@ public class CreateAccountPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(cityInputField));
         cityInputField.sendKeys(noCity);
     }
+    //select 'Please select' method
+    public void selectPleaseSelectOption(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(pleaseSelectOption));
+        pleaseSelectOption.click();
+    }
 
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
@@ -384,6 +395,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidAddress1Message(){return invalidAddress1LengthMessage.getText();}
     public String getInvalidCityNameLengthMessage(){return invalidCityNameLengthMessage.getText();}
     public String getSelectStateMessage(){return selectStateMessage.getText();}
+    public String getSelectCountryMessage(){return selectCountryMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}

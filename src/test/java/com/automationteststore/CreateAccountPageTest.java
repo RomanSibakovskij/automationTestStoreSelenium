@@ -86,4 +86,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationNoStateTest(createAccountPage);
     }
+
+    // Test 002g -> invalid user account creation test (no user country selection)
+    @Test
+    @DisplayName("Invalid User Account Creation - No User Country")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void accountCreationNoUserCountryTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationNoCountryTest(createAccountPage);
+    }
 }
