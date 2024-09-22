@@ -70,9 +70,9 @@ public class TestMethods extends BaseTest{
         isCreateAccountPageWebElementDisplayed(createAccountPage);
         //assert the create account page title is as expected(whether the user got on the right page)
         assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
-        //valid user data getter
+        //valid user data getter - without user first name
         createAccountPage.getUserInputDataNoFirstName();
-        //valid user data input methods
+        //valid user data input methods (omit first name)
         createAccountPage.inputNoFirstName();
         createAccountPage.inputLastName();
         createAccountPage.inputEmailAddress();
@@ -110,9 +110,9 @@ public class TestMethods extends BaseTest{
         isCreateAccountPageWebElementDisplayed(createAccountPage);
         //assert the create account page title is as expected(whether the user got on the right page)
         assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
-        //valid user data getter
+        //valid user data getter - without user last name
         createAccountPage.getUserInputDataNoLastName();
-        //valid user data input methods
+        //valid user data input methods (omit last name)
         createAccountPage.inputFirstName();
         createAccountPage.inputNoLastName();
         createAccountPage.inputEmailAddress();
@@ -150,9 +150,9 @@ public class TestMethods extends BaseTest{
         isCreateAccountPageWebElementDisplayed(createAccountPage);
         //assert the create account page title is as expected(whether the user got on the right page)
         assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
-        //valid user data getter
+        //valid user data getter - without user email address
         createAccountPage.getUserInputDataNoEmail();
-        //valid user data input methods
+        //valid user data input methods (omit email address)
         createAccountPage.inputFirstName();
         createAccountPage.inputLastName();
         createAccountPage.inputNoEmail();
@@ -190,9 +190,9 @@ public class TestMethods extends BaseTest{
         isCreateAccountPageWebElementDisplayed(createAccountPage);
         //assert the create account page title is as expected(whether the user got on the right page)
         assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
-        //valid user data getter
+        //valid user data getter - without user address
         createAccountPage.getUserInputDataNoAddress1();
-        //valid user data input methods
+        //valid user data input methods (omit user address)
         createAccountPage.inputFirstName();
         createAccountPage.inputLastName();
         createAccountPage.inputEmailAddress();
@@ -217,6 +217,46 @@ public class TestMethods extends BaseTest{
         createAccountPage.clickContinueButton();
         //assert the expected error message is displayed
         assertEquals("Address 1 must be between 3 and 128 characters!", createAccountPage.getInvalidAddress1Message(), "The expected error didn't appear");
+    }
+
+    //invalid user account registration test method (no user city)
+    protected void userAccountCreationNoCityTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter - without user city
+        createAccountPage.getUserInputDataNoCity();
+        //valid user data input methods  (omit user city)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputNoCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("City must be between 3 and 128 characters!", createAccountPage.getInvalidCityNameLengthMessage(), "The expected error didn't appear");
     }
 
     //homepage web element assert
