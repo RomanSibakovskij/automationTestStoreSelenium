@@ -2,6 +2,9 @@ package com.automationteststore;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.*;
+
+import java.time.Duration;
 
 public class CreateAccountPage extends BasePage{
 
@@ -57,6 +60,19 @@ public class CreateAccountPage extends BasePage{
     //continue button web element
     @FindBy(xpath = "//div[@class='col-md-2 mt20 mb40']/button[@type='submit']")
     private WebElement continueButton;
+    //account creation success message web element
+    @FindBy(xpath = "//span[@class='maintext']")
+    private WebElement accountCreationSuccessMessage;
+
+    //valid user input data
+    private String firstName;
+    private String lastName;
+    private String emailAddress;
+    private String address1;
+    private String city;
+    private int zipCode;
+    private String loginUsername;
+    private String password;
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);
@@ -64,6 +80,124 @@ public class CreateAccountPage extends BasePage{
 
     //create account page title getter
     public String getCreateAccountPageTitle() {return createAccountPageTitle.getText();}
+
+    //valid user data getter method
+    public void getValidUserInputData(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+
+    //valid data input methods
+    public void inputFirstName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(firstName);
+    }
+    public void inputLastName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(lastName);
+    }
+    public void inputEmailAddress(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(emailAddress);
+    }
+    public void inputAddress1(){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", address1InputField);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(address1InputField));
+        address1InputField.sendKeys(address1);
+    }
+    public void inputCity(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(city);
+    }
+    //click state dropdown menu method
+    public void clickStateDropdownMenu(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(stateDropdownMenu));
+        stateDropdownMenu.click();
+    }
+    //select Illinois state method
+    public void selectIllinoisOption(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(illinoisStateOption));
+        illinoisStateOption.click();
+    }
+    //click country dropdown menu
+    public void clickCountryDropdownMenu(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(countryDropdownMenu));
+        countryDropdownMenu.click();
+    }
+    //select United Stated method
+    public void selectUSOption(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(usCountryOption));
+        usCountryOption.click();
+    }
+    public void inputZipCode(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
+        zipCodeInputField.sendKeys(String.valueOf(zipCode));
+    }
+    public void inputLoginUsername(){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginUsernameInputField);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(loginUsernameInputField));
+        loginUsernameInputField.sendKeys(loginUsername);
+    }
+    public void inputPassword(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.sendKeys(password);
+    }
+    public void inputConfirmPassword(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
+        confirmPasswordInputField.sendKeys(password);
+    }
+    //click subscribe to newsletter checkbox method
+    public void clickSubscribeToNewsletterCheckbox(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(subscribeToNewsletterCheckbox));
+        subscribeToNewsletterCheckbox.click();
+    }
+    //click 'agree to terms' checkbox method
+    public void clickAgreeToTermsCheckbox(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(agreeToTermsCheckbox));
+        agreeToTermsCheckbox.click();
+    }
+
+    //click 'Continue' button method
+    public void clickContinueButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+        continueButton.click();
+    }
+
+    //account creation success message getter
+    public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}

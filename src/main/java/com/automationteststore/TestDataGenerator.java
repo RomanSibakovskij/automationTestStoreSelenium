@@ -165,9 +165,9 @@ public class TestDataGenerator extends BasePage{
         return ILLINOIS_CITIES[index];
     }
 
-    // method to get a random postal code for the Lyons area
-    public static int getLyonsRandomPostalCode() {
-        return 69000 + RANDOM.nextInt(1000);
+    // generate random postal code for Illinois
+    public static int getRandomPostalCode() {
+        return 60000 + RANDOM.nextInt(30000);
     }
 
     public static String getFirstName(){
