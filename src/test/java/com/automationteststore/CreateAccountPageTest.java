@@ -15,7 +15,7 @@ public class CreateAccountPageTest extends TestMethods{
         validUserAccountCreationTest(createAccountPage);
     }
 
-    // Test 002a -> invalid user account creation test
+    // Test 002a -> invalid user account creation test (no first name)
     @Test
     @DisplayName("Invalid User Account Creation - No First Name")
     @Tag("Invalid_User_Account_Creation")
@@ -25,5 +25,17 @@ public class CreateAccountPageTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationNoFirstNameTest(createAccountPage);
+    }
+
+    // Test 002b -> invalid user account creation test (no last name)
+    @Test
+    @DisplayName("Invalid User Account Creation - No Last Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void accountCreationNoLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationNoLastNameTest(createAccountPage);
     }
 }
