@@ -59,7 +59,7 @@ public class TestMethods extends BaseTest{
         assertEquals("YOUR ACCOUNT HAS BEEN CREATED!", createAccountPage.getAccountCreationSuccessMessage(), "The success message doesn't match expectations or the account hasn't been created successfully");
     }
 
-    //invalid user account registration test method (no firstname)
+    //invalid user account registration test method (no first name)
     protected void userAccountCreationNoFirstNameTest(CreateAccountPage createAccountPage){
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
         //login/register page web element assert
@@ -99,7 +99,7 @@ public class TestMethods extends BaseTest{
         assertEquals("First Name must be between 1 and 32 characters!", createAccountPage.getInvalidFirstNameLengthMessage(), "The expected error didn't appear");
     }
 
-    //invalid user account registration test method (no lastname)
+    //invalid user account registration test method (no last name)
     protected void userAccountCreationNoLastNameTest(CreateAccountPage createAccountPage){
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
         //login/register page web element assert
@@ -137,6 +137,46 @@ public class TestMethods extends BaseTest{
         createAccountPage.clickContinueButton();
         //assert the expected error message is displayed
         assertEquals("Last Name must be between 1 and 32 characters!", createAccountPage.getInvalidLastNameLengthMessage(), "The expected error didn't appear");
+    }
+
+    //invalid user account registration test method (no email address)
+    protected void userAccountCreationNoEmailTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter
+        createAccountPage.getUserInputDataNoEmail();
+        //valid user data input methods
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputNoEmail();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Email Address does not appear to be valid!", createAccountPage.getInvalidEmailAddressMessage(), "The expected error didn't appear"); //it seems to be a general error message
     }
 
     //homepage web element assert

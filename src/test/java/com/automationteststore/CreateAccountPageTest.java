@@ -38,4 +38,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationNoLastNameTest(createAccountPage);
     }
+
+    // Test 002c -> invalid user account creation test (no email address)
+    @Test
+    @DisplayName("Invalid User Account Creation - No Email Address")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void accountCreationNoEmailAddressTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationNoEmailTest(createAccountPage);
+    }
 }

@@ -133,7 +133,6 @@ public class CreateAccountPage extends BasePage{
         logger.info("Password: " + password);
         logger.info("Matching confirm password: " + password);
     }
-
     //valid data input methods
     public void inputFirstName(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
@@ -284,6 +283,34 @@ public class CreateAccountPage extends BasePage{
         lastNameInputField.sendKeys(noLastName);
     }
 
+    //invalid user data getter method (no email address)
+    public void getUserInputDataNoEmail(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        noEmailAddress = "";
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("No email address: " + noEmailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - no email address
+    public void inputNoEmail(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(noEmailAddress);
+    }
 
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
@@ -291,6 +318,7 @@ public class CreateAccountPage extends BasePage{
     //login page invalid input message getters
     public String getInvalidFirstNameLengthMessage(){return invalidFirstNameLengthMessage.getText();}
     public String getInvalidLastNameLengthMessage(){return invalidLastNameLengthMessage.getText();}
+    public String getInvalidEmailAddressMessage(){return invalidEmailAddressMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}
