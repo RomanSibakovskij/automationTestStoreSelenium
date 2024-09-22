@@ -10,27 +10,31 @@ public class TestMethods extends BaseTest{
 
     //go to login/register page from homepage test method
     protected void goToLoginRegisterPageTest(HomePage homePage){
-        //web element assert
+        //homepage web element assert
         isHomPageWebElementDisplayed(homePage);
         //click login/register link
         homePage.clickLoginRegisterLink();
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
         //assert the user got navigated to login/register page
-        assertEquals("ACCOUNT LOGIN", loginRegisterPage.getAccountLoginPageTitleText(), "The login/register page title isn't displayed or user is on the wrong page");
+        assertEquals("ACCOUNT LOGIN", loginRegisterPage.getAccountLoginPageTitleText(), "The login/register page title isn't as expected or user is on the wrong page");
     }
 
     //valid user account registration test method
-    protected void validUserAccountCreationTest(){
+    protected void validUserAccountCreationTest(CreateAccountPage createAccountPage){
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
-        //web element assert
+        //login/register page web element assert
         isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
         //register button click method
         loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
     }
 
     //homepage web element assert
     protected void isHomPageWebElementDisplayed(HomePage homePage){
-        //assert th automation store logo is visible
+        //assert the automation store logo is visible
         assertTrue(homePage.isAutomationStoreLogoDisplayed(), "The Automation Store Logo is not displayed");
         //assert login/register navbar link is displayed
         assertTrue(homePage.isLoginRegisterNavLinkDisplayed(), "The login/register nav link is not displayed");
@@ -92,6 +96,12 @@ public class TestMethods extends BaseTest{
         assertTrue(loginRegisterPage.isAccountLoginPageTitleDisplayed(), "The account login page title is not displayed");
         //assert the register button is displayed
         assertTrue(loginRegisterPage.isRegisterButtonDisplayed(), "The register button is not displayed");
+    }
+
+    //create page web element assert
+    protected void isCreateAccountPageWebElementDisplayed(CreateAccountPage createAccountPage){
+        //assert the create account page title is displayed
+        assertTrue(createAccountPage.isCreateAccountPageTitleIsDisplayed(), "The create account page title is not displayed");
     }
 
 
