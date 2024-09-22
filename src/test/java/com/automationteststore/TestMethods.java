@@ -361,7 +361,7 @@ public class TestMethods extends BaseTest{
         //click 'Illinois' option
         createAccountPage.selectIllinoisOption();
         createAccountPage.inputZipCode();
-        //input valid login data
+        //input valid login data (omit login username)
         createAccountPage.inputNoUsername();
         createAccountPage.inputPassword();
         createAccountPage.inputConfirmPassword();
@@ -384,9 +384,48 @@ public class TestMethods extends BaseTest{
         isCreateAccountPageWebElementDisplayed(createAccountPage);
         //assert the create account page title is as expected(whether the user got on the right page)
         assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
-        //valid user data getter - without login username
+        //valid user data getter - without login password
         createAccountPage.getUserInputDataNoPassword();
-        //valid user data input methods  (omit login username)
+        //valid user data input methods  (omit user password)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data (omit user password)
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputNoPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Password must be between 4 and 20 characters!", createAccountPage.getInvalidPasswordLengthMessage(), "The expected error didn't appear");
+    }
+
+    //invalid user account registration test method (no confirm password)
+    protected void userAccountCreationNoConfirmPasswordTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter
+        createAccountPage.getValidUserInputData();
+        //valid user data input methods
         createAccountPage.inputFirstName();
         createAccountPage.inputLastName();
         createAccountPage.inputEmailAddress();
@@ -403,13 +442,13 @@ public class TestMethods extends BaseTest{
         createAccountPage.inputZipCode();
         //input valid login data
         createAccountPage.inputLoginUsername();
-        createAccountPage.inputNoPassword();
+        createAccountPage.inputPassword();
         //click 'Agree to terms' checkbox
         createAccountPage.clickAgreeToTermsCheckbox();
         //click 'Continue' button
         createAccountPage.clickContinueButton();
         //assert the expected error message is displayed
-        assertEquals("Password must be between 4 and 20 characters!", createAccountPage.getInvalidPasswordLengthMessage(), "The expected error didn't appear");
+        assertEquals("Password confirmation does not match password!", createAccountPage.getMismatchingPasswordMessage(), "The expected error didn't appear");
     }
 
     //homepage web element assert

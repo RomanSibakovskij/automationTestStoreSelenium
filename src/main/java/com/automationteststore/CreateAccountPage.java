@@ -84,6 +84,8 @@ public class CreateAccountPage extends BasePage{
     private WebElement invalidLoginUsernameLengthMessage;
     @FindBy(xpath = "//span[.='Password must be between 4 and 20 characters!']")
     private WebElement invalidPasswordLengthMessage;
+    @FindBy(xpath = "//span[.='Password confirmation does not match password!']")
+    private WebElement mismatchingPasswordMessage;
     @FindBy(xpath = "//div[@class='alert alert-error alert-danger']")
     private WebElement clickAgreeToTermsErrorMessage;
     //please select country option web element (since default is UK)
@@ -108,7 +110,6 @@ public class CreateAccountPage extends BasePage{
     private String noCity;
     private String noLoginUsername;
     private String noPassword;
-    private String noConfirmPassword;
 
     //invalid singular input user data
     private int tooShortZipCode;
@@ -455,6 +456,7 @@ public class CreateAccountPage extends BasePage{
     public String getSelectCountryMessage(){return selectCountryMessage.getText();}
     public String getInvalidLoginUserNameLengthMessage(){return invalidLoginUsernameLengthMessage.getText();}
     public String getInvalidPasswordLengthMessage(){return invalidPasswordLengthMessage.getText();}
+    public String getMismatchingPasswordMessage(){return mismatchingPasswordMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}
