@@ -47,6 +47,34 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isTwitterIconButtonDisplayed(), "The twitter icon button is not displayed");
         //assert 'linked in' icon button is displayed
         assertTrue(homePage.isLinkedinIconButtonDisplayed(), "The linkedin icon button is not displayed");
+        //assert home hover menu is displayed
+        assertTrue(homePage.isHomeHoverMenuDisplayed(), "The home hover menu is not displayed");
+        //assert apparel & accessories hover menu is displayed
+        assertTrue(homePage.isApparelAccessoriesHoverMenuDisplayed(), "The apparel & accessories hover menu is not displayed");
+        //assert makeup hover menu is displayed
+        assertTrue(homePage.isMakeupHoverMenuDisplayed(), "The makeup hover menu is not displayed");
+        //assert skincare hover menu is displayed
+        assertTrue(homePage.isSkincareHoverMenuDisplayed(), "The skincare hover menu is not displayed");
+        //assert fragrance hover menu is displayed
+        assertTrue(homePage.isFragranceHoverMenuDisplayed(), "The fragrance hover menu is not displayed");
+        //assert men hover menu is displayed
+        assertTrue(homePage.isMenHoverMenuDisplayed(), "The men hover menu is not displayed");
+        //assert haircare hover menu is displayed
+        assertTrue(homePage.isHaircareHoverMenuDisplayed(), "The haircare hover menu is not displayed");
+        //assert books hover menu is displayed
+        assertTrue(homePage.isBooksHoverMenuDisplayed(), "The books hover menu is not displayed");
+        //assert banner slider is displayed
+        assertTrue(homePage.isBannerSliderDisplayed(), "The banner slider is not displayed");
+        //assert fast shipping label is displayed
+        assertTrue(homePage.isFastShippingLabelDisplayed(), "The fast shipping label is not displayed");
+        //assert easy payments label is displayed
+        assertTrue(homePage.isEasyPaymentLabelDisplayed(), "The easy payment label is not displayed");
+        //assert shipping options label is displayed
+        assertTrue(homePage.isShippingOptionsLabelDisplayed(), "The shipping options label is not displayed");
+        //assert large variety label is displayed
+        assertTrue(homePage.isLargeVarietyLabelDisplayed(), "The large variety label is not displayed");
+        //assert homepage welcome section is displayed
+        assertTrue(homePage.isWelcomeMessageSectionDisplayed(), "The welcome message section is not displayed");
     }
 
 
