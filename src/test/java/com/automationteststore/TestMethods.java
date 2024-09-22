@@ -11,7 +11,7 @@ public class TestMethods extends BaseTest{
     //go to login/register page from homepage test method
     protected void goToLoginRegisterPageTest(HomePage homePage){
         //homepage web element assert
-        isHomPageWebElementDisplayed(homePage);
+        isHomePageWebElementDisplayed(homePage);
         //click login/register link
         homePage.clickLoginRegisterLink();
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
@@ -259,8 +259,45 @@ public class TestMethods extends BaseTest{
         assertEquals("City must be between 3 and 128 characters!", createAccountPage.getInvalidCityNameLengthMessage(), "The expected error didn't appear");
     }
 
+    //invalid user account registration test method (no user state selection)
+    protected void userAccountCreationNoStateTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter
+        createAccountPage.getValidUserInputData();
+        //valid user data input methods  (omit user city)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //omit clicking state dropdown menu
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Please select a region / state!", createAccountPage.getSelectStateMessage(), "The expected error didn't appear");
+    }
+
     //homepage web element assert
-    protected void isHomPageWebElementDisplayed(HomePage homePage){
+    protected void isHomePageWebElementDisplayed(HomePage homePage){
         //assert the automation store logo is visible
         assertTrue(homePage.isAutomationStoreLogoDisplayed(), "The Automation Store Logo is not displayed");
         //assert login/register navbar link is displayed

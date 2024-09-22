@@ -74,6 +74,10 @@ public class CreateAccountPage extends BasePage{
     private WebElement invalidAddress1LengthMessage;
     @FindBy(xpath = "//span[.='City must be between 3 and 128 characters!']")
     private WebElement invalidCityNameLengthMessage;
+    @FindBy(xpath = "//span[.='Please select a region / state!']")
+    private WebElement selectStateMessage;
+    @FindBy(xpath = "//span[.='Please select a country!']")
+    private WebElement selectCountryMessage;
     @FindBy(xpath = "//span[.='Zip/postal code must be between 3 and 10 characters!']")
     private WebElement invalidZipCodeLengthMessage;
     @FindBy(xpath = "//span[.='Login name must be alphanumeric only and between 5 and 64 characters!']")
@@ -379,6 +383,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidEmailAddressMessage(){return invalidEmailAddressMessage.getText();}
     public String getInvalidAddress1Message(){return invalidAddress1LengthMessage.getText();}
     public String getInvalidCityNameLengthMessage(){return invalidCityNameLengthMessage.getText();}
+    public String getSelectStateMessage(){return selectStateMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}
