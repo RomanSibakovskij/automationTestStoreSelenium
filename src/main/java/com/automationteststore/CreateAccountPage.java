@@ -111,6 +111,14 @@ public class CreateAccountPage extends BasePage{
     private String noLoginUsername;
     private String noPassword;
 
+    //invalid singular input
+    private String tooShortFirstName;
+    private String tooLongFirstName;
+    private String tooShortLastName;
+    private String tooLongLastName;
+    private String invalidEmailAddressFormat;
+    private String tooShortAddress1;
+
     //invalid singular input user data
     private int tooShortZipCode;
 
@@ -457,6 +465,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidLoginUserNameLengthMessage(){return invalidLoginUsernameLengthMessage.getText();}
     public String getInvalidPasswordLengthMessage(){return invalidPasswordLengthMessage.getText();}
     public String getMismatchingPasswordMessage(){return mismatchingPasswordMessage.getText();}
+    public String getAgreeToTermsCheckboxError(){return clickAgreeToTermsErrorMessage.getText();}
 
     //create account page web element assert methods
     public boolean isCreateAccountPageTitleDisplayed(){return createAccountPageTitle.isDisplayed();}

@@ -134,4 +134,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationNoConfirmPasswordTest(createAccountPage);
     }
+
+    // Test 002k -> invalid user account creation test (no 'Agree to terms' checkbox click)
+    @Test
+    @DisplayName("Invalid User Account Creation - No 'Agree To Terms'")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void accountCreationNoAgreeToTermsTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationNoAgreeToTermsTest(createAccountPage);
+    }
 }
