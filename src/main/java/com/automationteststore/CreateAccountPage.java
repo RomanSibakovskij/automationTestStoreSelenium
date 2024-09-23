@@ -829,7 +829,7 @@ public class CreateAccountPage extends BasePage{
         zipCodeInputField.sendKeys(tooLongZipCode);
     }
 
-    //invalid user data getter method (to short username)
+    //invalid user data getter method (too short username)
     public void getUserInputDataTooShortUsername(){
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();
@@ -856,6 +856,35 @@ public class CreateAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(loginUsernameInputField));
         loginUsernameInputField.sendKeys(tooShortUsername);
+    }
+
+    //invalid user data getter method (too long username)
+    public void getUserInputDataTooLongUsername(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        tooLongUsername = TestDataGenerator.generateRandomUsername(65);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Too long login username: " + tooLongUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too long user login username
+    public void inputTooLongUsername(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(loginUsernameInputField));
+        loginUsernameInputField.sendKeys(tooLongUsername);
     }
 
     //account creation success message getter
