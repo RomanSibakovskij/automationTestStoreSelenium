@@ -432,7 +432,7 @@ public class CreateAccountPage extends BasePage{
         loginUsernameInputField.sendKeys(noLoginUsername);
     }
 
-    //invalid user data getter method (no password
+    //invalid user data getter method (no password)
     public void getUserInputDataNoPassword(){
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();
@@ -885,6 +885,34 @@ public class CreateAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(loginUsernameInputField));
         loginUsernameInputField.sendKeys(tooLongUsername);
+    }
+
+    //invalid user data getter method (too short password)
+    public void getUserInputDataTooShortPassword(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        tooShortPassword = "Ark";
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Too short password: " + tooShortPassword);
+    }
+    //invalid data input methods - too short password
+    public void inputTooShortPassword(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.sendKeys(tooShortPassword);
     }
 
     //account creation success message getter

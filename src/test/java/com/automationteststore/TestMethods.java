@@ -1027,6 +1027,45 @@ public class TestMethods extends BaseTest{
         assertEquals("Password must be between 4 and 20 characters!", createAccountPage.getInvalidPasswordLengthMessage(), "The expected error didn't appear");
     }
 
+    //invalid user account registration test method (too short user password)
+    protected void userAccountCreationTooShortPasswordTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter - with too short login password
+        createAccountPage.getUserInputDataTooShortPassword();
+        //valid user data input methods  (too short user password)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data (too short user password)
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputTooShortPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Password must be between 4 and 20 characters!", createAccountPage.getInvalidPasswordLengthMessage(), "The expected error didn't appear");
+    }
+
     //invalid user account registration test method (no confirm password)
     protected void userAccountCreationNoConfirmPasswordTest(CreateAccountPage createAccountPage){
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
