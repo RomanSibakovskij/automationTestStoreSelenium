@@ -278,4 +278,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooShortZipCodeTest(createAccountPage);
     }
+
+    // Test 002x -> invalid user account creation test (no zip code)
+    @Test
+    @DisplayName("Invalid User Account Creation - No Zip Code")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("No_Singular_Input")
+    void accountCreationNoZipCodeTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationNoZipCodeTest(createAccountPage);
+    }
 }
