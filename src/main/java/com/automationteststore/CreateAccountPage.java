@@ -458,7 +458,7 @@ public class CreateAccountPage extends BasePage{
 
     //invalid user data getter method (too long first name)
     public void getUserInputDataTooLongFirstName(){
-        tooLongFirstName = "Akg721sdsaddsasdqqwqwqwq123ASSDss";
+        tooLongFirstName = "AkgggtsdsaddsasdqqwqwqwqtyhASSDss";
         lastName = TestDataGenerator.getRandomLastName();
         emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
         address1 = TestDataGenerator.generateRandomAddress(7);
@@ -478,11 +478,40 @@ public class CreateAccountPage extends BasePage{
         logger.info("Password: " + password);
         logger.info("Matching confirm password: " + password);
     }
-    //valid data input methods
+    //invalid data input methods - too long first name
     public void inputTooLongFirstName(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(tooLongFirstName);
+    }
+
+    //invalid user data getter method (too long last name)
+    public void getUserInputDataTooLongLastName(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        tooLongLastName = "AkgggtsdsaddsasdqqwqwqwqtyhASSDss";
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Too long last name: " + tooLongLastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too long last name
+    public void inputTooLongLastName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(tooLongLastName);
     }
 
     //account creation success message getter

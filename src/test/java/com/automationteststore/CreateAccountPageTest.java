@@ -158,4 +158,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooLongFirstNameTest(createAccountPage);
     }
+
+    // Test 002n -> invalid user account creation test (too long last name)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Long First Name")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void accountCreationTooLongLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationTooLongLastNameTest(createAccountPage);
+    }
 }
