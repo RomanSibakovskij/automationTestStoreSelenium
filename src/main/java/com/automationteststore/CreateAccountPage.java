@@ -95,7 +95,9 @@ public class CreateAccountPage extends BasePage{
     //please select country option web element (since default is UK)
     @FindBy(xpath = "//select[@id='AccountFrm_country_id']/option[@value='FALSE']")
     private WebElement pleaseSelectOption;
-
+    //'continue' button after confirmation
+    @FindBy(xpath = "//a[@title='Continue']")
+    private WebElement continueAfterConfirmationButton;
     //valid user input data
     private String firstName;
     private String lastName;
@@ -253,6 +255,13 @@ public class CreateAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));
         continueButton.click();
+    }
+
+    //click 'Continue' after confirmation button method
+    public void clickContinueAfterConfirmationButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(continueAfterConfirmationButton));
+        continueAfterConfirmationButton.click();
     }
 
     //invalid user data getter method (no first name)
@@ -976,6 +985,9 @@ public class CreateAccountPage extends BasePage{
 
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
+
+    //first name getter
+    public String getFirstName(){return firstName;}
 
     //login page invalid input message getters
     public String getInvalidFirstNameLengthMessage(){return invalidFirstNameLengthMessage.getText();}

@@ -57,6 +57,11 @@ public class TestMethods extends BaseTest{
         createAccountPage.clickContinueButton();
         //assert the account has been created
         assertEquals("YOUR ACCOUNT HAS BEEN CREATED!", createAccountPage.getAccountCreationSuccessMessage(), "The success message doesn't match expectations or the account hasn't been created successfully");
+        //click 'continue' button after confirmation
+        createAccountPage.clickContinueAfterConfirmationButton();
+        AccountPage accountPage = new AccountPage(driver);
+        //assert the correct user is being displayed in the account dashboard
+        assertEquals(createAccountPage.getFirstName(), accountPage.getFirstNameFromDashboardText(), "The first names don't match expectations");
     }
 
     //invalid user account registration test method (no first name)
