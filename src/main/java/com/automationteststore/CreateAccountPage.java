@@ -722,6 +722,35 @@ public class CreateAccountPage extends BasePage{
         cityInputField.sendKeys(tooShortCity);
     }
 
+    //invalid user data getter method (too long user city)
+    public void getUserInputDataTooLongCity(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        tooLongCity = "Akg721sdsaddsasdqqwqwqwq123ASSDssafdsfgfdfhgdfQWEsssdssadasdwewe1Adsdasdsadsdsdsadccczsadfgfghgfhcxcxzvxvfdfdhfjjjjttgrgerrerdsda";
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("Too long city: " + tooLongCity);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too long user city
+    public void inputTooLongCity(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(tooLongCity);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 

@@ -254,4 +254,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooShortCityTest(createAccountPage);
     }
+
+    // Test 002v -> invalid user account creation test (too long user city)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Long User City")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void accountCreationTooLongUserCityTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationTooLongCityTest(createAccountPage);
+    }
 }
