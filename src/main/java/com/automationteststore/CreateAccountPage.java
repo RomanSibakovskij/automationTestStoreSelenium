@@ -514,6 +514,35 @@ public class CreateAccountPage extends BasePage{
         lastNameInputField.sendKeys(tooLongLastName);
     }
 
+    //invalid user data getter method (invalid email address format)
+    public void getUserInputDataInvalidEmailFormat(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        invalidEmailAddressFormat = "m2@com";
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Invalid email address format: " + invalidEmailAddressFormat);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - no email address
+    public void inputInvalidEmailFormat(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(invalidEmailAddressFormat);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 

@@ -161,7 +161,7 @@ public class CreateAccountPageTest extends TestMethods{
 
     // Test 002n -> invalid user account creation test (too long last name)
     @Test
-    @DisplayName("Invalid User Account Creation - Too Long First Name")
+    @DisplayName("Invalid User Account Creation - Too Long Last Name")
     @Tag("Invalid_User_Account_Creation")
     @Tag("Too_Long_Singular_Input")
     void accountCreationTooLongLastNameTest(){
@@ -169,5 +169,17 @@ public class CreateAccountPageTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooLongLastNameTest(createAccountPage);
+    }
+
+    // Test 002o -> invalid user account creation test (invalid email address format)
+    @Test
+    @DisplayName("Invalid User Account Creation - Invalid Email Address Format")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Invalid_Singular_Input")
+    void accountCreationInvalidEmailFormatTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationInvalidEmailFormatTest(createAccountPage);
     }
 }
