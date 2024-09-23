@@ -635,6 +635,35 @@ public class CreateAccountPage extends BasePage{
         emailInputField.sendKeys(existingEmailAddress);
     }
 
+    //invalid user data getter method (too short address1)
+    public void getUserInputDataTooShortAddress1(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        tooShortAddress1 = "Ag";
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Too short address: " + tooShortAddress1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too short user address
+    public void inputTooShortAddress1(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(address1InputField));
+        address1InputField.sendKeys(tooShortAddress1);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 

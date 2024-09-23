@@ -218,4 +218,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationExistingEmailTest(createAccountPage);
     }
+
+    // Test 002s -> invalid user account creation test (too short user address)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Short User Address")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void accountCreationTooShortUserAddressTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationTooShortAddress1Test(createAccountPage);
+    }
 }
