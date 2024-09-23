@@ -787,6 +787,50 @@ public class TestMethods extends BaseTest{
         assertEquals("Zip/postal code must be between 3 and 10 characters!", createAccountPage.getInvalidZipCodeMessage(), "The expected error didn't appear");
     }
 
+    //invalid user account registration test method (too long zip code)
+    protected void userAccountCreationTooLongZipCodeTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter - with too long zip code
+        createAccountPage.getUserInputDataTooLongZipCode();
+        //valid user data input methods  (too long zip code)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputTooLongZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //log the issue if the account gets created with existing email address
+        if(createAccountPage.getAccountCreationSuccessMessage().equals("YOUR ACCOUNT HAS BEEN CREATED!")) {
+            logger.error("The user account got created with too long zip code");
+        }else {
+            assertEquals("Zip/postal code must be between 3 and 10 characters!", createAccountPage.getInvalidZipCodeMessage(), "The expected error didn't appear");
+        }
+    }
+
     //invalid user account registration test method (no user country selection)
     protected void userAccountCreationNoCountryTest(CreateAccountPage createAccountPage){
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
@@ -854,6 +898,46 @@ public class TestMethods extends BaseTest{
         createAccountPage.inputZipCode();
         //input valid login data (omit login username)
         createAccountPage.inputNoUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("Login name must be alphanumeric only and between 5 and 64 characters!", createAccountPage.getInvalidLoginUserNameLengthMessage(), "The expected error didn't appear");
+    }
+
+    //invalid user account registration test method (too short username)
+    protected void userAccountCreationTooShortUsernameTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter - with too short username
+        createAccountPage.getUserInputDataTooShortUsername();
+        //valid user data input methods  (too short login username)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data (too short login username)
+        createAccountPage.inputTooShortUsername();
         createAccountPage.inputPassword();
         createAccountPage.inputConfirmPassword();
         //click 'Agree to terms' checkbox

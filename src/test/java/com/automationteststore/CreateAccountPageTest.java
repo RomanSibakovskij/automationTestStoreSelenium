@@ -290,4 +290,28 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationNoZipCodeTest(createAccountPage);
     }
+
+    // Test 002y -> invalid user account creation test (too long zip code)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Long Zip Code")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void accountCreationTooLongZipCodeTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationTooLongZipCodeTest(createAccountPage);
+    }
+
+    // Test 002z -> invalid user account creation test (too short login username)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Short Username")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Short_Singular_Input")
+    void accountCreationTooShortUsernameTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationTooShortUsernameTest(createAccountPage);
+    }
 }
