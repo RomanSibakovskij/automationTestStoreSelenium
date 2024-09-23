@@ -124,13 +124,12 @@ public class CreateAccountPage extends BasePage{
     private String tooLongAddress1;
     private String tooShortCity;
     private String tooLongCity;
+    private int tooShortZipCode;
+    private int tooLongZipCode;
     private String tooShortUsername;
     private String tooLongUsername;
     private String tooShortPassword;
     private String tooLongPassword;
-
-    //invalid singular input user data
-    private int tooShortZipCode;
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);
@@ -751,6 +750,35 @@ public class CreateAccountPage extends BasePage{
         cityInputField.sendKeys(tooLongCity);
     }
 
+    //invalid user data getter method (too short zip code)
+    public void getUserInputDataTooShortZipCode(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        tooShortZipCode = 01;
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Too short zip code: " + tooShortZipCode);
+        logger.info("Login username: " + noLoginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too short zip code
+    public void inputTooShortZipCode(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
+        zipCodeInputField.sendKeys(String.valueOf(tooShortZipCode));
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 
@@ -762,6 +790,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidAddress1Message(){return invalidAddress1LengthMessage.getText();}
     public String getInvalidCityNameLengthMessage(){return invalidCityNameLengthMessage.getText();}
     public String getSelectStateMessage(){return selectStateMessage.getText();}
+    public String getInvalidZipCodeMessage(){return invalidZipCodeLengthMessage.getText();}
     public String getSelectCountryMessage(){return selectCountryMessage.getText();}
     public String getInvalidLoginUserNameLengthMessage(){return invalidLoginUsernameLengthMessage.getText();}
     public String getInvalidPasswordLengthMessage(){return invalidPasswordLengthMessage.getText();}
