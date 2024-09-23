@@ -99,6 +99,46 @@ public class TestMethods extends BaseTest{
         assertEquals("First Name must be between 1 and 32 characters!", createAccountPage.getInvalidFirstNameLengthMessage(), "The expected error didn't appear");
     }
 
+    //invalid user account registration test method (too long first name)
+    protected void userAccountCreationTooLongFirstNameTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter - with roo long first name
+        createAccountPage.getUserInputDataTooLongFirstName();
+        //valid user data input methods (too long first name)
+        createAccountPage.inputTooLongFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputEmailAddress();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //assert the expected error message is displayed
+        assertEquals("First Name must be between 1 and 32 characters!", createAccountPage.getInvalidFirstNameLengthMessage(), "The expected error didn't appear");
+    }
+
     //invalid user account registration test method (no last name)
     protected void userAccountCreationNoLastNameTest(CreateAccountPage createAccountPage){
         LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
