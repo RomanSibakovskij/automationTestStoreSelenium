@@ -22,7 +22,7 @@ public class BaseTest {
     @AfterEach
     public void close() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

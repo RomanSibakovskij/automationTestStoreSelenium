@@ -70,6 +70,8 @@ public class CreateAccountPage extends BasePage{
     private WebElement invalidLastNameLengthMessage;
     @FindBy(xpath = "//span[.='Email Address does not appear to be valid!']")
     private WebElement invalidEmailAddressMessage;
+    @FindBy(xpath = "//div[@class='alert alert-error alert-danger']")
+    private WebElement existingEmailAddressMessage;
     @FindBy(xpath = "//span[.='Address 1 must be between 3 and 128 characters!']")
     private WebElement invalidAddress1LengthMessage;
     @FindBy(xpath = "//span[.='City must be between 3 and 128 characters!']")
@@ -117,6 +119,7 @@ public class CreateAccountPage extends BasePage{
     private String invalidEmailAddressFormat;
     private String tooShortEmailAddress;
     private String tooLongEmailAddress;
+    private String existingEmailAddress;
     private String tooShortAddress1;
     private String tooLongAddress1;
     private String tooShortCity;
@@ -603,6 +606,35 @@ public class CreateAccountPage extends BasePage{
         emailInputField.sendKeys(tooLongEmailAddress);
     }
 
+    //invalid user data getter method (already existing email address)
+    public void getUserInputDataExistingEmail(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        existingEmailAddress = "m10@mail.com";
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Existing email address(in database): " + existingEmailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too long email address
+    public void inputExistingEmail(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(existingEmailAddress);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 
@@ -610,6 +642,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidFirstNameLengthMessage(){return invalidFirstNameLengthMessage.getText();}
     public String getInvalidLastNameLengthMessage(){return invalidLastNameLengthMessage.getText();}
     public String getInvalidEmailAddressMessage(){return invalidEmailAddressMessage.getText();}
+    public String getExistingEmailAddressMessage(){return existingEmailAddressMessage.getText();}
     public String getInvalidAddress1Message(){return invalidAddress1LengthMessage.getText();}
     public String getInvalidCityNameLengthMessage(){return invalidCityNameLengthMessage.getText();}
     public String getSelectStateMessage(){return selectStateMessage.getText();}

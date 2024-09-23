@@ -206,4 +206,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooLongEmailTest(createAccountPage);
     }
+
+    // Test 002r -> invalid user account creation test (existing email address (in database))
+    @Test
+    @DisplayName("Invalid User Account Creation - Existing Email Address")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Existing_Singular_Input")
+    void accountCreationExistingEmailTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationExistingEmailTest(createAccountPage);
+    }
 }
