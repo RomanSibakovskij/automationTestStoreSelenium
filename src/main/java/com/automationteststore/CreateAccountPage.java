@@ -84,6 +84,8 @@ public class CreateAccountPage extends BasePage{
     private WebElement invalidZipCodeLengthMessage;
     @FindBy(xpath = "//span[.='Login name must be alphanumeric only and between 5 and 64 characters!']")
     private WebElement invalidLoginUsernameLengthMessage;
+    @FindBy(xpath = "//span[.='This login name is not available. Try different login name!']")
+    private WebElement existingUsernameMessage;
     @FindBy(xpath = "//span[.='Password must be between 4 and 20 characters!']")
     private WebElement invalidPasswordLengthMessage;
     @FindBy(xpath = "//span[.='Password confirmation does not match password!']")
@@ -128,6 +130,7 @@ public class CreateAccountPage extends BasePage{
     private String tooLongZipCode; //the output gets converted to octal literal so String is used here for validity instead of int
     private String tooShortUsername;
     private String tooLongUsername;
+    private String existingUsername;
     private String tooShortPassword;
     private String tooLongPassword;
 
@@ -943,6 +946,34 @@ public class CreateAccountPage extends BasePage{
         passwordInputField.sendKeys(tooLongPassword);
     }
 
+    //invalid user data getter method (existing username)
+    public void getUserInputDataExistingUsername(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        existingUsername = "LoggerThomas";
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Existing username username: " + existingUsername);
+        logger.info("Password: " + password);
+    }
+    //invalid data input methods - existing username
+    public void inputExistingUsername(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(loginUsernameInputField));
+        loginUsernameInputField.sendKeys(existingUsername);
+    }
+
     //account creation success message getter
     public String getAccountCreationSuccessMessage(){return accountCreationSuccessMessage.getText();}
 
@@ -957,6 +988,7 @@ public class CreateAccountPage extends BasePage{
     public String getInvalidZipCodeMessage(){return invalidZipCodeLengthMessage.getText();}
     public String getSelectCountryMessage(){return selectCountryMessage.getText();}
     public String getInvalidLoginUserNameLengthMessage(){return invalidLoginUsernameLengthMessage.getText();}
+    public String getExistingUsernameMessage(){return existingUsernameMessage.getText();}
     public String getInvalidPasswordLengthMessage(){return invalidPasswordLengthMessage.getText();}
     public String getMismatchingPasswordMessage(){return mismatchingPasswordMessage.getText();}
     public String getAgreeToTermsCheckboxError(){return clickAgreeToTermsErrorMessage.getText();}

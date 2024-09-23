@@ -350,4 +350,16 @@ public class CreateAccountPageTest extends TestMethods{
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooLongPasswordTest(createAccountPage);
     }
+
+    // Test 002ad -> invalid user account creation test (existing login username)
+    @Test
+    @DisplayName("Invalid User Account Creation - Existing Username")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Existing_Singular_Input")
+    void accountCreationExistingUsernameTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationExistingUsernameTest(createAccountPage);
+    }
 }
