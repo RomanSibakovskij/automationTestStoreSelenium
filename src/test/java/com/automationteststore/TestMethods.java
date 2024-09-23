@@ -315,7 +315,7 @@ public class TestMethods extends BaseTest{
         //valid user data input methods (too short email address)
         createAccountPage.inputFirstName();
         createAccountPage.inputLastName();
-        createAccountPage.inputITooShortEmail();
+        createAccountPage.inputTooShortEmail();
         createAccountPage.inputAddress1();
         createAccountPage.inputCity();
         //click country dropdown menu
@@ -338,6 +338,50 @@ public class TestMethods extends BaseTest{
         //log the issue if the account gets created with too short email address
         if(createAccountPage.getAccountCreationSuccessMessage().equals("YOUR ACCOUNT HAS BEEN CREATED!")) {
             logger.error("The user account got created with too short email address");
+        }else{
+            assertEquals("Email Address does not appear to be valid!", createAccountPage.getInvalidEmailAddressMessage(), "The expected error didn't appear"); //it seems to be a general error message
+        }
+    }
+
+    //invalid user account registration test method (too long email address)
+    protected void userAccountCreationTooLongEmailTest(CreateAccountPage createAccountPage){
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //login/register page web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //register button click method
+        loginRegisterPage.clickRegisterButton();
+        //create page web element assert
+        isCreateAccountPageWebElementDisplayed(createAccountPage);
+        //assert the create account page title is as expected(whether the user got on the right page)
+        assertEquals("CREATE ACCOUNT", createAccountPage.getCreateAccountPageTitle(), "The create account page title isn't as expected or user is on the wrong page");
+        //valid user data getter - with too long user email address
+        createAccountPage.getUserInputDataTooLongEmail();
+        //valid user data input methods (too long email address)
+        createAccountPage.inputFirstName();
+        createAccountPage.inputLastName();
+        createAccountPage.inputTooLongEmail();
+        createAccountPage.inputAddress1();
+        createAccountPage.inputCity();
+        //click country dropdown menu
+        createAccountPage.clickCountryDropdownMenu();
+        //select 'United States' option
+        createAccountPage.selectUSOption();
+        //click state dropdown menu
+        createAccountPage.clickStateDropdownMenu();
+        //click 'Illinois' option
+        createAccountPage.selectIllinoisOption();
+        createAccountPage.inputZipCode();
+        //input valid login data
+        createAccountPage.inputLoginUsername();
+        createAccountPage.inputPassword();
+        createAccountPage.inputConfirmPassword();
+        //click 'Agree to terms' checkbox
+        createAccountPage.clickAgreeToTermsCheckbox();
+        //click 'Continue' button
+        createAccountPage.clickContinueButton();
+        //log the issue if the account gets created with too long email address
+        if(createAccountPage.getAccountCreationSuccessMessage().equals("YOUR ACCOUNT HAS BEEN CREATED!")) {
+            logger.error("The user account got created with too long email address");
         }else{
             assertEquals("Email Address does not appear to be valid!", createAccountPage.getInvalidEmailAddressMessage(), "The expected error didn't appear"); //it seems to be a general error message
         }

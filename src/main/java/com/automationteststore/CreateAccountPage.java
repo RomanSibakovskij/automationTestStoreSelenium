@@ -545,7 +545,7 @@ public class CreateAccountPage extends BasePage{
         emailInputField.sendKeys(invalidEmailAddressFormat);
     }
 
-    //invalid user data getter method (invalid email address format)
+    //invalid user data getter method (too short email address)
     public void getUserInputDataTooShortEmail(){
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();
@@ -568,10 +568,39 @@ public class CreateAccountPage extends BasePage{
         logger.info("Matching confirm password: " + password);
     }
     //invalid data input method - too short email address
-    public void inputITooShortEmail(){
+    public void inputTooShortEmail(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(tooShortEmailAddress);
+    }
+
+    //invalid user data getter method (too long email address)
+    public void getUserInputDataTooLongEmail(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        tooLongEmailAddress = TestDataGenerator.generateRandomEmailAddress(110);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginUsername = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Too long email address: " + tooLongEmailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+        logger.info("Login username: " + loginUsername);
+        logger.info("Password: " + password);
+        logger.info("Matching confirm password: " + password);
+    }
+    //invalid data input method - too long email address
+    public void inputTooLongEmail(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.sendKeys(tooLongEmailAddress);
     }
 
     //account creation success message getter

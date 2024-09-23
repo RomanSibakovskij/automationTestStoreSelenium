@@ -183,7 +183,7 @@ public class CreateAccountPageTest extends TestMethods{
         userAccountCreationInvalidEmailFormatTest(createAccountPage);
     }
 
-    // Test 002p -> invalid user account creation test (too short email address)
+    // Test 002p -> invalid user account creation test (too short email address) (the user account gets created)
     @Test
     @DisplayName("Invalid User Account Creation - Too Short Email Address")
     @Tag("Invalid_User_Account_Creation")
@@ -193,5 +193,17 @@ public class CreateAccountPageTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         userAccountCreationTooShortEmailTest(createAccountPage);
+    }
+
+    // Test 002q -> invalid user account creation test (too long email address)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Long Email Address")
+    @Tag("Invalid_User_Account_Creation")
+    @Tag("Too_Long_Singular_Input")
+    void accountCreationTooLongEmailTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        userAccountCreationTooLongEmailTest(createAccountPage);
     }
 }
