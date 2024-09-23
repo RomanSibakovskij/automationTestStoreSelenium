@@ -989,6 +989,10 @@ public class CreateAccountPage extends BasePage{
     //first name getter
     public String getFirstName(){return firstName;}
 
+    //valid username, password getters
+    public String getUsername(){return loginUsername;}
+    public String getPassword(){return password;}
+
     //login page invalid input message getters
     public String getInvalidFirstNameLengthMessage(){return invalidFirstNameLengthMessage.getText();}
     public String getInvalidLastNameLengthMessage(){return invalidLastNameLengthMessage.getText();}

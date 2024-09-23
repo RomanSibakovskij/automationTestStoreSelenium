@@ -16,4 +16,18 @@ public class LoginTest extends TestMethods{
         AccountPage accountPage = new AccountPage(driver);
         userAccountLogOutTest(accountPage);
     }
+
+    //Test 004 -> valid user account login test
+    @Test
+    @DisplayName("Valid User Account Login")
+    @Tag("Valid_User_Account_Login")
+    void userAccountLogInTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        AccountPage accountPage = new AccountPage(driver);
+        userAccountLogOutTest(accountPage);
+        validUserAccountLoginTest(createAccountPage);
+    }
 }

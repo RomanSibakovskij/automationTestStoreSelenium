@@ -1299,12 +1299,39 @@ public class TestMethods extends BaseTest{
         assertEquals("Login or register", homePage.getLoginRegisterLinkText(), "The expected text didn't match the output");
     }
 
+    //valid user account login method
+    protected void validUserAccountLoginTest(CreateAccountPage createAccountPage){
+        HomePage homePage = new HomePage(driver);
+        //click login/register page header link
+        homePage.clickLoginRegisterLink();
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //valid user input data getter
+        loginRegisterPage.getValidUserLoginData(createAccountPage);
+        //valid user input
+        loginRegisterPage.inputUsername(createAccountPage.getUsername());
+        logger.info("Username used for login: " + createAccountPage.getUsername());
+        loginRegisterPage.inputPassword(createAccountPage.getPassword());
+        logger.info("Password used for login: " + createAccountPage.getPassword());
+        //click 'login' button
+        loginRegisterPage.clickLoginButton();
+        //assert that the user has logged in
+        assertEquals(createAccountPage.getFirstName(), loginRegisterPage.getFirstNameFromDashboardText(), "The first names don't match expectations");
+    }
+
     //login/register page web element assert
     protected void isLoginRegisterPageWebElementDisplayed(LoginRegisterPage loginRegisterPage){
         //assert the login/register login section title is displayed
         assertTrue(loginRegisterPage.isAccountLoginPageTitleDisplayed(), "The account login page title is not displayed");
         //assert the register button is displayed
         assertTrue(loginRegisterPage.isRegisterButtonDisplayed(), "The register button is not displayed");
+        //assert the username input field is displayed
+        assertTrue(loginRegisterPage.isUsernameInputFieldDisplayed(), "The username input field is not displayed");
+        //assert the password input field is displayed
+        assertTrue(loginRegisterPage.isPasswordInputFieldDisplayed(), "The password input field is not displayed");
+        //assert login button is displayed
+        assertTrue(loginRegisterPage.isLoginButtonDisplayed(), "The login button is not displayed");
     }
 
     //create page web element assert
