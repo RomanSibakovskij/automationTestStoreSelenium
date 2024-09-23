@@ -1286,6 +1286,19 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isWelcomeMessageSectionDisplayed(), "The welcome message section is not displayed");
     }
 
+    //user account logout test method
+    protected void userAccountLogOutTest(AccountPage accountPage){
+        //click logout link
+        accountPage.clickLogOutLink();
+        //assert the user has logged out from the account
+        assertEquals("ACCOUNT LOGOUT", accountPage.getAccountLogOutConfirmationMessage(), "The expected message confirmation isn't displayed");
+        //click 'continue' button after logout confirmation
+        accountPage.clickContinueAfterLogOutButton();
+        HomePage homePage = new HomePage(driver);
+        //assert the user got back onto homepage
+        assertEquals("Login or register", homePage.getLoginRegisterLinkText(), "The expected text didn't match the output");
+    }
+
     //login/register page web element assert
     protected void isLoginRegisterPageWebElementDisplayed(LoginRegisterPage loginRegisterPage){
         //assert the login/register login section title is displayed
@@ -1336,7 +1349,14 @@ public class TestMethods extends BaseTest{
         assertTrue(createAccountPage.isAgreeToTermsCheckboxDisplayed(), "The 'agree to terms' checkbox is not displayed");
         //assert continue button is displayed
         assertTrue(createAccountPage.isContinueButtonDisplayed(), "The continue button is not displayed");
+    }
 
+    //user account page web element assert
+    protected void isUserAccountPageWebElementDisplayed(AccountPage accountPage){
+        //assert account hover dropdown menu is displayed
+        assertTrue(accountPage.isAccountDashboardHoverMenuDisplayed(), "The account dashboard hover menu isn't displayed");
+        //assert logout link is displayed
+        assertTrue(accountPage.isLogOutLinkDisplayed(), "The log out link isn't displayed");
     }
 
 

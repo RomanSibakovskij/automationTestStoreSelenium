@@ -85,6 +85,9 @@ public class HomePage extends BasePage{
         loginRegisterNavLink.click();
     }
 
+    //login/register page link name getter
+    public String getLoginRegisterLinkText(){return loginRegisterNavLink.getText();}
+
     //homepage web element asserts
     public boolean isAutomationStoreLogoDisplayed() {return automationStoreHeaderLogo.isDisplayed();}
     public boolean isLoginRegisterNavLinkDisplayed() {return loginRegisterNavLink.isDisplayed();}
