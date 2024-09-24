@@ -1357,6 +1357,13 @@ public class TestMethods extends BaseTest{
         homePage.clickAddFeaturedToCart1Button();
         homePage.clickAddFeaturedToCart2Button();
         homePage.clickAddFeaturedToCart3Button(); //drops to individual product page
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        //web element assert
+        isSingleProductPageWebElementDisplayed(singleProductPage);
+        //product data logger
+        logSingleProductData(singleProductPage);
+        //click 'add to cart' button
+        singleProductPage.clickAddToCartButton();
     }
     //latest 'add to cart' products test method
     protected void addLatestProductsToCartTest(HomePage homePage){
@@ -1400,6 +1407,24 @@ public class TestMethods extends BaseTest{
         homePage.clickAddSpecialToCartButton();
         //click 'shopping cart' page nav link
         homePage.clickCartNavLink();
+    }
+
+    //single product data loggers
+    protected void logAsideProductData(SingleProductPage singleProductPage){
+        System.out.println("Aside product list data: " + "\n");
+        logger.info("Aside product list displayed data: " + singleProductPage.getAsideProductData() + "\n");
+    }
+    protected void logSingleProductData(SingleProductPage singleProductPage){
+        System.out.println("Product displayed in single product page data: " + "\n");
+        logger.info("Product images link list: " + singleProductPage.getProductImagesList()); // displays as null even though innerText has the links present
+        logger.info("Main product image link: " + singleProductPage.getMainProductImage()); // displays as null even though innerText has the links present
+        logger.info("Product name: " + singleProductPage.getProductName());
+        logger.info("Product price: " + singleProductPage.getProductPrice());
+        logger.info("Product quantity: " + singleProductPage.getProductQuantity());
+        logger.info("Product total price: " + singleProductPage.getProductTotalPrice());
+        logger.info("Product description: " + singleProductPage.getProductDescription());
+        logger.info("Product model: " + singleProductPage.getProductModel());
+        logger.info("Product manufacturer: " + singleProductPage.getProductManufacturer()); // displays as null even though innerText has the links present
     }
 
     //web page element assert methods
@@ -1551,6 +1576,41 @@ public class TestMethods extends BaseTest{
         assertTrue(accountPage.isAccountDashboardHoverMenuDisplayed(), "The account dashboard hover menu isn't displayed");
         //assert logout link is displayed
         assertTrue(accountPage.isLogOutLinkDisplayed(), "The log out link isn't displayed");
+    }
+
+    //single product page web element assert
+    protected void isSingleProductPageWebElementDisplayed(SingleProductPage singleProductPage){
+        //assert aside product list section is displayed
+        assertTrue(singleProductPage.isAsideProductDataDisplayed(), "The aside product list isn't displayed");
+        //images are commented out since they throw StaleElementReferenceException even though they're consistently present
+//        //assert product images list is displayed
+//        assertTrue(singleProductPage.isProductImagesListDisplayed(), "The product images list isn't displayed");
+//        //assert main product image is displayed
+//        assertTrue(singleProductPage.isMainProductImageDisplayed(), "The main product image isn't displayed");
+        //assert product name is displayed
+        assertTrue(singleProductPage.isProductNameDisplayed(), "The product name isn't displayed");
+        //assert product price is displayed
+        assertTrue(singleProductPage.isProductPriceDisplayed(), "The product price isn't displayed");
+        //assert product quantity input field is displayed
+        assertTrue(singleProductPage.isProductQuantityInputFieldDisplayed(), "The product quantity input field isn't displayed");
+        //assert product total price is displayed
+        assertTrue(singleProductPage.isProductTotalPriceDisplayed(), "The product total price isn't displayed");
+        //assert 'add to cart' button isn't displayed
+        assertTrue(singleProductPage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
+        //assert product print link is displayed
+        assertTrue(singleProductPage.isPrintLinkDisplayed(), "The product print link isn't displayed");
+//        //assert 'add to wishlist' link is displayed //sometimes it's not displayed
+//        assertTrue(singleProductPage.isAddToWishlistLinkDisplayed(), "The 'add to wishlist' link isn't displayed");
+        //assert product description list section tab is displayed
+        assertTrue(singleProductPage.isDescriptionListSectionDisplayed(), "The description list section tab isn't displayed");
+        //assert product review list section tab is displayed
+        assertTrue(singleProductPage.isReviewsListSectionDisplayed(), "The review list section tab isn't displayed");
+        //assert product description is displayed
+        assertTrue(singleProductPage.isProductDescriptionDisplayed(), "The product description isn't displayed");
+        //assert product model is displayed
+        assertTrue(singleProductPage.isProductModelDisplayed(), "The product model isn't displayed");
+        //assert product manufacturer is displayed
+        assertTrue(singleProductPage.isProductManufacturerDisplayed(), "The product manufacturer isn't displayed");
     }
 
 
