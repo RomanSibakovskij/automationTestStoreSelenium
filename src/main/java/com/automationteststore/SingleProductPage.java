@@ -38,6 +38,9 @@ public class SingleProductPage extends BasePage{
     private WebElement descriptionSection;
     @FindBy(xpath = "//div[@id='description']/p")
     private WebElement productDescription;
+    //t-shirt product description web element
+    @FindBy(xpath = "//div[@id='description']")
+    private WebElement tShirtProductDescription;
     @FindBy(xpath = "//ul[@id='myTab']/li[2]")
     private WebElement reviewsSection;
     @FindBy(xpath = "//ul[@class='productinfo']/li[1]")
@@ -75,6 +78,11 @@ public class SingleProductPage extends BasePage{
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", productDescription);
         return productDescription.getText();}
+    //for t-shirt product page
+    public String getTShirtProductDescription(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", tShirtProductDescription);
+        return tShirtProductDescription.getText();}
     public String getProductModel(){ return productModel.getText();}
     public String getProductManufacturer(){return productManufacturer.getAttribute("value");}
 

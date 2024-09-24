@@ -1389,11 +1389,13 @@ public class TestMethods extends BaseTest{
         logger.info("Bestsellers product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getBestsellersProductPrice());
         //add available bestsellers product to cart click
         homePage.clickAddBestsellerToCart1Button();
-//        homePage.clickAddBestsellerToCart2Button();// individual product page
-//        homePage.clickAddBestsellerToCart3Button(); //individual product page
         homePage.clickAddBestsellerToCart4Button();
-        //click 'shopping cart' page nav link
-        homePage.clickCartNavLink();
+        homePage.clickAddBestsellerToCart2Button();// individual product page
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        //product data logger
+        logTShirtProductData(singleProductPage);
+        //click 'add to cart' button
+        singleProductPage.clickAddToCartButton();
     }
     //special 'add to cart' products test method
     protected void addSpecialProductsToCartTest(HomePage homePage){
@@ -1425,6 +1427,17 @@ public class TestMethods extends BaseTest{
         logger.info("Product description: " + singleProductPage.getProductDescription());
         logger.info("Product model: " + singleProductPage.getProductModel());
         logger.info("Product manufacturer: " + singleProductPage.getProductManufacturer()); // displays as null even though innerText has the links present
+    }
+    //for t-shirt product page
+    protected void logTShirtProductData(SingleProductPage singleProductPage){
+        System.out.println("Product displayed in single product page data: " + "\n");
+        logger.info("Product images link list: " + singleProductPage.getProductImagesList()); // displays as null even though innerText has the links present
+        logger.info("Main product image link: " + singleProductPage.getMainProductImage()); // displays as null even though innerText has the links present
+        logger.info("Product name: " + singleProductPage.getProductName());
+        logger.info("Product price: " + singleProductPage.getProductPrice());
+        logger.info("Product quantity: " + singleProductPage.getProductQuantity());
+        logger.info("Product total price: " + singleProductPage.getProductTotalPrice());
+        logger.info("Product description: " + singleProductPage.getTShirtProductDescription());
     }
 
     //web page element assert methods
