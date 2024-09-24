@@ -1299,7 +1299,7 @@ public class TestMethods extends BaseTest{
         assertEquals("Login or register", homePage.getLoginRegisterLinkText(), "The expected text didn't match the output");
     }
 
-    //valid user account login method
+    //valid user account login test method
     protected void validUserAccountLoginTest(CreateAccountPage createAccountPage){
         HomePage homePage = new HomePage(driver);
         //click login/register page header link
@@ -1318,6 +1318,26 @@ public class TestMethods extends BaseTest{
         loginRegisterPage.clickLoginButton();
         //assert that the user has logged in
         assertEquals(createAccountPage.getFirstName(), loginRegisterPage.getFirstNameFromDashboardText(), "The first names don't match expectations");
+    }
+
+    //invalid user account login test method - no username
+    protected void invalidUserAccountLoginNoUsernameTest(CreateAccountPage createAccountPage){
+        HomePage homePage = new HomePage(driver);
+        //click login/register page header link
+        homePage.clickLoginRegisterLink();
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //valid user input data getter
+        loginRegisterPage.getInvalidUserLoginDataNoUsername(createAccountPage);
+        //valid user input
+        loginRegisterPage.inputNoUsername();
+        loginRegisterPage.inputPassword(createAccountPage.getPassword());
+        logger.info("Password used for login: " + createAccountPage.getPassword());
+        //click 'login' button
+        loginRegisterPage.clickLoginButton();
+        //assert that expected error is displayed
+        assertEquals("×\n" + "Error: Incorrect login or password provided.", loginRegisterPage.getIncorrectCredentialsErrorMessage(), "The credentials error don't match expectations");
     }
 
     //login/register page web element assert

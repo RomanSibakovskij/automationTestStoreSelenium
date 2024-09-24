@@ -27,10 +27,19 @@ public class LoginRegisterPage extends BasePage{
     //login button web element
     @FindBy(xpath = "//button[@title='Login']")
     private WebElement loginButton;
+    //incorrect credentials error web element
+    @FindBy(xpath = "//div[@class='alert alert-error alert-danger']")
+    private WebElement credentialsErrorMessage;
 
     //valid login input data
     private String username;
     private String password;
+
+    //invalid login input data
+    private String noUsername;
+    private String noPassword;
+    private String invalidUsername;
+    private String invalidPassword;
 
     public LoginRegisterPage(WebDriver driver) {
         super(driver);
@@ -72,6 +81,23 @@ public class LoginRegisterPage extends BasePage{
         loginButton.click();
     }
 
+    //invalid user login data getter - no username
+    public void getInvalidUserLoginDataNoUsername(CreateAccountPage createAccountPage){
+        noUsername = "";
+        password = createAccountPage.getPassword();
+
+        System.out.println("Invalid login user data: " + "\n");
+        logger.info("No login username: " + noUsername);
+        logger.info("Valid login password: " + password);
+    }
+
+    //valid user login input methods
+    public void inputNoUsername(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(usernameInputField));
+        usernameInputField.sendKeys(noUsername);
+    }
+
     //login/register page web element assert methods
     public boolean isAccountLoginPageTitleDisplayed() {return accountLoginPageTitle.isDisplayed();}
     public boolean isRegisterButtonDisplayed() {return registerButton.isDisplayed();}
@@ -81,6 +107,9 @@ public class LoginRegisterPage extends BasePage{
 
     //account login title getter
     public String getAccountLoginPageTitleText() {return accountLoginPageTitle.getText();}
+
+    //incorrect credentials error getter
+    public String getIncorrectCredentialsErrorMessage(){return credentialsErrorMessage.getText();}
 
     //account dashboard user first name getter
     public String getFirstNameFromDashboardText() {
