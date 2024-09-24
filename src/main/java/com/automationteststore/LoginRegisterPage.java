@@ -86,16 +86,31 @@ public class LoginRegisterPage extends BasePage{
         noUsername = "";
         password = createAccountPage.getPassword();
 
-        System.out.println("Invalid login user data: " + "\n");
+        System.out.println("Invalid login user data (username): " + "\n");
         logger.info("No login username: " + noUsername);
         logger.info("Valid login password: " + password);
     }
-
-    //valid user login input methods
+    //invalid user login input method - no username
     public void inputNoUsername(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(usernameInputField));
         usernameInputField.sendKeys(noUsername);
+    }
+
+    //invalid user login data getter - no password
+    public void getInvalidUserLoginDataNoPassword(CreateAccountPage createAccountPage){
+        username = createAccountPage.getUsername();
+        noPassword = "";
+
+        System.out.println("Invalid login user data (password): " + "\n");
+        logger.info("Valid login username: " + username);
+        logger.info("No login password: " + noPassword);
+    }
+    //invalid user password input method - no password
+    public void inputNoPassword(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.sendKeys(noPassword);
     }
 
     //login/register page web element assert methods

@@ -45,4 +45,19 @@ public class LoginTest extends TestMethods{
         userAccountLogOutTest(accountPage);
         invalidUserAccountLoginNoUsernameTest(createAccountPage);
     }
+
+    //Test 004b -> invalid user account login test -> no password
+    @Test
+    @DisplayName("Invalid User Account Login - No Password")
+    @Tag("Invalid_User_Account_Login")
+    @Tag("No_Singular_Login_Input")
+    void userAccountLogInNoPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        AccountPage accountPage = new AccountPage(driver);
+        userAccountLogOutTest(accountPage);
+        invalidUserAccountLoginNoPasswordTest(createAccountPage);
+    }
 }
