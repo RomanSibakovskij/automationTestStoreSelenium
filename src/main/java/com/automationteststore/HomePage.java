@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.*;
 
 public class HomePage extends BasePage{
 
@@ -72,6 +73,32 @@ public class HomePage extends BasePage{
     //homepage welcome section web element
     @FindBy(xpath = "//section[@class='contentpanel']/div/h4")
     private WebElement welcomeMessage;
+    //featured product list web elements
+    @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    private List<WebElement> featuredProductsNameElements;
+    @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
+    private List<WebElement> featuredAvailableProductsPriceElements;
+    private List<WebElement> featuredAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    private List<WebElement> latestProductsNameElements;
+    @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
+    private List<WebElement> latestAvailableProductsPriceElements;
+    @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a")
+    private List<WebElement> latestAvailableProductsAddToCartButton;
+    @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    private List<WebElement> bestsellersProductsNameElements;
+    @FindBy(xpath = "//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
+    private List<WebElement> bestsellersAvailableProductsPriceElements;
+    @FindBy(xpath = "//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a")
+    private List<WebElement> bestsellersAvailableProductsAddToCartButton;
+    @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    private List<WebElement> specialsProductsNameElements;
+    @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/div")
+    private List<WebElement> specialsAvailableProductsPriceElements;
+    @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a")
+    private List<WebElement> specialsAvailableProductsAddToCartButton;
+    @FindBy(xpath = "//div[@id='block_frame_listing_block_1774']//div[@class='caroufredsel_wrapper']/ul/li")
+    private List<WebElement> brandScrollingProductsElements;
 
 
     public HomePage(WebDriver driver) {
@@ -84,6 +111,35 @@ public class HomePage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(loginRegisterNavLink));
         loginRegisterNavLink.click();
     }
+
+    //homepage products list data getter methods
+    //product names getters
+    public List<String> getFeaturedProductNames() {
+        List<String> featuredProductName = new ArrayList<>();
+        for (WebElement element : featuredProductsNameElements) {
+            featuredProductName.add(element.getText());
+        }
+        return featuredProductName;
+    }
+    //product price getter
+    public List<String> getFeaturedProductPrice() {
+        List<String> featuredProductPrice = new ArrayList<>();
+        for (WebElement element : featuredAvailableProductsPriceElements) {
+            featuredProductPrice.add(element.getText());
+        }
+        return featuredProductPrice;
+    }
+
+    //homepage products 'add to cart' button click index getter
+    public void clickAddToCartButton(int productIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(featuredAvailableProductsAddToCartButton.get(productIndex)));
+        featuredAvailableProductsAddToCartButton.get(productIndex).click();
+    }
+    //individual 'add to cart' button click methods
+    public void clickAddToCart1Button(){clickAddToCartButton(0);}
+    public void clickAddToCart2Button(){clickAddToCartButton(1);}
+    public void clickAddToCart3Button(){clickAddToCartButton(2);}
 
     //login/register page link name getter
     public String getLoginRegisterLinkText(){return loginRegisterNavLink.getText();}
@@ -116,5 +172,111 @@ public class HomePage extends BasePage{
     public boolean isShippingOptionsLabelDisplayed(){return shippingOptionsLabel.isDisplayed();}
     public boolean isLargeVarietyLabelDisplayed(){return largeVarietyLabel.isDisplayed();}
     public boolean isWelcomeMessageSectionDisplayed(){return welcomeMessage.isDisplayed();}
+
+    //homepage product page web element assert methods
+    public boolean isFeaturedProductNameDisplayed() {
+        for (WebElement element : featuredProductsNameElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isFeaturedAvailableProductsPriceDisplayed() {
+        for (WebElement element : featuredAvailableProductsPriceElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isFeaturedAvailableProductsAddToCartButtonDisplayed() {
+        for (WebElement element : featuredAvailableProductsAddToCartButton) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isLatestProductNameDisplayed() {
+        for (WebElement element : latestProductsNameElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isLatestAvailableProductsPriceDisplayed() {
+        for (WebElement element : latestAvailableProductsPriceElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isLatestAvailableProductsAddToCartButtonDisplayed() {
+        for (WebElement element : latestAvailableProductsAddToCartButton) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isBestsellersProductNameDisplayed() {
+        for (WebElement element : bestsellersProductsNameElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isBestsellersAvailableProductsPriceDisplayed() {
+        for (WebElement element : bestsellersAvailableProductsPriceElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isBestsellersAvailableProductsAddToCartButtonDisplayed() {
+        for (WebElement element : bestsellersAvailableProductsAddToCartButton) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isSpecialsProductNameDisplayed() {
+        for (WebElement element : specialsProductsNameElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isSpecialsAvailableProductsPriceDisplayed() {
+        for (WebElement element : specialsAvailableProductsPriceElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isSpecialsAvailableProductsAddToCartButtonDisplayed() {
+        for (WebElement element : specialsAvailableProductsAddToCartButton) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isBrandScrollingProductsDisplayed() {
+        for (WebElement element : brandScrollingProductsElements) {
+            if (!element.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

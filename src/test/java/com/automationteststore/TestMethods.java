@@ -1228,64 +1228,6 @@ public class TestMethods extends BaseTest{
         assertEquals("×\n" + "Error: You must agree to the Privacy Policy!", createAccountPage.getAgreeToTermsCheckboxError(), "The expected error didn't appear");
     }
 
-    //homepage web element assert
-    protected void isHomePageWebElementDisplayed(HomePage homePage){
-        //assert the automation store logo is visible
-        assertTrue(homePage.isAutomationStoreLogoDisplayed(), "The Automation Store Logo is not displayed");
-        //assert login/register navbar link is displayed
-        assertTrue(homePage.isLoginRegisterNavLinkDisplayed(), "The login/register nav link is not displayed");
-        //assert specials nav link is displayed
-        assertTrue(homePage.isSpecialsNavLinkDisplayed(), "The specials nav link is not displayed");
-        //assert account navbar link is displayed
-        assertTrue(homePage.isAccountNavLinkDisplayed(), "The account nav link is not displayed");
-        //assert cart nav link is displayed
-        assertTrue(homePage.isCartNavLinkDisplayed(), "The cart nav link is not displayed");
-        //assert checkout nav link is displayed
-        assertTrue(homePage.isCheckoutNavLinkDisplayed(), "The checkout nav link is not displayed");
-        //assert search input field is displayed
-        assertTrue(homePage.isSearchInputFieldDisplayed(), "The search input field is not displayed");
-        //assert search icon button is displayed
-        assertTrue(homePage.isSearchIconButtonDisplayed(), "The search icon button is not displayed");
-        //assert currency hover menu is displayed
-        assertTrue(homePage.isCurrencyHoverMenuDisplayed(), "The currency hover menu is not displayed");
-        //assert cart hover menu is displayed
-        assertTrue(homePage.isCartHoverMenuDisplayed(), "The cart hover menu is not displayed");
-        //assert 'facebook' icon button is displayed
-        assertTrue(homePage.isFacebookIconButtonDisplayed(), "The facebook icon button is not displayed");
-        //assert 'twitter' icon button is displayed
-        assertTrue(homePage.isTwitterIconButtonDisplayed(), "The twitter icon button is not displayed");
-        //assert 'linked in' icon button is displayed
-        assertTrue(homePage.isLinkedinIconButtonDisplayed(), "The linkedin icon button is not displayed");
-        //assert home hover menu is displayed
-        assertTrue(homePage.isHomeHoverMenuDisplayed(), "The home hover menu is not displayed");
-        //assert apparel & accessories hover menu is displayed
-        assertTrue(homePage.isApparelAccessoriesHoverMenuDisplayed(), "The apparel & accessories hover menu is not displayed");
-        //assert makeup hover menu is displayed
-        assertTrue(homePage.isMakeupHoverMenuDisplayed(), "The makeup hover menu is not displayed");
-        //assert skincare hover menu is displayed
-        assertTrue(homePage.isSkincareHoverMenuDisplayed(), "The skincare hover menu is not displayed");
-        //assert fragrance hover menu is displayed
-        assertTrue(homePage.isFragranceHoverMenuDisplayed(), "The fragrance hover menu is not displayed");
-        //assert men hover menu is displayed
-        assertTrue(homePage.isMenHoverMenuDisplayed(), "The men hover menu is not displayed");
-        //assert haircare hover menu is displayed
-        assertTrue(homePage.isHaircareHoverMenuDisplayed(), "The haircare hover menu is not displayed");
-        //assert books hover menu is displayed
-        assertTrue(homePage.isBooksHoverMenuDisplayed(), "The books hover menu is not displayed");
-        //assert banner slider is displayed
-        assertTrue(homePage.isBannerSliderDisplayed(), "The banner slider is not displayed");
-        //assert fast shipping label is displayed
-        assertTrue(homePage.isFastShippingLabelDisplayed(), "The fast shipping label is not displayed");
-        //assert easy payments label is displayed
-        assertTrue(homePage.isEasyPaymentLabelDisplayed(), "The easy payment label is not displayed");
-        //assert shipping options label is displayed
-        assertTrue(homePage.isShippingOptionsLabelDisplayed(), "The shipping options label is not displayed");
-        //assert large variety label is displayed
-        assertTrue(homePage.isLargeVarietyLabelDisplayed(), "The large variety label is not displayed");
-        //assert homepage welcome section is displayed
-        assertTrue(homePage.isWelcomeMessageSectionDisplayed(), "The welcome message section is not displayed");
-    }
-
     //user account logout test method
     protected void userAccountLogOutTest(AccountPage accountPage){
         //click logout link
@@ -1398,6 +1340,107 @@ public class TestMethods extends BaseTest{
         loginRegisterPage.clickLoginButton();
         //assert that expected error is displayed
         assertEquals("×\n" + "Error: Incorrect login or password provided.", loginRegisterPage.getIncorrectCredentialsErrorMessage(), "The credentials error don't match expectations");
+    }
+
+    //non-registered user test methods
+
+    //homepage product test method
+    protected void addFeaturedProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //featured products logger
+        logger.info("Featured product names in the list: " + "\n" + homePage.getFeaturedProductNames());
+        //featured available product prices logger
+        logger.info("Featured product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getFeaturedProductPrice());
+        //add available featured product to cart click
+        homePage.clickAddToCart1Button();
+        homePage.clickAddToCart2Button();
+        homePage.clickAddToCart3Button(); //drops to individual product page
+    }
+
+    //web page element assert methods
+    //homepage web element assert
+    protected void isHomePageWebElementDisplayed(HomePage homePage){
+        //assert the automation store logo is visible
+        assertTrue(homePage.isAutomationStoreLogoDisplayed(), "The Automation Store Logo is not displayed");
+        //assert login/register navbar link is displayed
+        assertTrue(homePage.isLoginRegisterNavLinkDisplayed(), "The login/register nav link is not displayed");
+        //assert specials nav link is displayed
+        assertTrue(homePage.isSpecialsNavLinkDisplayed(), "The specials nav link is not displayed");
+        //assert account navbar link is displayed
+        assertTrue(homePage.isAccountNavLinkDisplayed(), "The account nav link is not displayed");
+        //assert cart nav link is displayed
+        assertTrue(homePage.isCartNavLinkDisplayed(), "The cart nav link is not displayed");
+        //assert checkout nav link is displayed
+        assertTrue(homePage.isCheckoutNavLinkDisplayed(), "The checkout nav link is not displayed");
+        //assert search input field is displayed
+        assertTrue(homePage.isSearchInputFieldDisplayed(), "The search input field is not displayed");
+        //assert search icon button is displayed
+        assertTrue(homePage.isSearchIconButtonDisplayed(), "The search icon button is not displayed");
+        //assert currency hover menu is displayed
+        assertTrue(homePage.isCurrencyHoverMenuDisplayed(), "The currency hover menu is not displayed");
+        //assert cart hover menu is displayed
+        assertTrue(homePage.isCartHoverMenuDisplayed(), "The cart hover menu is not displayed");
+        //assert 'facebook' icon button is displayed
+        assertTrue(homePage.isFacebookIconButtonDisplayed(), "The facebook icon button is not displayed");
+        //assert 'twitter' icon button is displayed
+        assertTrue(homePage.isTwitterIconButtonDisplayed(), "The twitter icon button is not displayed");
+        //assert 'linked in' icon button is displayed
+        assertTrue(homePage.isLinkedinIconButtonDisplayed(), "The linkedin icon button is not displayed");
+        //assert home hover menu is displayed
+        assertTrue(homePage.isHomeHoverMenuDisplayed(), "The home hover menu is not displayed");
+        //assert apparel & accessories hover menu is displayed
+        assertTrue(homePage.isApparelAccessoriesHoverMenuDisplayed(), "The apparel & accessories hover menu is not displayed");
+        //assert makeup hover menu is displayed
+        assertTrue(homePage.isMakeupHoverMenuDisplayed(), "The makeup hover menu is not displayed");
+        //assert skincare hover menu is displayed
+        assertTrue(homePage.isSkincareHoverMenuDisplayed(), "The skincare hover menu is not displayed");
+        //assert fragrance hover menu is displayed
+        assertTrue(homePage.isFragranceHoverMenuDisplayed(), "The fragrance hover menu is not displayed");
+        //assert men hover menu is displayed
+        assertTrue(homePage.isMenHoverMenuDisplayed(), "The men hover menu is not displayed");
+        //assert haircare hover menu is displayed
+        assertTrue(homePage.isHaircareHoverMenuDisplayed(), "The haircare hover menu is not displayed");
+        //assert books hover menu is displayed
+        assertTrue(homePage.isBooksHoverMenuDisplayed(), "The books hover menu is not displayed");
+        //assert banner slider is displayed
+        assertTrue(homePage.isBannerSliderDisplayed(), "The banner slider is not displayed");
+        //assert fast shipping label is displayed
+        assertTrue(homePage.isFastShippingLabelDisplayed(), "The fast shipping label is not displayed");
+        //assert easy payments label is displayed
+        assertTrue(homePage.isEasyPaymentLabelDisplayed(), "The easy payment label is not displayed");
+        //assert shipping options label is displayed
+        assertTrue(homePage.isShippingOptionsLabelDisplayed(), "The shipping options label is not displayed");
+        //assert large variety label is displayed
+        assertTrue(homePage.isLargeVarietyLabelDisplayed(), "The large variety label is not displayed");
+        //assert homepage welcome section is displayed
+        assertTrue(homePage.isWelcomeMessageSectionDisplayed(), "The welcome message section is not displayed");
+        //assert featured products section is displayed
+        assertTrue(homePage.isFeaturedProductNameDisplayed(), "The featured products section is not displayed");
+        //assert featured available products price section is displayed
+        assertTrue(homePage.isFeaturedAvailableProductsPriceDisplayed(), "The featured available products price section is not displayed");
+        //assert featured available products 'add to cart' button is displayed (block)
+        assertTrue(homePage.isFeaturedAvailableProductsAddToCartButtonDisplayed(), "The featured available products 'add to cart' button is not displayed");
+        //assert latest products section is displayed
+        assertTrue(homePage.isLatestProductNameDisplayed(), "The latest products section is not displayed");
+        //assert latest available products price section is displayed
+        assertTrue(homePage.isLatestAvailableProductsPriceDisplayed(), "The latest available products price section is not displayed");
+        //assert latest available products 'add to cart' button is displayed (block)
+        assertTrue(homePage.isLatestAvailableProductsAddToCartButtonDisplayed(), "The latest available products 'add to cart' button is not displayed");
+        //assert bestsellers products section is displayed
+        assertTrue(homePage.isBestsellersProductNameDisplayed(), "The bestsellers products section is not displayed");
+        //assert bestsellers available products price section is displayed
+        assertTrue(homePage.isBestsellersAvailableProductsPriceDisplayed(), "The bestsellers available products price section is not displayed");
+        //assert bestsellers available products 'add to cart' button is displayed (block)
+        assertTrue(homePage.isBestsellersAvailableProductsAddToCartButtonDisplayed(), "The bestsellers available products 'add to cart' button is not displayed");
+        //assert specials products section is displayed
+        assertTrue(homePage.isSpecialsProductNameDisplayed(), "The specials products section is not displayed");
+        //assert specials available products price section is displayed
+        assertTrue(homePage.isSpecialsAvailableProductsPriceDisplayed(), "The specials available products price section is not displayed");
+        //assert specials available products 'add to cart' button is displayed (block)
+        assertTrue(homePage.isSpecialsAvailableProductsAddToCartButtonDisplayed(), "The specials available products 'add to cart' button is not displayed");
+        //assert brand scrolling products scroll list is displayed
+        assertTrue(homePage.isBrandScrollingProductsDisplayed(), "The brand scrolling products scroll list is not displayed");
     }
 
     //login/register page web element assert
