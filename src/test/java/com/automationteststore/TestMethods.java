@@ -1344,7 +1344,8 @@ public class TestMethods extends BaseTest{
 
     //non-registered user test methods
 
-    //homepage product test method
+    //homepage product test methods
+    //featured 'add to cart' products test method
     protected void addFeaturedProductsToCartTest(HomePage homePage){
         //web element assert
         isHomePageWebElementDisplayed(homePage);
@@ -1356,6 +1357,20 @@ public class TestMethods extends BaseTest{
         homePage.clickAddToCart1Button();
         homePage.clickAddToCart2Button();
         homePage.clickAddToCart3Button(); //drops to individual product page
+    }
+    //latest 'add to cart' products test method
+    protected void addLatestProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //latest products logger
+        logger.info("Latest product names in the list: " + "\n" + homePage.getLatestProductNames());
+        //latest available product prices logger
+        logger.info("Latest product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getLatestProductPrice());
+        //add available latest product to cart click
+        homePage.clickAddToCart1Button();
+        homePage.clickAddToCart2Button();
+        //click 'shopping cart' page nav link
+        homePage.clickCartNavLink();
     }
 
     //web page element assert methods

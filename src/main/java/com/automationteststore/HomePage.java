@@ -73,30 +73,31 @@ public class HomePage extends BasePage{
     //homepage welcome section web element
     @FindBy(xpath = "//section[@class='contentpanel']/div/h4")
     private WebElement welcomeMessage;
-    //featured product list web elements
+    //featured product list web elements(lists)
     @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> featuredProductsNameElements;
     @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
     private List<WebElement> featuredAvailableProductsPriceElements;
     private List<WebElement> featuredAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    //latest products web elements(lists)
     @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> latestProductsNameElements;
     @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
     private List<WebElement> latestAvailableProductsPriceElements;
-    @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a")
-    private List<WebElement> latestAvailableProductsAddToCartButton;
+    private List<WebElement> latestAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    //bestsellers products web elements(lists)
     @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> bestsellersProductsNameElements;
     @FindBy(xpath = "//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
     private List<WebElement> bestsellersAvailableProductsPriceElements;
-    @FindBy(xpath = "//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a")
-    private List<WebElement> bestsellersAvailableProductsAddToCartButton;
+    private List<WebElement> bestsellersAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    //specials products web elements(lists)
     @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> specialsProductsNameElements;
     @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/div")
     private List<WebElement> specialsAvailableProductsPriceElements;
-    @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a")
-    private List<WebElement> specialsAvailableProductsAddToCartButton;
+    private List<WebElement> specialsAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));;
+    //brand scrolling products web element(list)
     @FindBy(xpath = "//div[@id='block_frame_listing_block_1774']//div[@class='caroufredsel_wrapper']/ul/li")
     private List<WebElement> brandScrollingProductsElements;
 
@@ -113,7 +114,7 @@ public class HomePage extends BasePage{
     }
 
     //homepage products list data getter methods
-    //product names getters
+    //featured product names getters
     public List<String> getFeaturedProductNames() {
         List<String> featuredProductName = new ArrayList<>();
         for (WebElement element : featuredProductsNameElements) {
@@ -121,13 +122,30 @@ public class HomePage extends BasePage{
         }
         return featuredProductName;
     }
-    //product price getter
+    //featured product price getter
     public List<String> getFeaturedProductPrice() {
         List<String> featuredProductPrice = new ArrayList<>();
         for (WebElement element : featuredAvailableProductsPriceElements) {
             featuredProductPrice.add(element.getText());
         }
         return featuredProductPrice;
+    }
+
+    //latest product names getters
+    public List<String> getLatestProductNames() {
+        List<String> latestProductName = new ArrayList<>();
+        for (WebElement element : latestProductsNameElements) {
+            latestProductName.add(element.getText());
+        }
+        return latestProductName;
+    }
+    //latest product price getter
+    public List<String> getLatestProductPrice() {
+        List<String> latestProductPrice = new ArrayList<>();
+        for (WebElement element : latestAvailableProductsPriceElements) {
+            latestProductPrice.add(element.getText());
+        }
+        return latestProductPrice;
     }
 
     //homepage products 'add to cart' button click index getter
@@ -140,6 +158,14 @@ public class HomePage extends BasePage{
     public void clickAddToCart1Button(){clickAddToCartButton(0);}
     public void clickAddToCart2Button(){clickAddToCartButton(1);}
     public void clickAddToCart3Button(){clickAddToCartButton(2);}
+    public void clickAddToCart4Button(){clickAddToCartButton(3);}
+
+    //cart page nav link click method
+    public void clickCartNavLink(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(cartNavLink));
+        cartNavLink.click();
+    }
 
     //login/register page link name getter
     public String getLoginRegisterLinkText(){return loginRegisterNavLink.getText();}
