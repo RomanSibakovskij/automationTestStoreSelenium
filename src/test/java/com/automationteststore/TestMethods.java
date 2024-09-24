@@ -1360,6 +1360,26 @@ public class TestMethods extends BaseTest{
         assertEquals("×\n" + "Error: Incorrect login or password provided.", loginRegisterPage.getIncorrectCredentialsErrorMessage(), "The credentials error don't match expectations");
     }
 
+    //invalid user account login test method - invalid username
+    protected void invalidUserAccountLoginInvalidUsernameTest(CreateAccountPage createAccountPage){
+        HomePage homePage = new HomePage(driver);
+        //click login/register page header link
+        homePage.clickLoginRegisterLink();
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        //web element assert
+        isLoginRegisterPageWebElementDisplayed(loginRegisterPage);
+        //valid user input data getter
+        loginRegisterPage.getInvalidUserLoginDataInvalidUsername(createAccountPage);
+        //valid user input
+        loginRegisterPage.inputInvalidUsername();
+        loginRegisterPage.inputPassword(createAccountPage.getPassword());
+        logger.info("Password used for login: " + createAccountPage.getPassword());
+        //click 'login' button
+        loginRegisterPage.clickLoginButton();
+        //assert that expected error is displayed
+        assertEquals("×\n" + "Error: Incorrect login or password provided.", loginRegisterPage.getIncorrectCredentialsErrorMessage(), "The credentials error don't match expectations");
+    }
+
     //login/register page web element assert
     protected void isLoginRegisterPageWebElementDisplayed(LoginRegisterPage loginRegisterPage){
         //assert the login/register login section title is displayed

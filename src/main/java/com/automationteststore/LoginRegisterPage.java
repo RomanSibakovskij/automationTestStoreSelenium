@@ -113,6 +113,22 @@ public class LoginRegisterPage extends BasePage{
         passwordInputField.sendKeys(noPassword);
     }
 
+    //invalid user login data getter - invalid username
+    public void getInvalidUserLoginDataInvalidUsername(CreateAccountPage createAccountPage){
+        invalidUsername = "Fgrertr_22";
+        password = createAccountPage.getPassword();
+
+        System.out.println("Invalid login user data (username): " + "\n");
+        logger.info("Invalid login username: " + invalidUsername);
+        logger.info("Valid login password: " + password);
+    }
+    //invalid user login input method - invalid username
+    public void inputInvalidUsername(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(usernameInputField));
+        usernameInputField.sendKeys(invalidUsername);
+    }
+
     //login/register page web element assert methods
     public boolean isAccountLoginPageTitleDisplayed() {return accountLoginPageTitle.isDisplayed();}
     public boolean isRegisterButtonDisplayed() {return registerButton.isDisplayed();}
