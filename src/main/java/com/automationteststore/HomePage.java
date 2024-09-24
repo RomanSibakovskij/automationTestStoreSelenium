@@ -74,29 +74,29 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//section[@class='contentpanel']/div/h4")
     private WebElement welcomeMessage;
     //featured product list web elements(lists)
-    @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    @FindBy(xpath = "//section[@id='featured']//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> featuredProductsNameElements;
-    @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
+    @FindBy(xpath = "//section[@id='featured']//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
     private List<WebElement> featuredAvailableProductsPriceElements;
-    private List<WebElement> featuredAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    private List<WebElement> featuredAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='featured']//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
     //latest products web elements(lists)
-    @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    @FindBy(xpath = "//section[@id='latest']//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> latestProductsNameElements;
-    @FindBy(xpath = "//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
+    @FindBy(xpath = "//section[@id='latest']//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='price']")
     private List<WebElement> latestAvailableProductsPriceElements;
-    private List<WebElement> latestAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_latest_1770']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    private List<WebElement> latestAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='latest']//div[@class='pricetag jumbotron']/a"));
     //bestsellers products web elements(lists)
-    @FindBy(xpath = "//div[@id='block_frame_featured_1769']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    @FindBy(xpath = "//section[@id='bestseller']//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> bestsellersProductsNameElements;
-    @FindBy(xpath = "//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='oneprice']")
+    @FindBy(xpath = "//section[@id='bestseller']//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='price']")
     private List<WebElement> bestsellersAvailableProductsPriceElements;
-    private List<WebElement> bestsellersAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));
+    private List<WebElement> bestsellersAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='bestseller']//div[@id='block_frame_bestsellers_1771']//div[@class='pricetag jumbotron']/a"));
     //specials products web elements(lists)
-    @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
+    @FindBy(xpath = "//section[@id='special']//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> specialsProductsNameElements;
-    @FindBy(xpath = "//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/div")
+    @FindBy(xpath = "//section[@id='special']//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/div")
     private List<WebElement> specialsAvailableProductsPriceElements;
-    private List<WebElement> specialsAvailableProductsAddToCartButton = driver.findElements(By.xpath("//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/a"));;
+    private List<WebElement> specialsAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='special']//div[@class='pricetag jumbotron']/a"));;
     //brand scrolling products web element(list)
     @FindBy(xpath = "//div[@id='block_frame_listing_block_1774']//div[@class='caroufredsel_wrapper']/ul/li")
     private List<WebElement> brandScrollingProductsElements;
@@ -148,17 +148,67 @@ public class HomePage extends BasePage{
         return latestProductPrice;
     }
 
-    //homepage products 'add to cart' button click index getter
-    public void clickAddToCartButton(int productIndex) {
+    //bestsellers product names getters
+    public List<String> getBestsellersProductNames() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        List<String> latestProductName = new ArrayList<>();
+        for (WebElement element : bestsellersProductsNameElements) {
+            js.executeScript("arguments[0].scrollIntoView(true);", element); //scroll each element into view
+            latestProductName.add(element.getText());
+        }
+
+        return latestProductName;
+    }
+    //bestsellers product price getter
+    public List<String> getBestsellersProductPrice() {
+        List<String> latestProductPrice = new ArrayList<>();
+        for (WebElement element : bestsellersAvailableProductsPriceElements) {
+            latestProductPrice.add(element.getText());
+        }
+        return latestProductPrice;
+    }
+
+    //homepage featured products 'add to cart' button click index getter
+    public void clickAddFeaturedToCartButton(int productIndex) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
         wait.until(ExpectedConditions.elementToBeClickable(featuredAvailableProductsAddToCartButton.get(productIndex)));
         featuredAvailableProductsAddToCartButton.get(productIndex).click();
     }
     //individual 'add to cart' button click methods
-    public void clickAddToCart1Button(){clickAddToCartButton(0);}
-    public void clickAddToCart2Button(){clickAddToCartButton(1);}
-    public void clickAddToCart3Button(){clickAddToCartButton(2);}
-    public void clickAddToCart4Button(){clickAddToCartButton(3);}
+    public void clickAddFeaturedToCart1Button(){
+        clickAddFeaturedToCartButton(0);}
+    public void clickAddFeaturedToCart2Button(){
+        clickAddFeaturedToCartButton(1);}
+    public void clickAddFeaturedToCart3Button(){
+        clickAddFeaturedToCartButton(2);}
+
+    //homepage latest products 'add to cart' button click index getter
+    public void clickAddLatestToCartButton(int productIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(latestAvailableProductsAddToCartButton.get(productIndex)));
+        latestAvailableProductsAddToCartButton.get(productIndex).click();
+    }
+    //individual 'add to cart' button click methods
+    public void clickAddLatestToCart1Button(){
+        clickAddLatestToCartButton(0);}
+    public void clickAddLatestToCart2Button(){
+        clickAddLatestToCartButton(1);}
+
+    //homepage bestseller products 'add to cart' button click index getter
+    public void clickAddBestsellerToCartButton(int productIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(bestsellersAvailableProductsAddToCartButton.get(productIndex)));
+        bestsellersAvailableProductsAddToCartButton.get(productIndex).click();
+    }
+    //individual 'add to cart' button click methods
+    public void clickAddBestsellerToCart1Button(){
+        clickAddBestsellerToCartButton(0);}
+    public void clickAddBestsellerToCart2Button(){
+        clickAddBestsellerToCartButton(1);}
+    public void clickAddBestsellerToCart3Button(){
+        clickAddBestsellerToCartButton(2);}
+    public void clickAddBestsellerToCart4Button(){
+        clickAddBestsellerToCartButton(3);}
 
     //cart page nav link click method
     public void clickCartNavLink(){

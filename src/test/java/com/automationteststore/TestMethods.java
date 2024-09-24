@@ -1354,9 +1354,9 @@ public class TestMethods extends BaseTest{
         //featured available product prices logger
         logger.info("Featured product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getFeaturedProductPrice());
         //add available featured product to cart click
-        homePage.clickAddToCart1Button();
-        homePage.clickAddToCart2Button();
-        homePage.clickAddToCart3Button(); //drops to individual product page
+        homePage.clickAddFeaturedToCart1Button();
+        homePage.clickAddFeaturedToCart2Button();
+        homePage.clickAddFeaturedToCart3Button(); //drops to individual product page
     }
     //latest 'add to cart' products test method
     protected void addLatestProductsToCartTest(HomePage homePage){
@@ -1367,8 +1367,24 @@ public class TestMethods extends BaseTest{
         //latest available product prices logger
         logger.info("Latest product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getLatestProductPrice());
         //add available latest product to cart click
-        homePage.clickAddToCart1Button();
-        homePage.clickAddToCart2Button();
+        homePage.clickAddLatestToCart1Button();
+        homePage.clickAddLatestToCart2Button();
+        //click 'shopping cart' page nav link
+        homePage.clickCartNavLink();
+    }
+    //bestsellers 'add to cart' products test method
+    protected void addBestsellersProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //latest products logger
+        logger.info("Bestsellers product names in the list: " + "\n" + homePage.getBestsellersProductNames());
+        //latest available product prices logger
+        logger.info("Bestsellers product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getBestsellersProductPrice());
+        //add available bestsellers product to cart click
+        homePage.clickAddBestsellerToCart1Button();
+//        homePage.clickAddBestsellerToCart2Button();// individual product page
+//        homePage.clickAddBestsellerToCart3Button(); //individual product page
+        homePage.clickAddBestsellerToCart4Button();
         //click 'shopping cart' page nav link
         homePage.clickCartNavLink();
     }

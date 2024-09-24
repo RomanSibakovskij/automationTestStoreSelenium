@@ -30,4 +30,13 @@ public class HomePageTest extends TestMethods{
         HomePage homePage = new HomePage(driver);
         addLatestProductsToCartTest(homePage);
     }
+
+    // Test 005b -> add bestsellers products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Bestseller Products To Cart As A Non-Registered User")
+    @Tag("Add_Bestsellers_Products_To_Cart")
+    void addBestsellersProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addBestsellersProductsToCartTest(homePage);
+    }
 }
