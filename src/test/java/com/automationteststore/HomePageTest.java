@@ -31,12 +31,21 @@ public class HomePageTest extends TestMethods{
         addLatestProductsToCartTest(homePage);
     }
 
-    // Test 005b -> add bestsellers products to cart test (as a non-registered user)
+    // Test 005b -> add bestseller products to cart test (as a non-registered user)
     @Test
     @DisplayName("Add Bestseller Products To Cart As A Non-Registered User")
-    @Tag("Add_Bestsellers_Products_To_Cart")
+    @Tag("Add_Bestseller_Products_To_Cart")
     void addBestsellersProductToCartTest(){
         HomePage homePage = new HomePage(driver);
         addBestsellersProductsToCartTest(homePage);
+    }
+
+    // Test 005c -> add special products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Special Products To Cart As A Non-Registered User")
+    @Tag("Add_Special_Products_To_Cart")
+    void addSpecialProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
     }
 }

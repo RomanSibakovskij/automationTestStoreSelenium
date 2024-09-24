@@ -90,13 +90,14 @@ public class HomePage extends BasePage{
     private List<WebElement> bestsellersProductsNameElements;
     @FindBy(xpath = "//section[@id='bestseller']//div[@id='block_frame_bestsellers_1771']/div[@class='thumbnails list-inline']//div[@class='price']")
     private List<WebElement> bestsellersAvailableProductsPriceElements;
-    private List<WebElement> bestsellersAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='bestseller']//div[@id='block_frame_bestsellers_1771']//div[@class='pricetag jumbotron']/a"));
+    private List<WebElement> bestsellerAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='bestseller']//div[@id='block_frame_bestsellers_1771']//div[@class='pricetag jumbotron']/a"));
     //specials products web elements(lists)
     @FindBy(xpath = "//section[@id='special']//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='fixed']/a")
     private List<WebElement> specialsProductsNameElements;
     @FindBy(xpath = "//section[@id='special']//div[@id='block_frame_special_1772']/div[@class='thumbnails list-inline']//div[@class='pricetag jumbotron']/div")
     private List<WebElement> specialsAvailableProductsPriceElements;
-    private List<WebElement> specialsAvailableProductsAddToCartButton = driver.findElements(By.xpath("//section[@id='special']//div[@class='pricetag jumbotron']/a"));;
+    @FindBy(css = ".block_frame_special [title='Add to Cart']")
+    private WebElement specialAvailableProductsAddToCartButton;;
     //brand scrolling products web element(list)
     @FindBy(xpath = "//div[@id='block_frame_listing_block_1774']//div[@class='caroufredsel_wrapper']/ul/li")
     private List<WebElement> brandScrollingProductsElements;
@@ -141,8 +142,10 @@ public class HomePage extends BasePage{
     }
     //latest product price getter
     public List<String> getLatestProductPrice() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         List<String> latestProductPrice = new ArrayList<>();
         for (WebElement element : latestAvailableProductsPriceElements) {
+            js.executeScript("arguments[0].scrollIntoView(true);", element); //scroll each element into view
             latestProductPrice.add(element.getText());
         }
         return latestProductPrice;
@@ -150,10 +153,8 @@ public class HomePage extends BasePage{
 
     //bestsellers product names getters
     public List<String> getBestsellersProductNames() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         List<String> latestProductName = new ArrayList<>();
         for (WebElement element : bestsellersProductsNameElements) {
-            js.executeScript("arguments[0].scrollIntoView(true);", element); //scroll each element into view
             latestProductName.add(element.getText());
         }
 
@@ -161,8 +162,29 @@ public class HomePage extends BasePage{
     }
     //bestsellers product price getter
     public List<String> getBestsellersProductPrice() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         List<String> latestProductPrice = new ArrayList<>();
         for (WebElement element : bestsellersAvailableProductsPriceElements) {
+            js.executeScript("arguments[0].scrollIntoView(true);", element); //scroll each element into view
+            latestProductPrice.add(element.getText());
+        }
+        return latestProductPrice;
+    }
+    //special product names getters
+    public List<String> getSpecialProductNames() {
+        List<String> latestProductName = new ArrayList<>();
+        for (WebElement element : specialsProductsNameElements) {
+            latestProductName.add(element.getText());
+        }
+
+        return latestProductName;
+    }
+    //special product price getter
+    public List<String> getSpecialProductPrice() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        List<String> latestProductPrice = new ArrayList<>();
+        for (WebElement element : specialsAvailableProductsPriceElements) {
+            js.executeScript("arguments[0].scrollIntoView(true);", element); //scroll each element into view
             latestProductPrice.add(element.getText());
         }
         return latestProductPrice;
@@ -197,8 +219,8 @@ public class HomePage extends BasePage{
     //homepage bestseller products 'add to cart' button click index getter
     public void clickAddBestsellerToCartButton(int productIndex) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
-        wait.until(ExpectedConditions.elementToBeClickable(bestsellersAvailableProductsAddToCartButton.get(productIndex)));
-        bestsellersAvailableProductsAddToCartButton.get(productIndex).click();
+        wait.until(ExpectedConditions.elementToBeClickable(bestsellerAvailableProductsAddToCartButton.get(productIndex)));
+        bestsellerAvailableProductsAddToCartButton.get(productIndex).click();
     }
     //individual 'add to cart' button click methods
     public void clickAddBestsellerToCart1Button(){
@@ -209,6 +231,15 @@ public class HomePage extends BasePage{
         clickAddBestsellerToCartButton(2);}
     public void clickAddBestsellerToCart4Button(){
         clickAddBestsellerToCartButton(3);}
+
+    //homepage special products 'add to cart' button click method (since only one product is available)
+    public void clickAddSpecialToCartButton() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", specialAvailableProductsAddToCartButton);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(specialAvailableProductsAddToCartButton));
+        specialAvailableProductsAddToCartButton.click();
+    }
 
     //cart page nav link click method
     public void clickCartNavLink(){
@@ -315,7 +346,7 @@ public class HomePage extends BasePage{
         return true;
     }
     public boolean isBestsellersAvailableProductsAddToCartButtonDisplayed() {
-        for (WebElement element : bestsellersAvailableProductsAddToCartButton) {
+        for (WebElement element : bestsellerAvailableProductsAddToCartButton) {
             if (!element.isDisplayed()) {
                 return false;
             }
@@ -339,13 +370,9 @@ public class HomePage extends BasePage{
         return true;
     }
     public boolean isSpecialsAvailableProductsAddToCartButtonDisplayed() {
-        for (WebElement element : specialsAvailableProductsAddToCartButton) {
-            if (!element.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
-    }
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", specialAvailableProductsAddToCartButton);
+        return specialAvailableProductsAddToCartButton.isDisplayed();}
     public boolean isBrandScrollingProductsDisplayed() {
         for (WebElement element : brandScrollingProductsElements) {
             if (!element.isDisplayed()) {

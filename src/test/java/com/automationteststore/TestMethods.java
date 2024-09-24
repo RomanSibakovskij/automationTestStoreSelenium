@@ -1372,19 +1372,32 @@ public class TestMethods extends BaseTest{
         //click 'shopping cart' page nav link
         homePage.clickCartNavLink();
     }
-    //bestsellers 'add to cart' products test method
+    //bestseller 'add to cart' products test method
     protected void addBestsellersProductsToCartTest(HomePage homePage){
         //web element assert
         isHomePageWebElementDisplayed(homePage);
-        //latest products logger
+        //bestseller products logger
         logger.info("Bestsellers product names in the list: " + "\n" + homePage.getBestsellersProductNames());
-        //latest available product prices logger
+        //bestseller available product prices logger
         logger.info("Bestsellers product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getBestsellersProductPrice());
         //add available bestsellers product to cart click
         homePage.clickAddBestsellerToCart1Button();
 //        homePage.clickAddBestsellerToCart2Button();// individual product page
 //        homePage.clickAddBestsellerToCart3Button(); //individual product page
         homePage.clickAddBestsellerToCart4Button();
+        //click 'shopping cart' page nav link
+        homePage.clickCartNavLink();
+    }
+    //special 'add to cart' products test method
+    protected void addSpecialProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //special products logger
+        logger.info("Special product names in the list: " + "\n" + homePage.getSpecialProductNames());
+        //special available product prices logger
+        logger.info("Special product prices in the list (product current price/old price(if present)) (if available): " + "\n" + homePage.getSpecialProductPrice());
+        //add available special product to cart click
+        homePage.clickAddSpecialToCartButton();
         //click 'shopping cart' page nav link
         homePage.clickCartNavLink();
     }
