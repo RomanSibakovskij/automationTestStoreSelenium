@@ -18,10 +18,21 @@ public class ShoppingCartPageTest extends TestMethods{
     // Test 006a -> add latest products to check out test (as a non-registered user)
     @Test
     @DisplayName("Add Latest Products To Checkout As A Non-Registered User")
-    @Tag("Add_Latest_Products_To_Cart")
+    @Tag("Add_Latest_Products_To_Checkout")
     void addLatestProductToCartTest(){
         HomePage homePage = new HomePage(driver);
         addLatestProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+    }
+
+    // Test 005b -> add bestseller products to check out test (as a non-registered user)
+    @Test
+    @DisplayName("Add Bestseller Products To Checkout As A Non-Registered User")
+    @Tag("Add_Bestseller_Products_To_Checkout")
+    void addBestsellersProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addBestsellersProductsToCartTest(homePage);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         addSelectedProductsToCheckoutTest(shoppingCartPage);
     }
