@@ -1411,7 +1411,7 @@ public class TestMethods extends BaseTest{
         homePage.clickCartNavLink();
     }
 
-    //shopping cart page test methods
+    //add products from shopping cart to checkout page test method
     protected void addSelectedProductsToCheckoutTest(ShoppingCartPage shoppingCartPage){
         //assert the user gets on shopping cart page
         assertEquals("SHOPPING CART", shoppingCartPage.getShoppingCartPageTitle(), "The shopping cart page title doesn't match expectations or user is on the wrong page");
