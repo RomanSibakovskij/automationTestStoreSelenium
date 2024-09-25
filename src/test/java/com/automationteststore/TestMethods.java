@@ -1411,6 +1411,35 @@ public class TestMethods extends BaseTest{
         homePage.clickCartNavLink();
     }
 
+    //shopping cart page test methods
+    protected void addFeaturedProductsToCheckoutTest(ShoppingCartPage shoppingCartPage){
+        //assert the user gets on shopping cart page
+        assertEquals("SHOPPING CART", shoppingCartPage.getShoppingCartPageTitle(), "The shopping cart page title doesn't match expectations or user is on the wrong page");
+        //web element assert
+        isShoppingCartWebElementDisplayed(shoppingCartPage);
+        //display added to cart product data
+        logShoppingCartData(shoppingCartPage);
+        //log the error if any of the product quantities is greater than 1 (by default it should be 1)
+        shoppingCartPage.verifyProductQuantities();
+        //click country dropdown menu
+        shoppingCartPage.clickCountryDropDownMenu();
+        //select US option
+        shoppingCartPage.selectUSCountryOption();
+        //click state dropdown menu
+        shoppingCartPage.clickStateDropDownMenu();
+        //select Illinois option
+        shoppingCartPage.selectIllinoisOption();
+        //input zip code
+        shoppingCartPage.inputZipCode();
+        //click checkout button
+        shoppingCartPage.clickCheckoutButton();
+        //click guest checkbox to resume checkout
+        LoginRegisterPage loginRegisterPage = new LoginRegisterPage(driver);
+        loginRegisterPage.clickGuestCheckoutCheckbox();
+        //click 'continue' button
+        loginRegisterPage.clickContinueButton();
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
@@ -1438,6 +1467,18 @@ public class TestMethods extends BaseTest{
         logger.info("Product quantity: " + singleProductPage.getProductQuantity());
         logger.info("Product total price: " + singleProductPage.getProductTotalPrice());
         logger.info("Product description: " + singleProductPage.getTShirtProductDescription());
+    }
+    //shopping cart page data logger
+    protected void logShoppingCartData(ShoppingCartPage shoppingCartPage){
+        System.out.println("Added products displayed in the shopping cart page: " + "\n");
+        logger.info("Shopping cart product name(s): " + shoppingCartPage.getShoppingCartProductName());
+        logger.info("Shopping cart product model(s): " + shoppingCartPage.getShoppingCartProductModel());
+        logger.info("Shopping cart product unit price(s): " + shoppingCartPage.getShoppingCartProductUnitPrice());
+        logger.info("Shopping cart product quantity(ies): " + shoppingCartPage.getShoppingCartProductQuantity());
+        logger.info("Shopping cart product total price(s): " + shoppingCartPage.getShoppingCartProductTotalPrice());
+        logger.info("Shopping cart all products sub total price: " + shoppingCartPage.getShoppingCartAllProductsSubTotalPrice());
+        logger.info("Shopping cart all products flat shipping rate: " + shoppingCartPage.getShoppingCartAllProductsFlatShippingRate());
+        logger.info("Shopping cart all products total price: " + shoppingCartPage.getShoppingCartAllProductsTotalPrice());
     }
 
     //web page element assert methods
@@ -1626,5 +1667,52 @@ public class TestMethods extends BaseTest{
         assertTrue(singleProductPage.isProductManufacturerDisplayed(), "The product manufacturer isn't displayed");
     }
 
+    //shopping cart page web element assert
+    protected void isShoppingCartWebElementDisplayed(ShoppingCartPage shoppingCartPage){
+        //assert shopping cart page title is displayed
+        assertTrue(shoppingCartPage.isShoppingCartTitleDisplayed(), "The shopping cart page title isn't displayed");
+        //assert product image is displayed
+        assertTrue(shoppingCartPage.isCartProductImageDisplayed(), "The shopping cart product image isn't displayed");
+        //assert product name is displayed
+        assertTrue(shoppingCartPage.isCartProductNameDisplayed(), "The shopping cart product name isn't displayed");
+        //assert product model is displayed
+        assertTrue(shoppingCartPage.isCartProductModelDisplayed(), "The shopping cart product model isn't displayed");
+        //assert product unit price is displayed
+        assertTrue(shoppingCartPage.isCartProductUnitPriceDisplayed(), "The shopping cart product unit price isn't displayed");
+        //assert product quantity input field is displayed
+        assertTrue(shoppingCartPage.isCartProductQuantityInputFieldDisplayed(), "The shopping cart product quantity input field isn't displayed");
+        //assert product total price is displayed
+        assertTrue(shoppingCartPage.isCartProductTotalPriceDisplayed(), "The shopping cart product total price isn't displayed");
+        //assert product remove button is displayed
+        assertTrue(shoppingCartPage.isCartProductRemoveButtonDisplayed(), "The shopping cart product remove button isn't displayed");
+        //assert product update data is displayed
+        assertTrue(shoppingCartPage.isUpdateButtonDisplayed(), "The shopping cart update data button isn't displayed");
+        //assert product checkout button is displayed
+        assertTrue(shoppingCartPage.isCheckoutButtonDisplayed(), "The shopping cart checkout button isn't displayed");
+        //assert product coupon code input field is displayed
+        assertTrue(shoppingCartPage.isCouponCodeInputFieldDisplayed(), "The shopping cart coupon code input field isn't displayed");
+        //assert product 'apply coupon' button is displayed
+        assertTrue(shoppingCartPage.isApplyCouponButtonDisplayed(), "The shopping cart 'apply coupon' button isn't displayed");
+        //assert product country dropdown menu is displayed
+        assertTrue(shoppingCartPage.isCountryDropdownMenuDisplayed(), "The shopping cart country dropdown menu isn't displayed");
+        //assert product state dropdown menu is displayed
+        assertTrue(shoppingCartPage.isStateDropdownMenuDisplayed(), "The shopping cart state dropdown menu isn't displayed");
+        //assert product zip code input field is displayed
+        assertTrue(shoppingCartPage.isZipCodeInputFieldDisplayed(), "The shopping cart zip code input field isn't displayed");
+        //assert product zip code 'estimate' button is displayed
+        assertTrue(shoppingCartPage.isZipCodeEstimateOptionDisplayed(), "The shopping cart 'estimate' button isn't displayed");
+        //assert product shipping rate dropdown menu is displayed
+        assertTrue(shoppingCartPage.isShippingRateDropdownMenuDisplayed(), "The shopping cart shipping rate dropdown menu isn't displayed");
+        //assert all product sub total price is displayed
+        assertTrue(shoppingCartPage.isSubTotalPriceDisplayed(), "The shopping cart all products sub price isn't displayed");
+        //assert all product flat shipping rate is displayed
+        assertTrue(shoppingCartPage.isFlatShippingRateDisplayed(), "The shopping cart all products flat shipping rate isn't displayed");
+        //assert all product total price is displayed
+        assertTrue(shoppingCartPage.isTotalPriceDisplayed(), "The shopping cart all products total price isn't displayed");
+        //assert 'continue shopping' button is displayed
+        assertTrue(shoppingCartPage.isContinueShoppingButtonDisplayed(), "The shopping cart 'continue shopping' button isn't displayed");
+        //assert lower continue button is displayed
+        assertTrue(shoppingCartPage.isLowerContinueButtonDisplayed(), "The shopping cart lower continue button isn't displayed");
+    }
 
 }

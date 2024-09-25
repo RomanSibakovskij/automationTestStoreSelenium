@@ -31,6 +31,13 @@ public class LoginRegisterPage extends BasePage{
     @FindBy(xpath = "//div[@class='alert alert-error alert-danger']")
     private WebElement credentialsErrorMessage;
 
+    //guest checkout checkbox web element
+    @FindBy(xpath = "//input[@id='accountFrm_accountguest']")
+    private WebElement guestCheckoutCheckbox;
+    //'continue' button web element
+    @FindBy(xpath = "//button[@title='Continue']")
+    private WebElement continueButton;
+
     //valid login input data
     private String username;
     private String password;
@@ -79,6 +86,19 @@ public class LoginRegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         loginButton.click();
+    }
+
+    //guest checkout checkbox click method
+    public void clickGuestCheckoutCheckbox() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(guestCheckoutCheckbox));
+        guestCheckoutCheckbox.click();
+    }
+    //'continue' button click method
+    public void clickContinueButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+        continueButton.click();
     }
 
     //invalid user login data getter - no username
@@ -157,6 +177,9 @@ public class LoginRegisterPage extends BasePage{
 
     //incorrect credentials error getter
     public String getIncorrectCredentialsErrorMessage(){return credentialsErrorMessage.getText();}
+
+    //guest checkbox confirmation getter
+    public String getGuestCheckboxTitle(){return guestCheckoutCheckbox.getText();}
 
     //account dashboard user first name getter
     public String getFirstNameFromDashboardText() {
