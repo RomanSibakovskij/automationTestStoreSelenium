@@ -1412,7 +1412,7 @@ public class TestMethods extends BaseTest{
     }
 
     //shopping cart page test methods
-    protected void addFeaturedProductsToCheckoutTest(ShoppingCartPage shoppingCartPage){
+    protected void addSelectedProductsToCheckoutTest(ShoppingCartPage shoppingCartPage){
         //assert the user gets on shopping cart page
         assertEquals("SHOPPING CART", shoppingCartPage.getShoppingCartPageTitle(), "The shopping cart page title doesn't match expectations or user is on the wrong page");
         //web element assert

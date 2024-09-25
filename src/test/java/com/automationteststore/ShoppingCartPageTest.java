@@ -12,7 +12,18 @@ public class ShoppingCartPageTest extends TestMethods{
         HomePage homePage = new HomePage(driver);
         addFeaturedProductsToCartTest(homePage);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        addFeaturedProductsToCheckoutTest(shoppingCartPage);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+    }
+
+    // Test 006a -> add latest products to check out test (as a non-registered user)
+    @Test
+    @DisplayName("Add Latest Products To Checkout As A Non-Registered User")
+    @Tag("Add_Latest_Products_To_Cart")
+    void addLatestProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addLatestProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
     }
 
 }
