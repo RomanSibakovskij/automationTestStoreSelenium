@@ -200,4 +200,18 @@ public class GuestAccountPageTest extends TestMethods{
         invalidGuestCreationNoAddress1Test(guestAccountPage);
     }
 
+    // Test 010k -> add special products to check out test (as a non-registered user) with invalid guest account creation (too short address1)
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - Too Short Address")
+    @Tag("Invalid_Guest_Account_Creation")
+    @Tag("Too_Short_Singular_Guest_Account_Input")
+    void addSpecialProductToCheckoutTooShortAddress1Test(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationTooShortAddress1Test(guestAccountPage);
+    }
+
 }
