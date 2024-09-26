@@ -1440,6 +1440,12 @@ public class TestMethods extends BaseTest{
         loginRegisterPage.clickContinueButton();
     }
 
+    //valid guest account creation test method
+    protected void validGuestAccountCreationTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
@@ -1713,6 +1719,50 @@ public class TestMethods extends BaseTest{
         assertTrue(shoppingCartPage.isContinueShoppingButtonDisplayed(), "The shopping cart 'continue shopping' button isn't displayed");
         //assert lower continue button is displayed
         assertTrue(shoppingCartPage.isLowerContinueButtonDisplayed(), "The shopping cart lower continue button isn't displayed");
+    }
+
+    //guest account page web element assert
+    protected void isGuestAccountPageWebElementDisplayed(GuestAccountPage guestAccountPage){
+        //assert guest account page title is displayed
+        assertTrue(guestAccountPage.isGuestAccountPageTitleDisplayed(), "The guest account page title isn't displayed");
+        //assert product name in summary is displayed
+        assertTrue(guestAccountPage.isProductNameDisplayed(), "The product name in summary isn't displayed");
+        //assert product summary unit price is displayed
+        assertTrue(guestAccountPage.isProductSummaryUnitPriceDisplayed(), "The product unit price in summary isn't displayed");
+        //assert product summary sub total price is displayed
+        assertTrue(guestAccountPage.isProductSummarySubTotalPriceDisplayed(), "The product sub total price summary isn't displayed");
+        //assert product summary total price is displayed
+        assertTrue(guestAccountPage.isProductSummaryTotalPriceDisplayed(), "The product total price summary isn't displayed");
+        //assert guest first name input field is displayed
+        assertTrue(guestAccountPage.isFirstNameInputFieldDisplayed(), "The first name input field isn't displayed");
+        //assert guest last name input field is displayed
+        assertTrue(guestAccountPage.isLastNameInputFieldDisplayed(), "The last name input field isn't displayed");
+        //assert guest email input field is displayed
+        assertTrue(guestAccountPage.isEmailAddressInputFieldDisplayed(), "The email input field isn't displayed");
+        //assert guest phone number input field is displayed
+        assertTrue(guestAccountPage.isPhoneNumberInputFieldDisplayed(), "The phone number input field isn't displayed");
+        //assert guest fax input field is displayed
+        assertTrue(guestAccountPage.isFaxInputFieldDisplayed(), "The fax input field isn't displayed");
+        //assert guest company input field is displayed
+        assertTrue(guestAccountPage.isCompanyInputFieldDisplayed(), "The company input field isn't displayed");
+        //assert guest address1 input field is displayed
+        assertTrue(guestAccountPage.isAddress1InputFieldDisplayed(), "The address1 input field isn't displayed");
+        //assert guest address2 input field is displayed
+        assertTrue(guestAccountPage.isAddress2InputFieldDisplayed(), "The address2 input field isn't displayed");
+        //assert guest city input field is displayed
+        assertTrue(guestAccountPage.isCityInputFieldDisplayed(), "The city input field isn't displayed");
+        //assert guest state dropdown menu is displayed
+        assertTrue(guestAccountPage.isStateDropdownMenuDisplayed(), "The state dropdown menu isn't displayed");
+        //assert guest country dropdown menu is displayed
+        assertTrue(guestAccountPage.isCountryDropdownMenuDisplayed(), "The country dropdown menu isn't displayed");
+        //assert guest zipcode input field is displayed
+        assertTrue(guestAccountPage.isZipCodeInputFieldDisplayed(), "The zipcode input field isn't displayed");
+        //assert guest separate shipping address checkbox is displayed
+        assertTrue(guestAccountPage.isSeparateShippingAddressCheckboxDisplayed(), "The separate shipping address checkbox isn't displayed");
+        //assert guest account back button is displayed
+        assertTrue(guestAccountPage.isBackButtonDisplayed(), "The back button isn't displayed");
+        //assert guest account continue button is displayed
+        assertTrue(guestAccountPage.isContinueButtonDisplayed(), "The continue button isn't displayed");
     }
 
 }
