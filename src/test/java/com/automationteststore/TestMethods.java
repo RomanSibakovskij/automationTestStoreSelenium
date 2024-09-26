@@ -1592,6 +1592,37 @@ public class TestMethods extends BaseTest{
         assertEquals("Last Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorLastNameLengthMessage(), "The expected error message did not appear");
     }
 
+    //invalid guest account creation test method - too short last name
+    protected void invalidGuestCreationTooShortLastNameTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (too short last name)
+        guestAccountPage.getGuestInputDataTooShortLastName();
+        //guest account valid data input (with too short last name)
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputTooShortLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("Last Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorLastNameLengthMessage(), "The expected error message did not appear");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

@@ -254,7 +254,7 @@ public class GuestAccountPage extends BasePage{
         firstNameInputField.sendKeys(tooLongFirstName);
     }
 
-    //invalid guest data getter method (no lastname)
+    //invalid guest data getter method (no last name)
     public void getGuestInputDataNoLastName(){
         firstName = TestDataGenerator.getRandomFirstName();
         noLastName = "";
@@ -276,6 +276,30 @@ public class GuestAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
         lastNameInputField.sendKeys(noLastName);
+    }
+
+    //invalid guest data getter method (too short last name)
+    public void getGuestInputDataTooShortLastName(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        tooShortLastName = "Kd";
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Too short last name: " + tooShortLastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too short last name
+    public void inputTooShortLastName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(tooShortLastName);
     }
 
     //guest account page title getter
