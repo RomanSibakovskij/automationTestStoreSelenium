@@ -172,4 +172,18 @@ public class GuestAccountPageTest extends TestMethods{
         invalidGuestCreationInvalidEmailFormatTest(guestAccountPage);
     }
 
+    // Test 010i -> add special products to check out test (as a non-registered user) with invalid guest account creation (existing email address) (The checkout is being complete)
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - Existing Email Format")
+    @Tag("Invalid_Guest_Account_Creation")
+    @Tag("Existing_Singular_Guest_Account_Input")
+    void addSpecialProductToCheckoutExistingEmailFormatTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationExistingEmailTest(guestAccountPage);
+    }
+
 }

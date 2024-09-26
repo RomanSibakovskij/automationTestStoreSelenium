@@ -36,6 +36,8 @@ public class GuestAccountPage extends BasePage{
     private WebElement errorLastNameLengthMessage;
     @FindBy(xpath = "//span[.='E-Mail Address does not appear to be valid!']")
     private WebElement errorEmailMessage;
+    @FindBy(xpath = "//span[.='Address 1 must be greater than 3 and less than 128 characters!']")
+    private WebElement errorAddress1Message;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -328,7 +330,7 @@ public class GuestAccountPage extends BasePage{
         lastNameInputField.sendKeys(tooLongLastName);
     }
 
-    //invalid user data getter method (no email address)
+    //invalid guest data getter method (no email address)
     public void getGuestInputDataNoEmail(){
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();
@@ -352,7 +354,7 @@ public class GuestAccountPage extends BasePage{
         emailAddressInputField.sendKeys(noEmailAddress);
     }
 
-    //invalid user data getter method (invalid email address format)
+    //invalid guest data getter method (invalid email address format)
     public void getGuestInputDataInvalidEmailFormat(){
         firstName = TestDataGenerator.getRandomFirstName();
         lastName = TestDataGenerator.getRandomLastName();
@@ -374,6 +376,30 @@ public class GuestAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
         emailAddressInputField.sendKeys(invalidEmailAddressFormat);
+    }
+
+    //invalid guest data getter method (already existing email address)
+    public void getGuestInputDataExistingEmail(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        existingEmailAddress = "m10@mail.com";
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Existing email address(in database): " + existingEmailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too long email address
+    public void inputExistingEmail(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
+        emailAddressInputField.sendKeys(existingEmailAddress);
     }
 
     //guest account page title getter
@@ -403,6 +429,7 @@ public class GuestAccountPage extends BasePage{
     public String getErrorFirstNameLengthMessage(){return errorFirstNameLengthMessage.getText();}
     public String getErrorLastNameLengthMessage(){return errorLastNameLengthMessage.getText();}
     public String getEmailErrorMessage(){return errorEmailMessage.getText();}
+    public String getAddress1ErrorMessage(){return errorAddress1Message.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}
