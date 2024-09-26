@@ -1685,6 +1685,37 @@ public class TestMethods extends BaseTest{
         assertEquals("E-Mail Address does not appear to be valid!", guestAccountPage.getEmailErrorMessage(), "The expected error message did not appear");
     }
 
+    //invalid guest account creation test method - invalid email address format
+    protected void invalidGuestCreationInvalidEmailFormatTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (invalid email address format)
+        guestAccountPage.getGuestInputDataInvalidEmailFormat();
+        //guest account valid data input (with invalid email address format)
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputInvalidEmailFormat();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("E-Mail Address does not appear to be valid!", guestAccountPage.getEmailErrorMessage(), "The expected error message did not appear");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
