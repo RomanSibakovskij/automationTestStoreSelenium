@@ -34,6 +34,8 @@ public class GuestAccountPage extends BasePage{
     private WebElement errorFirstNameLengthMessage;
     @FindBy(xpath = "//fieldset/div[2]/span[@class='help-block']")
     private WebElement errorLastNameLengthMessage;
+    @FindBy(xpath = "//span[.='E-Mail Address does not appear to be valid!']")
+    private WebElement errorEmailMessage;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -326,6 +328,30 @@ public class GuestAccountPage extends BasePage{
         lastNameInputField.sendKeys(tooLongLastName);
     }
 
+    //invalid user data getter method (no email address)
+    public void getGuestInputDataNoEmail(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        noEmailAddress = "";
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("No email address: " + noEmailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - no email address
+    public void inputNoEmail(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
+        emailAddressInputField.sendKeys(noEmailAddress);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
@@ -352,6 +378,7 @@ public class GuestAccountPage extends BasePage{
     //guest account error message getters
     public String getErrorFirstNameLengthMessage(){return errorFirstNameLengthMessage.getText();}
     public String getErrorLastNameLengthMessage(){return errorLastNameLengthMessage.getText();}
+    public String getEmailErrorMessage(){return errorEmailMessage.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}
