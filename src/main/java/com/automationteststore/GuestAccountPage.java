@@ -38,6 +38,8 @@ public class GuestAccountPage extends BasePage{
     private WebElement errorEmailMessage;
     @FindBy(xpath = "//span[.='Address 1 must be greater than 3 and less than 128 characters!']")
     private WebElement errorAddress1Message;
+    @FindBy(xpath = "//span[.='City must be greater than 3 and less than 128 characters!']")
+    private WebElement errorCityMessage;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -474,6 +476,30 @@ public class GuestAccountPage extends BasePage{
         address1InputField.sendKeys(tooLongAddress1);
     }
 
+    //invalid user data getter method (no guest city)
+    public void getGuestInputDataNoCity(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        noCity = "";
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("No city: " + noCity);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - no guest city
+    public void inputNoCity(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", cityInputField);
+        cityInputField.sendKeys(noCity);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
@@ -502,6 +528,7 @@ public class GuestAccountPage extends BasePage{
     public String getErrorLastNameLengthMessage(){return errorLastNameLengthMessage.getText();}
     public String getEmailErrorMessage(){return errorEmailMessage.getText();}
     public String getAddress1ErrorMessage(){return errorAddress1Message.getText();}
+    public String getCityErrorMessage(){return errorCityMessage.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}
