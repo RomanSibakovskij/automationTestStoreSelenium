@@ -29,9 +29,11 @@ public class GuestAccountPage extends BasePage{
     //guest account input field web elements
     @FindBy(xpath = "//input[@id='guestFrm_firstname']")
     private WebElement firstNameInputField;
-    //error message web element
+    //error message web elements
     @FindBy(xpath = "//span[@class='help-block']")
-    private WebElement errorMessage;
+    private WebElement errorFirstNameLengthMessage;
+    @FindBy(xpath = "//fieldset/div[2]/span[@class='help-block']")
+    private WebElement errorLastNameLengthMessage;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -299,8 +301,9 @@ public class GuestAccountPage extends BasePage{
     public String getSummaryProductTotalPrice(){return productSummaryTotalPrice.getText();}
     public String getSummarySpecialTotalPrice(){return productSpecialTotalPrice.getText();}
 
-    //guest account error message getter
-    public String getErrorMessage(){return errorMessage.getText();}
+    //guest account error message getters
+    public String getErrorFirstNameLengthMessage(){return errorFirstNameLengthMessage.getText();}
+    public String getErrorLastNameLengthMessage(){return errorLastNameLengthMessage.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}

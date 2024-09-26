@@ -1496,7 +1496,7 @@ public class TestMethods extends BaseTest{
         //click 'continue' button
         guestAccountPage.clickContinueButton();
         //assert the expected error appears
-        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorFirstNameLengthMessage(), "The expected error message did not appear");
     }
 
     //invalid guest account creation test method - too short first name
@@ -1527,7 +1527,7 @@ public class TestMethods extends BaseTest{
         //click 'continue' button
         guestAccountPage.clickContinueButton();
         //assert the expected error appears
-        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorFirstNameLengthMessage(), "The expected error message did not appear");
     }
 
     //invalid guest account creation test method - too long first name
@@ -1558,7 +1558,7 @@ public class TestMethods extends BaseTest{
         //click 'continue' button
         guestAccountPage.clickContinueButton();
         //assert the expected error appears
-        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorFirstNameLengthMessage(), "The expected error message did not appear");
     }
 
     //invalid guest account creation test method - no last name
@@ -1589,7 +1589,7 @@ public class TestMethods extends BaseTest{
         //click 'continue' button
         guestAccountPage.clickContinueButton();
         //assert the expected error appears
-        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+        assertEquals("Last Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorLastNameLengthMessage(), "The expected error message did not appear");
     }
 
     //single product data loggers
