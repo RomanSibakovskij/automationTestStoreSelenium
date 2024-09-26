@@ -1468,7 +1468,7 @@ public class TestMethods extends BaseTest{
         //click 'continue' button
         guestAccountPage.clickContinueButton();
     }
-    //invalid guest account creation test method - no firstname
+    //invalid guest account creation test method - no first name
     protected void invalidGuestCreationNoFirstNameTest(GuestAccountPage guestAccountPage){
         //assert the user is on guest account page
         assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
@@ -1476,11 +1476,104 @@ public class TestMethods extends BaseTest{
         logGuestAccountProductData(guestAccountPage);
         //web element assert
         isGuestAccountPageWebElementDisplayed(guestAccountPage);
-        //valid guest account input data getter (omit first name
+        //valid guest account input data getter (omit first name)
         guestAccountPage.getGuestInputDataNoFirstName();
         //guest account valid data input (without first name)
         guestAccountPage.inputNoFirstName();
         guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+    }
+
+    //invalid guest account creation test method - too short first name
+    protected void invalidGuestCreationTooShortFirstNameTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (too short first name)
+        guestAccountPage.getGuestInputDataTooShortFirstName();
+        //guest account valid data input (with too short first name)
+        guestAccountPage.inputTooShortFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+    }
+
+    //invalid guest account creation test method - too long first name
+    protected void invalidGuestCreationTooLongFirstNameTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (too long first name)
+        guestAccountPage.getGuestInputDataTooLongFirstName();
+        //guest account valid data input (with too long first name)
+        guestAccountPage.inputTooLongFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+    }
+
+    //invalid guest account creation test method - no last name
+    protected void invalidGuestCreationNoLastNameTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (omit last name)
+        guestAccountPage.getGuestInputDataNoLastName();
+        //guest account valid data input (without last name)
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputNoLastName();
         guestAccountPage.inputEmailAddress();
         guestAccountPage.inputAddress1();
         guestAccountPage.inputCity();

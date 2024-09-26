@@ -86,7 +86,9 @@ public class GuestAccountPage extends BasePage{
     private String noCity;
 
     //invalid singular input
+    private String tooShortFirstName;
     private String tooLongFirstName;
+    private String tooShortLastName;
     private String tooLongLastName;
     private String invalidEmailAddressFormat;
     private String tooShortEmailAddress;
@@ -187,7 +189,7 @@ public class GuestAccountPage extends BasePage{
         city = TestDataGenerator.getRandomCity();
         zipCode = TestDataGenerator.getRandomPostalCode();
 
-        System.out.println("Generated valid data for user account creation: " + "\n");
+        System.out.println("Generated valid data for guest account creation: " + "\n");
         logger.info("No first name: " + noFirstName);
         logger.info("Last name: " + lastName);
         logger.info("Email address: " + emailAddress);
@@ -200,6 +202,78 @@ public class GuestAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(noFirstName);
+    }
+
+    //invalid guest data getter method (too short first name)
+    public void getGuestInputDataTooShortFirstName(){
+        tooShortFirstName = "Ag";
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("Too short first name: " + tooShortFirstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too short first name
+    public void inputTooShortFirstName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(tooShortFirstName);
+    }
+
+    //invalid guest data getter method (too long first name)
+    public void getGuestInputDataTooLongFirstName(){
+        tooLongFirstName = "Akgdfgsdsaddsasdqqsdaasaasafsdfds";
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("Too long first name: " + tooLongFirstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too long first name
+    public void inputTooLongFirstName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(tooLongFirstName);
+    }
+
+    //invalid guest data getter method (no lastname)
+    public void getGuestInputDataNoLastName(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        noLastName = "";
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("No last name: " + noLastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - no last name
+    public void inputNoLastName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(noLastName);
     }
 
     //guest account page title getter
