@@ -60,4 +60,17 @@ public class GuestAccountPageTest extends TestMethods{
         validGuestAccountCreationTest(guestAccountPage);
     }
 
+    // Test 010a-> add special products to check out test (as a non-registered user) with invalid guest account creation
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - No First Name")
+    @Tag("Invalid_Guest_Account_Creation")
+    void addSpecialProductToCheckoutNoFirstNameTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationNoFirstNameTest(guestAccountPage);
+    }
+
 }

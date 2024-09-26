@@ -1468,6 +1468,36 @@ public class TestMethods extends BaseTest{
         //click 'continue' button
         guestAccountPage.clickContinueButton();
     }
+    //invalid guest account creation test method - no firstname
+    protected void invalidGuestCreationNoFirstNameTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (omit first name
+        guestAccountPage.getGuestInputDataNoFirstName();
+        //guest account valid data input (without first name)
+        guestAccountPage.inputNoFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("First Name must be greater than 3 and less than 32 characters!", guestAccountPage.getErrorMessage(), "The expected error message did not appear");
+    }
 
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
