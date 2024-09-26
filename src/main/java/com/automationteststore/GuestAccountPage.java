@@ -110,12 +110,12 @@ public class GuestAccountPage extends BasePage{
         zipCode = TestDataGenerator.getRandomPostalCode();
 
         System.out.println("Generated valid data for user account creation: " + "\n");
-        logger.info("First name: " + firstName);
-        logger.info("Last name: " + lastName);
-        logger.info("Email address: " + emailAddress);
-        logger.info("Address: " + address1);
-        logger.info("City: " + city);
-        logger.info("Zip code: " + zipCode);
+        logger.info("Guest first name: " + firstName);
+        logger.info("Guest last name: " + lastName);
+        logger.info("Guest email address: " + emailAddress);
+        logger.info("Guest address: " + address1);
+        logger.info("Guest city: " + city);
+        logger.info("Guest zip code: " + zipCode);
     }
     //valid data input methods
     public void inputFirstName(){
