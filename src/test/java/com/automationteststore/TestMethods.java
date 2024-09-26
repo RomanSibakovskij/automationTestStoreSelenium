@@ -1444,6 +1444,8 @@ public class TestMethods extends BaseTest{
     protected void validGuestAccountCreationTest(GuestAccountPage guestAccountPage){
         //assert the user is on guest account page
         assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
         //web element assert
         isGuestAccountPageWebElementDisplayed(guestAccountPage);
         //valid guest account input data getter
@@ -1506,6 +1508,21 @@ public class TestMethods extends BaseTest{
         logger.info("Shopping cart all products sub total price: " + shoppingCartPage.getShoppingCartAllProductsSubTotalPrice());
         logger.info("Shopping cart all products flat shipping rate: " + shoppingCartPage.getShoppingCartAllProductsFlatShippingRate());
         logger.info("Shopping cart all products total price: " + shoppingCartPage.getShoppingCartAllProductsTotalPrice());
+    }
+    //guest account product data logger
+    protected void logGuestAccountProductData(GuestAccountPage guestAccountPage){
+        System.out.println("Added product summary data: " + "\n");
+        logger.info("Product name(s): " + guestAccountPage.getSummaryProductName());
+        logger.info("Product unit price(s): " + guestAccountPage.getSummaryProductUnitPrice());
+        logger.info("Product sub total price: " + guestAccountPage.getSummaryProductSubTotalPrice());
+        if(guestAccountPage.isProductSummarySpecialRetailPriceDisplayed()){
+            logger.info("Product retail price: " + guestAccountPage.getSummarySpecialRetailPrice());
+        }
+        if(guestAccountPage.isProductSummarySpecialTotalPriceDisplayed()){
+            logger.info("Product total price(with retail): " + guestAccountPage.getSummarySpecialTotalPrice());
+        }else{
+            logger.info("Product total price: " + guestAccountPage.getSummaryProductTotalPrice());
+        }
     }
 
     //web page element assert methods

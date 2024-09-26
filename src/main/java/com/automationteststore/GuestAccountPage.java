@@ -18,10 +18,14 @@ public class GuestAccountPage extends BasePage{
     private List <WebElement> productSummaryNameElements;
     @FindBy(xpath = "//table[@style='width: 100%; border-spacing: 2px;']//tr//td[@class='align_right valign_top']")
     private List <WebElement> productSummaryUnitPriceElements;
-    @FindBy(xpath = "(//table[@style='width: 100%; border-spacing: 0; padding: 0;']//tr/td/span[@class='cart_block_total'])[1]")
+    @FindBy(xpath = "(//table[@style='width: 100%; border-spacing: 0; padding: 0;']//tr/td/span[@class='cart_block_total'])[2]")
     private WebElement productSummarySubTotalPrice;
-    @FindBy(xpath = "(//table[@style='width: 100%; border-spacing: 0; padding: 0;']//tr/td/span[@class='cart_block_total'])[3]")
+    @FindBy(xpath = "(//table[@style='width: 100%; border-spacing: 0; padding: 0;']//tr/td/span[@class='cart_block_total'])[4]")
     private WebElement productSummaryTotalPrice;
+    @FindBy(xpath = "(//table[@style='width: 100%; border-spacing: 0; padding: 0;']//tr/td/span[@class='cart_block_total'])[4]")
+    private WebElement productSpecialRetailPrice;
+    @FindBy(xpath = "(//table[@style='width: 100%; border-spacing: 0; padding: 0;']//tr/td/span[@class='cart_block_total'])[6]")
+    private WebElement productSpecialTotalPrice;
     //guest account input field web elements
     @FindBy(xpath = "//input[@id='guestFrm_firstname']")
     private WebElement firstNameInputField;
@@ -177,6 +181,26 @@ public class GuestAccountPage extends BasePage{
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
+    //guest account product summary data getters
+    public List<String> getSummaryProductName() {
+        List<String> productName = new ArrayList<>();
+        for (WebElement element : productSummaryNameElements) {
+            productName.add(element.getText());
+        }
+        return productName;
+    }
+    public List<String> getSummaryProductUnitPrice() {
+        List<String> productPrice = new ArrayList<>();
+        for (WebElement element : productSummaryUnitPriceElements) {
+            productPrice.add(element.getText());
+        }
+        return productPrice;
+    }
+    public String getSummaryProductSubTotalPrice(){return productSummarySubTotalPrice.getText();}
+    public String getSummarySpecialRetailPrice(){return productSpecialRetailPrice.getText();}
+    public String getSummaryProductTotalPrice(){return productSummaryTotalPrice.getText();}
+    public String getSummarySpecialTotalPrice(){return productSpecialTotalPrice.getText();}
+
     //guest account error message getter
     public String getErrorMessage(){return errorMessage.getText();}
 
@@ -199,7 +223,9 @@ public class GuestAccountPage extends BasePage{
         return true;
     }
     public boolean isProductSummarySubTotalPriceDisplayed() {return productSummarySubTotalPrice.isDisplayed();}
+    public boolean isProductSummarySpecialRetailPriceDisplayed(){return productSpecialRetailPrice.isDisplayed();}
     public boolean isProductSummaryTotalPriceDisplayed() {return productSummaryTotalPrice.isDisplayed();}
+    public boolean isProductSummarySpecialTotalPriceDisplayed(){return productSpecialTotalPrice.isDisplayed();}
     public boolean isFirstNameInputFieldDisplayed() {return firstNameInputField.isDisplayed();}
     public boolean isLastNameInputFieldDisplayed() {return lastNameInputField.isDisplayed();}
     public boolean isEmailAddressInputFieldDisplayed() {return emailAddressInputField.isDisplayed();}
@@ -211,7 +237,6 @@ public class GuestAccountPage extends BasePage{
     public boolean isCityInputFieldDisplayed() {return cityInputField.isDisplayed();}
     public boolean isZipCodeInputFieldDisplayed() {return zipCodeInputField.isDisplayed();}
     public boolean isCountryDropdownMenuDisplayed() {return countryDropdownMenu.isDisplayed();}
-    public boolean isPleaseSelectOptionDisplayed() {return pleaseSelectOption.isDisplayed();}
     public boolean isStateDropdownMenuDisplayed() {return stateDropdownMenu.isDisplayed();}
     public boolean isSeparateShippingAddressCheckboxDisplayed() {return separateShippingAddressCheckbox.isDisplayed();}
     public boolean isBackButtonDisplayed() {return backButton.isDisplayed();}
