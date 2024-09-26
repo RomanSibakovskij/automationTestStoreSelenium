@@ -387,7 +387,7 @@ public class GuestAccountPage extends BasePage{
         city = TestDataGenerator.getRandomCity();
         zipCode = TestDataGenerator.getRandomPostalCode();
 
-        System.out.println("Generated valid data for user account creation: " + "\n");
+        System.out.println("Generated valid data for guest account creation: " + "\n");
         logger.info("First name: " + firstName);
         logger.info("Last name: " + lastName);
         logger.info("Existing email address(in database): " + existingEmailAddress);
@@ -400,6 +400,30 @@ public class GuestAccountPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
         emailAddressInputField.sendKeys(existingEmailAddress);
+    }
+
+    //invalid guest data getter method (no address1)
+    public void getGuestInputDataNoAddress1(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        noAddress1 = "";
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("No address: " + noAddress1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too short guest address
+    public void inputNoAddress1(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(address1InputField));
+        address1InputField.sendKeys(noAddress1);
     }
 
     //guest account page title getter

@@ -186,4 +186,18 @@ public class GuestAccountPageTest extends TestMethods{
         invalidGuestCreationExistingEmailTest(guestAccountPage);
     }
 
+    // Test 010j -> add special products to check out test (as a non-registered user) with invalid guest account creation (no address1)
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - No Address")
+    @Tag("Invalid_Guest_Account_Creation")
+    @Tag("No_Singular_Guest_Account_Input")
+    void addSpecialProductToCheckoutNoAddress1Test(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationNoAddress1Test(guestAccountPage);
+    }
+
 }
