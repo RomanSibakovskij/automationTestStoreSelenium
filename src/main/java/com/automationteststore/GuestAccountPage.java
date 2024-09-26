@@ -302,6 +302,30 @@ public class GuestAccountPage extends BasePage{
         lastNameInputField.sendKeys(tooShortLastName);
     }
 
+    //invalid guest data getter method (too long last name)
+    public void getGuestInputDataTooLongLastName(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        tooLongLastName = "Kdgdfgsdsaddsasdqqsdaasaasafsdfds";
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Too long last name: " + tooLongLastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too long last name
+    public void inputTooLongLastName(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(tooLongLastName);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
