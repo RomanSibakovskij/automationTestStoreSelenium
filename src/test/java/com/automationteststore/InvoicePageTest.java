@@ -58,4 +58,22 @@ public class InvoicePageTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 014a -> verify special products order is indeed placed (as a non-registered user)
+    @Test
+    @DisplayName("Verify Special Products Order As A Non-Registered User")
+    @Tag("Verify_Products_Order")
+    @Tag("Verify_Special_Products_Order")
+    void verifySpecialProductOrderTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        validGuestAccountCreationTest(guestAccountPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
 }
