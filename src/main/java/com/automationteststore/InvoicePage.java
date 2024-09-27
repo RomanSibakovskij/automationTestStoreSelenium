@@ -34,11 +34,11 @@ public class InvoicePage extends BasePage{
     private WebElement orderSubTotalPrice;
     @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[2]/td[2]")
     private WebElement orderFlatShippingRate;
-    @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[2]/td[2]")
+    @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[3]/td[2]")
     private WebElement orderRetailPrice;
     @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[3]/td[2]")
     private WebElement orderTotalPrice;
-    @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[3]/td[2]")
+    @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[4]/td[2]")
     private WebElement orderTotalPriceWithRetail;
     //order history table web elements
     @FindBy(xpath = "//div[@class='container-fluid']/table//td[1]")

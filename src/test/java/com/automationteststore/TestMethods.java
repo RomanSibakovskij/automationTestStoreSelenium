@@ -2229,9 +2229,9 @@ public class TestMethods extends BaseTest{
         if(invoicePage.isOrderRetailPriceDisplayed()){
             logger.info("Order retail price: " + invoicePage.getOrderRetailPrice());
             logger.info("Order sub total price with retail: " + invoicePage.getOrderTotalPriceWithRetail());
+        }else {
+            logger.info("Order total price: " + invoicePage.getOrderTotalPrice());
         }
-        logger.info("Order total price: " + invoicePage.getOrderTotalPrice());
-        logger.info("Order sub total price: " + invoicePage.getOrderSubTotalPrice());
         logger.info("Order submission date(s): " + invoicePage.getOrderDate());
         logger.info("Order status: " + invoicePage.getOrderStatus());
         if(invoicePage.isOrderCommentDisplayed()) {

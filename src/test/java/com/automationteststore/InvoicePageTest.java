@@ -40,4 +40,22 @@ public class InvoicePageTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 013a ->  verify bestseller products order is indeed placed (as a non-registered user)
+    @Test
+    @DisplayName("Verify Bestseller Products Order As A Non-Registered User")
+    @Tag("Verify_Products_Order")
+    @Tag("Verify_Bestseller_Products_Order")
+    void verifyBestsellersProductOrderTest(){
+        HomePage homePage = new HomePage(driver);
+        addBestsellersProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        validGuestAccountCreationTest(guestAccountPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
 }
