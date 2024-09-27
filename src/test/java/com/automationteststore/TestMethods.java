@@ -2103,6 +2103,20 @@ public class TestMethods extends BaseTest{
         assertEquals("Please select a region / state!", guestAccountPage.getStateErrorMessage(), "The expected error message did not appear");
     }
 
+    //checkout (confirmation) page test method
+    protected void productCheckoutConfirmationTest(CheckoutPage checkoutPage){
+        //web element assert
+        isCheckoutPageWebElementDisplayed(checkoutPage);
+        //log displayed product data
+        logCheckoutProductData(checkoutPage);
+        //click 'confirm order' button
+        checkoutPage.clickConfirmCheckoutButton();
+        //assert the checkout has been confirmed
+        assertEquals("CHECKOUT CONFIRMATION", checkoutPage.getCheckoutSuccessMessage(), "The checkout confirmation message isn't displayed or the checkout hasn't been confirmed"); //different than 'YOUR ORDER HAS BEEN PROCESSED!' is being found by the CORRECT locator
+        //click invoice page for confirmation
+        checkoutPage.clickInvoicePageLink();
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
@@ -2156,6 +2170,37 @@ public class TestMethods extends BaseTest{
             logger.info("Product total price(with retail): " + guestAccountPage.getSummarySpecialTotalPrice());
         }else{
             logger.info("Product total price: " + guestAccountPage.getSummaryProductTotalPrice());
+        }
+    }
+    //checkout page product data logger
+    protected void logCheckoutProductData(CheckoutPage checkoutPage){
+        System.out.println("Checkout page displayed product data: " + "\n");
+        logger.info("Product summary name: " + checkoutPage.getProductSummaryName());
+        logger.info("Product summary price: " + checkoutPage.getProductSummaryPrice());
+        logger.info("Product summary sub total price: " + checkoutPage.getProductSummarySubTotalPrice());
+        logger.info("Product summary flat shipping rate: " + checkoutPage.getProductSummaryFlatShippingRate());
+        if(checkoutPage.isProductSummaryRetailPriceDisplayed()){
+            logger.info("Product retail price: " + checkoutPage.getProductSummaryRetailPrice());
+            logger.info("Product total price with retail: " + checkoutPage.getProductSummaryTotalPriceWithRetail());
+        }else {
+            logger.info("Product summary total price: " + checkoutPage.getProductSummaryTotalPrice());
+        }
+        logger.info("Client shipping name: " + checkoutPage.getClientShippingName());
+        logger.info("Client shipping address: " + checkoutPage.getClientShippingAddress());
+        logger.info("Client shipping payment method: " + checkoutPage.getClientShippingPaymentMethod());
+        logger.info("Checkout product name: " + checkoutPage.getProductName());
+        logger.info("Checkout product unit price: " + checkoutPage.getProductUnitPrice());
+        logger.info("Checkout product quantity: " + checkoutPage.getProductQuantity());
+        //verify product quantity is indeed one (no addition was performed beforehand)
+        checkoutPage.verifyProductQuantities();
+        logger.info("Checkout product price: " + checkoutPage.getProductPrice());
+        logger.info("Checkout product sub total price: " + checkoutPage.getProductSubTotalPrice());
+        logger.info("Checkout product flat shipping rate: " + checkoutPage.getProductFlatShippingRate());
+        if(checkoutPage.isProductRetailPriceDisplayed()){
+            logger.info("Checkout product retail price: " + checkoutPage.getProductRetailPrice());
+            logger.info("Checkout product total price with retail: " + checkoutPage.getProductTotalPriceWithRetail());
+        }else{
+            logger.info("Checkout product total price: " + checkoutPage.getProductTotalPrice());
         }
     }
 
@@ -2435,6 +2480,62 @@ public class TestMethods extends BaseTest{
         assertTrue(guestAccountPage.isBackButtonDisplayed(), "The back button isn't displayed");
         //assert guest account continue button is displayed
         assertTrue(guestAccountPage.isContinueButtonDisplayed(), "The continue button isn't displayed");
+    }
+
+    //checkout page web element assert
+    protected void isCheckoutPageWebElementDisplayed(CheckoutPage checkoutPage){
+        //assert the checkout page title is displayed
+        assertTrue(checkoutPage.isCheckoutPageTitleDisplayed(), "The checkout page title isn't displayed");
+        //assert product summary name is displayed (as a list)
+        assertTrue(checkoutPage.isProductSummaryNameDisplayed(), "The product summary name isn't displayed");
+        //assert product summary price is displayed (as a list)
+        assertTrue(checkoutPage.isProductSummaryPriceDisplayed(), "The product summary price isn't displayed");
+        //assert product summary sub total price is displayed
+        assertTrue(checkoutPage.isProductSummarySubTotalPriceDisplayed(), "The product summary sub total price isn't displayed");
+        //assert product summary flat shipping price is displayed
+        assertTrue(checkoutPage.isProductSummaryFlatShippingRateDisplayed(), "The product summary flat shipping rate isn't displayed");
+        //assert product summary total price is displayed
+        assertTrue(checkoutPage.isProductSummaryTotalPriceDisplayed(), "The product summary total price isn't displayed");
+        //assert client shipping name is displayed
+        assertTrue(checkoutPage.isClientShippingNameDisplayed(), "The client shipping name isn't displayed");
+        //assert client shipping address is displayed
+        assertTrue(checkoutPage.isClientShippingAddressDisplayed(), "The client shipping address isn't displayed");
+        //assert client shipping payment method is displayed
+        assertTrue(checkoutPage.isClientShippingPaymentMethodDisplayed(), "The client shipping payment method isn't displayed");
+        //assert client shipping edit button is displayed
+        assertTrue(checkoutPage.isClientShippingEditButtonDisplayed(), "The client shipping edit button isn't displayed");
+        //assert client payment name is displayed
+        assertTrue(checkoutPage.isClientPaymentNameDisplayed(), "The client payment name isn't displayed");
+        //assert client payment address is displayed
+        assertTrue(checkoutPage.isClientPaymentAddressDisplayed(), "The client payment address isn't displayed");
+        //assert client payment method is displayed
+        assertTrue(checkoutPage.isClientPaymentMethodDisplayed(), "The client payment method isn't displayed");
+        //assert client payment edit payment button is displayed
+        assertTrue(checkoutPage.isClientPaymentEditPaymentButtonDisplayed(), "The client payment edit payment button isn't displayed");
+        //assert client payment edit coupon button is displayed
+        assertTrue(checkoutPage.isClientPaymentEditCouponButtonDisplayed(), "The client payment edit coupon button isn't displayed");
+        //assert client payment edit cart button is displayed
+        assertTrue(checkoutPage.isClientPaymentEditCartButtonDisplayed(), "The client payment edit cart button isn't displayed");
+        //assert product image is displayed (as a list)
+        assertTrue(checkoutPage.isProductImageDisplayed(), "The product image isn't displayed");
+        //assert product name is displayed (as a list)
+        assertTrue(checkoutPage.isProductNameDisplayed(), "The product name isn't displayed");
+        //assert product unit price is displayed (as a list)
+        assertTrue(checkoutPage.isProductUnitPriceDisplayed(), "The product unit price isn't displayed");
+        //assert product unit quantity is displayed (as a list)
+        assertTrue(checkoutPage.isProductQuantityDisplayed(), "The product quantity isn't displayed");
+        //assert product total price is displayed (as a list)
+        assertTrue(checkoutPage.isProductTotalPriceDisplayed(), "The product total price isn't displayed");
+        //assert product sub total price is displayed
+        assertTrue(checkoutPage.isProductSubTotalPriceDisplayed(), "The product sub total price isn't displayed");
+        //assert product flat shipping rate is displayed
+        assertTrue(checkoutPage.isProductFlatShippingRateDisplayed(), "The product flat shipping rate isn't displayed");
+        //assert product confirm total price is displayed
+        assertTrue(checkoutPage.isProductConfirmTotalPriceDisplayed(), "The product confirm total price isn't displayed");
+        //assert checkout page back button is displayed
+        assertTrue(checkoutPage.isBackButtonDisplayed(), "The back button isn't displayed");
+        //assert checkout page confirm button is displayed
+        assertTrue(checkoutPage.isConfirmButtonDisplayed(), "The confirm button isn't displayed");
     }
 
 }
