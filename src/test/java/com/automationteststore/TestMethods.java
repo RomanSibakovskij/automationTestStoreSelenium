@@ -2072,6 +2072,37 @@ public class TestMethods extends BaseTest{
         }
     }
 
+    //invalid guest account creation test method - no state selection
+    protected void invalidGuestCreationNoStateTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter
+        guestAccountPage.getValidGuestInputData();
+        //guest account valid data input
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select 'United States'
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select 'Please select' option
+        guestAccountPage.selectPleaseSelectStateOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("Please select a region / state!", guestAccountPage.getStateErrorMessage(), "The expected error message did not appear");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

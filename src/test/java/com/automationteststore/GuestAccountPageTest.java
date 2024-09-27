@@ -326,4 +326,18 @@ public class GuestAccountPageTest extends TestMethods{
         invalidGuestCreationNoCountryTest(guestAccountPage);
     }
 
+    // Test 010s -> add special products to check out test (as a non-registered user) with invalid guest account creation (no state)
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - No State")
+    @Tag("Invalid_Guest_Account_Creation")
+    @Tag("No_Singular_Guest_Account_Input")
+    void addSpecialProductToCheckoutNoStateTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationNoStateTest(guestAccountPage);
+    }
+
 }

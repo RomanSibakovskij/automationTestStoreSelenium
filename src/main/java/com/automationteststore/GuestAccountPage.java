@@ -44,6 +44,8 @@ public class GuestAccountPage extends BasePage{
     private WebElement errorZipCodeLengthMessage;
     @FindBy(xpath = "//span[.='Please select a country!']")
     private WebElement errorCountryMessage;
+    @FindBy(xpath = "//span[.='Please select a region / state!']")
+    private WebElement errorStateMessage;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -625,6 +627,13 @@ public class GuestAccountPage extends BasePage{
         pleaseSelectOption.click();
     }
 
+    //select 'Please select' state option (since default is UK) method
+    public void selectPleaseSelectStateOption(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(pleaseSelectStateOption));
+        pleaseSelectStateOption.click();
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
@@ -656,6 +665,7 @@ public class GuestAccountPage extends BasePage{
     public String getCityErrorMessage(){return errorCityMessage.getText();}
     public String getZipCodeErrorLengthMessage(){return errorZipCodeLengthMessage.getText();}
     public String getCountryErrorMessage(){return errorCountryMessage.getText();}
+    public String getStateErrorMessage(){return errorStateMessage.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}
