@@ -2041,6 +2041,37 @@ public class TestMethods extends BaseTest{
         assertEquals("Zip/postal code must be between 3 and 10 characters!", guestAccountPage.getZipCodeErrorLengthMessage(), "The expected error message did not appear");
     }
 
+    //invalid guest account creation test method - no country selection
+    protected void invalidGuestCreationNoCountryTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter
+        guestAccountPage.getValidGuestInputData();
+        //guest account valid data input
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select 'Please select' (since default is UK)
+        guestAccountPage.selectPleaseSelectOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        if(guestAccountPage.isPleaseSelectOptionDisplayed()) {
+            assertEquals("Please select a country!", guestAccountPage.getCountryErrorMessage(), "The expected error message did not appear");
+        }else{
+            logger.error("The expected error message did not appear");
+        }
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

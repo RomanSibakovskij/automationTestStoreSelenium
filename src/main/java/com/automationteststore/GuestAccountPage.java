@@ -42,6 +42,8 @@ public class GuestAccountPage extends BasePage{
     private WebElement errorCityMessage;
     @FindBy(xpath = "//span[.='Zip/postal code must be between 3 and 10 characters!']")
     private WebElement errorZipCodeLengthMessage;
+    @FindBy(xpath = "//span[.='Please select a country!']")
+    private WebElement errorCountryMessage;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -65,8 +67,10 @@ public class GuestAccountPage extends BasePage{
     @FindBy(css = "#guestFrm_country_id [value='223']")
     private WebElement usOption;
     //please select option web element (for invalid tests)
-    @FindBy(xpath = "//select[@id='guestFrm_zone_id']/option[@value='FALSE']")
+    @FindBy(xpath = "//select[@id='guestFrm_country_id']/option[@value='FALSE']")
     private WebElement pleaseSelectOption;
+    @FindBy(xpath = "//select[@id='guestFrm_zone_id']/option[@value='FALSE']")
+    private WebElement pleaseSelectStateOption;
     @FindBy(xpath = "//select[@id='guestFrm_zone_id']")
     private WebElement stateDropdownMenu;
     @FindBy(xpath = "//select[@id='guestFrm_zone_id']/option[@value='3635']")
@@ -614,6 +618,13 @@ public class GuestAccountPage extends BasePage{
         zipCodeInputField.sendKeys(tooLongZipCode);
     }
 
+    //select 'Please select' option (since default is UK) method
+    public void selectPleaseSelectOption(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(pleaseSelectOption));
+        pleaseSelectOption.click();
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
@@ -644,6 +655,7 @@ public class GuestAccountPage extends BasePage{
     public String getAddress1ErrorMessage(){return errorAddress1Message.getText();}
     public String getCityErrorMessage(){return errorCityMessage.getText();}
     public String getZipCodeErrorLengthMessage(){return errorZipCodeLengthMessage.getText();}
+    public String getCountryErrorMessage(){return errorCountryMessage.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}
@@ -678,6 +690,7 @@ public class GuestAccountPage extends BasePage{
     public boolean isCityInputFieldDisplayed() {return cityInputField.isDisplayed();}
     public boolean isZipCodeInputFieldDisplayed() {return zipCodeInputField.isDisplayed();}
     public boolean isCountryDropdownMenuDisplayed() {return countryDropdownMenu.isDisplayed();}
+    public boolean isPleaseSelectOptionDisplayed(){return pleaseSelectOption.isDisplayed();}
     public boolean isStateDropdownMenuDisplayed() {return stateDropdownMenu.isDisplayed();}
     public boolean isSeparateShippingAddressCheckboxDisplayed() {return separateShippingAddressCheckbox.isDisplayed();}
     public boolean isBackButtonDisplayed() {return backButton.isDisplayed();}

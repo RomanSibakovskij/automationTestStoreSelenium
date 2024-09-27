@@ -312,4 +312,18 @@ public class GuestAccountPageTest extends TestMethods{
         invalidGuestCreationTooLongZipCodeTest(guestAccountPage);
     }
 
+    // Test 010r -> add special products to check out test (as a non-registered user) with invalid guest account creation (no country)
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - No Country")
+    @Tag("Invalid_Guest_Account_Creation")
+    @Tag("No_Singular_Guest_Account_Input")
+    void addSpecialProductToCheckoutNoCountryTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationNoCountryTest(guestAccountPage);
+    }
+
 }
