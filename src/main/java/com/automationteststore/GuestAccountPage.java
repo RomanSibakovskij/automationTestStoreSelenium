@@ -590,6 +590,30 @@ public class GuestAccountPage extends BasePage{
         zipCodeInputField.sendKeys(String.valueOf(tooShortZipCode));
     }
 
+    //invalid guest data getter method (too long zip code)
+    public void getValidGuestInputDataTooLongZipCode(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        tooLongZipCode = "18343235467"; //11 chars
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Too long zip code: " + tooLongZipCode);
+    }
+    //invalid data input method - too long zip code
+    public void inputTooLongZipCode(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
+        zipCodeInputField.sendKeys(tooLongZipCode);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
