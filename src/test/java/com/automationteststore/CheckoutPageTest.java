@@ -52,4 +52,20 @@ public class CheckoutPageTest extends TestMethods{
         productCheckoutConfirmationTest(checkoutPage);
     }
 
+    // Test 014 -> confirm  special products addition to check out test (as a non-registered user)
+    @Test
+    @DisplayName("Confirm Addition Special Products To Checkout As A Non-Registered User")
+    @Tag("Confirm_Product_Addition_To_Checkout")
+    @Tag("Confirm_Special_Products")
+    void confirmSpecialProductAdditionToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        validGuestAccountCreationTest(guestAccountPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+    }
+
 }
