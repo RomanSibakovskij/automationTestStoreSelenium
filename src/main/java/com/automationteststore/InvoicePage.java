@@ -18,17 +18,17 @@ public class InvoicePage extends BasePage{
     @FindBy(xpath = "//div[@class='contentpanel']/div[1]/table//td[3]")
     private WebElement paymentAddressColumnData;
     //product table web elements (lists)
-    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//tr[2]/td[1]")
+    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//td[1]")
     private List<WebElement> productImageElements;
-    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//tr[2]/td[2]/a")
+    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//td[2]/a")
     private List<WebElement> productNameElements;
-    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//tr[2]/td[3]")
+    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//td[3]")
     private List<WebElement> productModelElements;
-    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//tr[2]/td[4]")
+    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//td[4]")
     private List<WebElement> productQuantityElements;
-    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//tr[2]/td[5]")
+    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//td[5]")
     private List<WebElement> productUnitPriceElements;
-    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//tr[2]/td[6]")
+    @FindBy(xpath = "//div[@class='col-md-12 col-xs-12']/table//td[6]")
     private List<WebElement> productTotalPriceElements;
     @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[1]/td[2]")
     private WebElement orderSubTotalPrice;
@@ -41,11 +41,11 @@ public class InvoicePage extends BasePage{
     @FindBy(xpath = "//div[@class='col-md-4 col-sm-6 col-xs-8 pull-right']/table//tr[3]/td[2]")
     private WebElement orderTotalPriceWithRetail;
     //order history table web elements
-    @FindBy(xpath = "//div[@class='container-fluid']/table//tr[2]/td[1]")
+    @FindBy(xpath = "//div[@class='container-fluid']/table//td[1]")
     private List<WebElement> orderDateElements;
-    @FindBy(xpath = "//div[@class='container-fluid']/table//tr[2]/td[2]")
+    @FindBy(xpath = "//div[@class='container-fluid']/table//td[2]")
     private List<WebElement> orderStatusElements;
-    @FindBy(xpath = "//div[@class='container-fluid']/table//tr[2]/td[3]")
+    @FindBy(xpath = "//div[@class='container-fluid']/table//td[3]")
     private List<WebElement> orderCommentsElements;
 
 

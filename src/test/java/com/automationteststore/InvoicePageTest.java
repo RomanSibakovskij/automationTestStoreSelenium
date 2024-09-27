@@ -22,4 +22,22 @@ public class InvoicePageTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 012a -> verify latest products order is indeed placed (as a non-registered user)
+    @Test
+    @DisplayName("Verify Latest Products Order As A Non-Registered User")
+    @Tag("Verify_Products_Order")
+    @Tag("Verify_Latest_Products_Order")
+    void verifyLatestProductOrderTest(){
+        HomePage homePage = new HomePage(driver);
+        addLatestProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        validGuestAccountCreationTest(guestAccountPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
 }
