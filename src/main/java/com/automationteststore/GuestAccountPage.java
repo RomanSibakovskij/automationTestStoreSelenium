@@ -524,6 +524,30 @@ public class GuestAccountPage extends BasePage{
         cityInputField.sendKeys(tooShortCity);
     }
 
+    //invalid guest data getter method (too long user city)
+    public void getGuestInputDataTooLongCity(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        tooLongCity = "Akgdfgsdsaddsasdqqsdaasaasafsdfdssdffgfhghyjhgjgfdfsadsfasewrgrttyyyytuiuoijbjgfhghfdgdsfsfdsgfghtgjhbvbvxcvcbvbvnbvmghffghfgfggr";
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("Too long city: " + tooLongCity);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too long city
+    public void inputTooLongCity(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(tooLongCity);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 

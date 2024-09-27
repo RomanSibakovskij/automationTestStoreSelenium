@@ -1918,6 +1918,37 @@ public class TestMethods extends BaseTest{
         assertEquals("City must be greater than 3 and less than 128 characters!", guestAccountPage.getCityErrorMessage(), "The expected error message did not appear");
     }
 
+    //invalid guest account creation test method - too long guest city
+    protected void invalidGuestCreationTooLongCityTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (too long guest city)
+        guestAccountPage.getGuestInputDataTooLongCity();
+        //guest account valid data input (too long guest city)
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputTooLongCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("City must be greater than 3 and less than 128 characters!", guestAccountPage.getCityErrorMessage(), "The expected error message did not appear");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
