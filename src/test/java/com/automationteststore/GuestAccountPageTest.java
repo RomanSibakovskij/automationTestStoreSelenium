@@ -242,4 +242,18 @@ public class GuestAccountPageTest extends TestMethods{
         invalidGuestCreationNoCityTest(guestAccountPage);
     }
 
+    // Test 010n -> add special products to check out test (as a non-registered user) with invalid guest account creation (too short city)
+    @Test
+    @DisplayName("Add Special Products To Checkout As A Non-Registered User - Invalid Guest Account Creation - Too Short City")
+    @Tag("Invalid_Guest_Account_Creation")
+    @Tag("Too_Short_Singular_Guest_Account_Input")
+    void addSpecialProductToCheckoutTooShortCityTest(){
+        HomePage homePage = new HomePage(driver);
+        addSpecialProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        invalidGuestCreationTooShortCityTest(guestAccountPage);
+    }
+
 }

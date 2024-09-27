@@ -500,6 +500,30 @@ public class GuestAccountPage extends BasePage{
         cityInputField.sendKeys(noCity);
     }
 
+    //invalid guest data getter method (too short user city)
+    public void getGuestInputDataTooShortCity(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        tooShortCity = "DC";
+        zipCode = TestDataGenerator.getRandomPostalCode();
+
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("Too short city: " + tooShortCity);
+        logger.info("Zip code: " + zipCode);
+    }
+    //invalid data input method - too short city
+    public void inputTooShortCity(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(tooShortCity);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
