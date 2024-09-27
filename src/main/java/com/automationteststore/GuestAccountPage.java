@@ -40,6 +40,8 @@ public class GuestAccountPage extends BasePage{
     private WebElement errorAddress1Message;
     @FindBy(xpath = "//span[.='City must be greater than 3 and less than 128 characters!']")
     private WebElement errorCityMessage;
+    @FindBy(xpath = "//span[.='Zip/postal code must be between 3 and 10 characters!']")
+    private WebElement errorZipCodeLengthMessage;
     @FindBy(xpath = "//input[@id='guestFrm_lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//input[@id='guestFrm_email']")
@@ -548,6 +550,22 @@ public class GuestAccountPage extends BasePage{
         cityInputField.sendKeys(tooLongCity);
     }
 
+    //guest data getter without zip code
+    public void getValidGuestInputDataNoZipCode(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+
+        System.out.println("Generated valid data for user account creation: " + "\n");
+        logger.info("Guest first name: " + firstName);
+        logger.info("Guest last name: " + lastName);
+        logger.info("Guest email address: " + emailAddress);
+        logger.info("Guest address: " + address1);
+        logger.info("Guest city: " + city);
+    }
+
     //guest account page title getter
     public String getGuestAccountPageTitle(){return guestAccountPageTitle.getText();}
 
@@ -577,6 +595,7 @@ public class GuestAccountPage extends BasePage{
     public String getEmailErrorMessage(){return errorEmailMessage.getText();}
     public String getAddress1ErrorMessage(){return errorAddress1Message.getText();}
     public String getCityErrorMessage(){return errorCityMessage.getText();}
+    public String getZipCodeErrorLengthMessage(){return errorZipCodeLengthMessage.getText();}
 
     //guest account page web element assert methods
     public boolean isGuestAccountPageTitleDisplayed() {return guestAccountPageTitle.isDisplayed();}

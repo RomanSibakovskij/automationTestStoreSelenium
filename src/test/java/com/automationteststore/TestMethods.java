@@ -1949,6 +1949,36 @@ public class TestMethods extends BaseTest{
         assertEquals("City must be greater than 3 and less than 128 characters!", guestAccountPage.getCityErrorMessage(), "The expected error message did not appear");
     }
 
+    //invalid guest account creation test method - no zip code
+    protected void invalidGuestCreationNoZipCodeTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (omit zip code)
+        guestAccountPage.getValidGuestInputDataNoZipCode();
+        //guest account valid data input (without zip code)
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("Zip/postal code must be between 3 and 10 characters!", guestAccountPage.getZipCodeErrorLengthMessage(), "The expected error message did not appear");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
