@@ -558,12 +558,36 @@ public class GuestAccountPage extends BasePage{
         address1 = TestDataGenerator.generateRandomAddress(7);
         city = TestDataGenerator.getRandomCity();
 
+        System.out.println("Generated valid data for guest account creation: " + "\n");
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+    }
+
+    //invalid guest data getter method (too short zip code)
+    public void getValidGuestInputDataTooShortZipCode(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(7);
+        city = TestDataGenerator.getRandomCity();
+        tooShortZipCode = 18; //2 chars
+
         System.out.println("Generated valid data for user account creation: " + "\n");
-        logger.info("Guest first name: " + firstName);
-        logger.info("Guest last name: " + lastName);
-        logger.info("Guest email address: " + emailAddress);
-        logger.info("Guest address: " + address1);
-        logger.info("Guest city: " + city);
+        logger.info("First name: " + firstName);
+        logger.info("Last name: " + lastName);
+        logger.info("Email address: " + emailAddress);
+        logger.info("Address: " + address1);
+        logger.info("City: " + city);
+        logger.info("Too short zip code: " + tooShortZipCode);
+    }
+    //invalid data input method - too short zip code
+    public void inputTooShortZipCode(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
+        zipCodeInputField.sendKeys(String.valueOf(tooShortZipCode));
     }
 
     //guest account page title getter

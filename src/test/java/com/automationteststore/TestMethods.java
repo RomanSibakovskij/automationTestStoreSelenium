@@ -1979,6 +1979,37 @@ public class TestMethods extends BaseTest{
         assertEquals("Zip/postal code must be between 3 and 10 characters!", guestAccountPage.getZipCodeErrorLengthMessage(), "The expected error message did not appear");
     }
 
+    //invalid guest account creation test method - too short zip code
+    protected void invalidGuestCreationTooShortZipCodeTest(GuestAccountPage guestAccountPage){
+        //assert the user is on guest account page
+        assertEquals("GUEST CHECKOUT - STEP 1", guestAccountPage.getGuestAccountPageTitle(), "The guest account page title doesn't match expectation or user is on the wrong page");
+        //product summary data logger
+        logGuestAccountProductData(guestAccountPage);
+        //web element assert
+        isGuestAccountPageWebElementDisplayed(guestAccountPage);
+        //valid guest account input data getter (too short zip code)
+        guestAccountPage.getValidGuestInputDataTooShortZipCode();
+        //guest account valid data input (with too short zip code)
+        guestAccountPage.inputFirstName();
+        guestAccountPage.inputLastName();
+        guestAccountPage.inputEmailAddress();
+        guestAccountPage.inputAddress1();
+        guestAccountPage.inputCity();
+        //click country dropdown menu
+        guestAccountPage.clickCountryDropdownMenu();
+        //select United States
+        guestAccountPage.selectUSOption();
+        //click state dropdown menu
+        guestAccountPage.clickStateDropdownMenu();
+        //select Illinois option
+        guestAccountPage.selectIllinoisOption();
+        guestAccountPage.inputTooShortZipCode();
+        //click 'continue' button
+        guestAccountPage.clickContinueButton();
+        //assert the expected error appears
+        assertEquals("Zip/postal code must be between 3 and 10 characters!", guestAccountPage.getZipCodeErrorLengthMessage(), "The expected error message did not appear");
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
