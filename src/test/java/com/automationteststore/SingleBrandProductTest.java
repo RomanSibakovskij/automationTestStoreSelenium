@@ -14,4 +14,14 @@ public class SingleBrandProductTest extends TestMethods{
         addBenefitProductsToCartTest(homePage);
     }
 
+    // Test 015a -> add pantene (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Pantene Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Pantene_Brand_Products")
+    void addPanteneProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addPanteneProductsToCartTest(homePage);
+    }
+
 }
