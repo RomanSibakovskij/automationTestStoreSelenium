@@ -2324,7 +2324,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Gucci' icon button on the brands scrolling list
+        //click 'Giorgio Armani' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart6Button();
         //assert the user gets on the brand page
         assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2336,7 +2336,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Gucci' icon button on the brands scrolling list
+        //click 'Giorgio Armani' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart6Button();
         //assert the user gets on the brand page
         assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2348,7 +2348,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Gucci' icon button on the brands scrolling list
+        //click 'Giorgio Armani' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart6Button();
         //assert the user gets on the brand page
         assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2358,6 +2358,27 @@ public class TestMethods extends BaseTest{
         singleProductBrandPage.clickAddBrandProductToCart2Button();
         //click single product page 'add to cart' button
         singleProductPage.clickAddToCartButton();
+    }
+
+    //single brand (Dove) product addition to cart test method
+    protected void addDoveProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Dove' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart7Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("DOVE", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //sort the products by Rating 'Lowest'
+        singleProductBrandPage.selectRatingLowestOption();
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button method
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        //click 'Cart' navlink
+        homePage.clickCartNavLink();
     }
 
     //single product page sort dropdown menu options selection (Name A to Z) method

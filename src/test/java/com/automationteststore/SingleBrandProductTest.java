@@ -64,5 +64,15 @@ public class SingleBrandProductTest extends TestMethods{
         addGiorgioArmaniProductsToCartTest(homePage);
     }
 
+    // Test 015f -> add Dove (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Dove Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Dove_Brand_Products")
+    void addDoveProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addDoveProductsToCartTest(homePage);
+    }
+
 
 }
