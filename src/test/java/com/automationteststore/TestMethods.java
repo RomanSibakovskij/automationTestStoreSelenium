@@ -2173,6 +2173,28 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
     }
 
+    //single brand (Mac) product addition to cart test method
+    protected void addMacProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Mac' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart3Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("M·A·C", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //sort the products by name 'Z to A'
+        singleProductBrandPage.selectNameZToAOption();
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        singleProductPage.clickAddToCartButton();
+    }
+
     //single product page sort dropdown menu options selection (Name A to Z) method
     protected void selectNameAToZSortOption(SingleProductBrandPage singleProductBrandPage){
         //click product sort dropdown menu method
