@@ -84,5 +84,15 @@ public class SingleBrandProductTest extends TestMethods{
         addCalvinKleinProductsToCartTest(homePage);
     }
 
+    // Test 015h -> add Bulgari (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Bulgari Klein Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Bulgari_Brand_Products")
+    void addBulgariProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addBulgariProductsToCartTest(homePage);
+    }
+
 
 }

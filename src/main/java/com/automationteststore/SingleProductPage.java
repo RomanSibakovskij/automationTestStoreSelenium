@@ -48,6 +48,10 @@ public class SingleProductPage extends BasePage{
     @FindBy(xpath = "//ul[@class='productinfo']/li[2]/a/img")
     private WebElement productManufacturer;
 
+    //fragrance checkbox option web elements (when present)
+    @FindBy(xpath = "//input[@id='option335720']")
+    private WebElement parfumeFragranceOption;
+
     public SingleProductPage(WebDriver driver) {
         super(driver);
     }
@@ -91,6 +95,13 @@ public class SingleProductPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
+    }
+
+    //parfum fragrance checkbox click method
+    public void clickParfumFragranceCheckbox(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(parfumeFragranceOption));
+        parfumeFragranceOption.click();
     }
 
     //single product page web element assert methods

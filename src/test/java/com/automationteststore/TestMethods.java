@@ -2451,54 +2451,53 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
     }
 
-    //single product page sort dropdown menu options selection (Name A to Z) method
-    protected void selectNameAToZSortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Name A to Z' option
-        singleProductBrandPage.selectNameAToZOption();
-    }
-    //single product page sort dropdown menu options selection (Name Z to A) method
-    protected void selectNameZToASortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Name Z to A' option
-        singleProductBrandPage.selectNameZToAOption();
-    }
-    //single product page sort dropdown menu options selection (Price low to high) method
-    protected void selectPriceLowToHighSortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Price Low to High' option
-        singleProductBrandPage.selectPriceLowToHighOption();
-    }
-    //single product page sort dropdown menu options selection (Price high to low) method
-    protected void selectPriceHighToLowSortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Price High to Low' option
-        singleProductBrandPage.selectPriceHighToLowOption();
-    }
-    //single product page sort dropdown menu options selection (Rating highest) method
-    protected void selectPriceRatingHighestSortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Rating highest' option
-        singleProductBrandPage.selectRatingHighestOption();
-    }
-    //single product page sort dropdown menu options selection (Rating lowest) method
-    protected void selectPriceRatingLowestSortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Rating lowest' option
-        singleProductBrandPage.selectRatingLowestOption();
-    }
-    //single product page sort dropdown menu options selection (Date new > old) method
-    protected void selectPriceDateNewOldSortOption(SingleProductBrandPage singleProductBrandPage){
-        //click product sort dropdown menu method
-        singleProductBrandPage.clickProductSortDropdownMenu();
-        //select 'Date new > old' option
-        singleProductBrandPage.selectDateNewOldOption();
+    //single brand (Bulgari) product addition to cart test method
+    protected void addBulgariProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Bulgari' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart9Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("BVLGARI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        singleProductBrandPage.clickAddBrandProductToCart5Button();
+        singleProductBrandPage.clickAddBrandProductToCart6Button();
+        singleProductBrandPage.clickAddBrandProductToCart7Button();
+        singleProductBrandPage.clickAddBrandProductToCart8Button();
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Bulgari' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart9Button();
+        //assert the user gets on the brand page
+        assertEquals("BVLGARI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        singleProductBrandPage.clickAddBrandProductToCart3Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Bulgari' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart9Button();
+        //assert the user gets on the brand page
+        assertEquals("BVLGARI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        singleProductBrandPage.clickAddBrandProductToCart4Button();
+        //select parfum fragrance option
+        singleProductPage.clickParfumFragranceCheckbox();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
     }
 
     //single product data loggers
