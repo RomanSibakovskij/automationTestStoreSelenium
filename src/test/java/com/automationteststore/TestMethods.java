@@ -2296,8 +2296,68 @@ public class TestMethods extends BaseTest{
         singleProductBrandPage.clickAddBrandProductToCart2Button();
         //click single product page 'add to cart' button
         singleProductPage.clickAddToCartButton();
-//        //return to homepage
-//        homePage.clickHomePageLogo();
+    }
+
+    //single brand (Giorgio Armani) product addition to cart test method
+    protected void addGiorgioArmaniProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Giorgio Armani' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart6Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //sort the products by rating 'Highest'
+        singleProductBrandPage.selectRatingHighestOption();
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        singleProductBrandPage.clickAddBrandProductToCart3Button();
+        singleProductBrandPage.clickAddBrandProductToCart5Button();
+        singleProductBrandPage.clickAddBrandProductToCart6Button();
+        singleProductBrandPage.clickAddBrandProductToCart7Button();
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Gucci' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart6Button();
+        //assert the user gets on the brand page
+        assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //click 'add to cart' button
+        singleProductBrandPage.clickAddBrandProductToCart4Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Gucci' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart6Button();
+        //assert the user gets on the brand page
+        assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //click 'add to cart' button
+        singleProductBrandPage.clickAddBrandProductToCart3Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Gucci' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart6Button();
+        //assert the user gets on the brand page
+        assertEquals("GIORGIO ARMANI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //click 'add to cart' button
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
     }
 
     //single product page sort dropdown menu options selection (Name A to Z) method

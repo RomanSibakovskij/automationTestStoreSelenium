@@ -54,5 +54,15 @@ public class SingleBrandProductTest extends TestMethods{
         addGucciProductsToCartTest(homePage);
     }
 
+    // Test 015e -> add Giorgio Armani (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Giorgio Armani Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Giorgio_Armani_Brand_Products")
+    void addGiorgioArmaniProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addGiorgioArmaniProductsToCartTest(homePage);
+    }
+
 
 }
