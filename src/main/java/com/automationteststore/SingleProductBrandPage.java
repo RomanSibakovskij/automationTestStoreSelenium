@@ -110,6 +110,35 @@ public class SingleProductBrandPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(sortDropdownMenu));
         sortDropdownMenu.click();
     }
+
+    //single brand product page 'add to cart' button click index getter
+    public void clickAddBrandProductToCartButton(int productIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(productAddToCartButtonElements.get(productIndex)));
+        productAddToCartButtonElements.get(productIndex).click();
+    }
+    //individual 'add to cart' button click methods
+    public void clickAddBrandProductToCart1Button(){
+        clickAddBrandProductToCartButton(0);}
+    public void clickAddBrandProductToCart2Button(){
+        clickAddBrandProductToCartButton(1);}
+    public void clickAddBrandProductToCart3Button(){
+        clickAddBrandProductToCartButton(2);}
+    public void clickAddBrandProductToCart4Button(){
+        clickAddBrandProductToCartButton(3);}
+    public void clickAddBrandProductToCart5Button(){
+        clickAddBrandProductToCartButton(4);}
+    public void clickAddBrandProductToCart6Button(){
+        clickAddBrandProductToCartButton(5);}
+    public void clickAddBrandProductToCart7Button(){
+        clickAddBrandProductToCartButton(6);}
+    public void clickAddBrandProductToCart8Button(){
+        clickAddBrandProductToCartButton(7);}
+    public void clickAddBrandProductToCart9Button(){
+        clickAddBrandProductToCartButton(8);}
+    public void clickAddBrandProductToCart10Button(){
+        clickAddBrandProductToCartButton(9);}
+
     //single brand product sort dropdown menu options select methods
     public void selectDateOldNewOption(){sortDateOldNewOption.click();}
     public void selectNameAToZOption(){sortNameAToZOption.click();}

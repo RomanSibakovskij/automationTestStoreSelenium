@@ -2142,6 +2142,11 @@ public class TestMethods extends BaseTest{
         singleProductBrandPage.clickPageListViewButton();
         //log the available product data
         logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
     }
 
     //single product page sort dropdown menu options selection (Name A to Z) method
