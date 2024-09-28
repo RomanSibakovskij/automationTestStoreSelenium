@@ -44,5 +44,15 @@ public class SingleBrandProductTest extends TestMethods{
         addLancomeProductsToCartTest(homePage);
     }
 
+    // Test 015d -> add Gucci (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Gucci Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Gucci_Brand_Products")
+    void addGucciProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addGucciProductsToCartTest(homePage);
+    }
+
 
 }

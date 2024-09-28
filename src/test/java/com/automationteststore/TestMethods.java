@@ -2199,7 +2199,7 @@ public class TestMethods extends BaseTest{
     protected void addLancomeProductsToCartTest(HomePage homePage){
         //web element assert
         isHomePageWebElementDisplayed(homePage);
-        //click 'Mac' icon button on the brands scrolling list
+        //click 'Lancome' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart4Button();
         SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
         //assert the user gets on the brand page
@@ -2217,7 +2217,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Mac' icon button on the brands scrolling list
+        //click 'Lancome' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart4Button();
         //assert the user gets on the brand page
         assertEquals("LANCÔME", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2229,7 +2229,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Mac' icon button on the brands scrolling list
+        //click 'Lancome' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart4Button();
         //assert the user gets on the brand page
         assertEquals("LANCÔME", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2241,7 +2241,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Mac' icon button on the brands scrolling list
+        //click 'Lancome' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart4Button();
         //assert the user gets on the brand page
         assertEquals("LANCÔME", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2253,7 +2253,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
         //return to homepage
         homePage.clickHomePageLogo();
-        //click 'Mac' icon button on the brands scrolling list
+        //click 'Lancome' icon button on the brands scrolling list
         homePage.clickSingleBrandProductToCart4Button();
         //assert the user gets on the brand page
         assertEquals("LANCÔME", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
@@ -2263,6 +2263,41 @@ public class TestMethods extends BaseTest{
         singleProductBrandPage.clickAddBrandProductToCart7Button();
         //click single product page 'add to cart' button
         singleProductPage.clickAddToCartButton();
+    }
+
+    //single brand (Gucci) product addition to cart test method
+    protected void addGucciProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Mac' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart5Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("GUCCI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //sort the products by price 'High to Low'
+        singleProductBrandPage.selectPriceHighToLowOption();
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Gucci' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart5Button();
+        //assert the user gets on the brand page
+        assertEquals("GUCCI", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //click 'add to cart' button
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+//        //return to homepage
+//        homePage.clickHomePageLogo();
     }
 
     //single product page sort dropdown menu options selection (Name A to Z) method
