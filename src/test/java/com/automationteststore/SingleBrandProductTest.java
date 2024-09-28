@@ -168,4 +168,20 @@ public class SingleBrandProductTest extends TestMethods{
         productCheckoutConfirmationTest(checkoutPage);
     }
 
+    // Test 016d -> add Gucci (single brand) products to check out test (as a non-registered user)
+    @Test
+    @DisplayName("Add Gucci Products To Checkout As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Checkout")
+    @Tag("Gucci_Products_To_Checkout")
+    void addGucciProductToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        addGucciProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        validGuestAccountCreationTest(guestAccountPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+    }
+
 }
