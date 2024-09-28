@@ -34,5 +34,15 @@ public class SingleBrandProductTest extends TestMethods{
         addMacProductsToCartTest(homePage);
     }
 
+    // Test 015c -> add Lancome (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Lancome Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Lancome_Brand_Products")
+    void addLancomeProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addLancomeProductsToCartTest(homePage);
+    }
+
 
 }

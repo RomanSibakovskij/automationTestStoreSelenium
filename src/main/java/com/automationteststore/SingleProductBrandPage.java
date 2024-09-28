@@ -56,6 +56,9 @@ public class SingleProductBrandPage extends BasePage{
     private List<WebElement> productUnitPriceElements;
     @FindBy(xpath = "//div[@class='thumbnails list row']//a[@title='Add to Cart']")
     private List<WebElement> productAddToCartButtonElements;
+    //'call to order' button web element
+    @FindBy(xpath = "//a[@title='Call To Order']")
+    private WebElement callToOrderButton;
     //single brand product page view limit product web elements
     @FindBy(xpath = "//select[@id='limit']")
     private WebElement limitProductViewDropdownMenu;
@@ -102,7 +105,12 @@ public class SingleProductBrandPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(viewListButton));
         viewListButton.click();
     }
-
+    //single brand product page call to order button click method
+    public void clickCallToOrderButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(callToOrderButton));
+        callToOrderButton.click();
+    }
 
     //single brand product sort dropdown menu click method
     public void clickProductSortDropdownMenu(){

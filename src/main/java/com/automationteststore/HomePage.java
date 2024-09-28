@@ -114,6 +114,13 @@ public class HomePage extends BasePage{
         loginRegisterNavLink.click();
     }
 
+    //click homepage link method
+    public void clickHomePageLogo(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.elementToBeClickable(automationStoreHeaderLogo));
+        automationStoreHeaderLogo.click();
+    }
+
     //homepage products list data getter methods
     //featured product names getters
     public List<String> getFeaturedProductNames() {
