@@ -86,12 +86,22 @@ public class SingleBrandProductTest extends TestMethods{
 
     // Test 015h -> add Bulgari (single brand) products to cart test (as a non-registered user)
     @Test
-    @DisplayName("Add Bulgari Klein Products To Cart As A Non-Registered User")
+    @DisplayName("Add Bulgari Products To Cart As A Non-Registered User")
     @Tag("Add_Single_Brand_Products_To_Cart")
     @Tag("Bulgari_Brand_Products")
     void addBulgariProductToCartTest(){
         HomePage homePage = new HomePage(driver);
         addBulgariProductsToCartTest(homePage);
+    }
+
+    // Test 015i -> add Sephora (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Sephora Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Sephora_Brand_Products")
+    void addSephoraProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addSephoraProductsToCartTest(homePage);
     }
 
 

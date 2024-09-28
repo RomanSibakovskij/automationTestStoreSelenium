@@ -2500,6 +2500,26 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
     }
 
+    //single brand (sephora) product addition to cart test method
+    protected void addSephoraProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Benefit' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart10Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("SEPHORA", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        //click single product page 'add to cart' button
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        singleProductPage.clickAddToCartButton();
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
