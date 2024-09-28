@@ -61,7 +61,7 @@ public class InvoicePage extends BasePage{
     public String getShippingAddressColumnData() {return shippingAddressColumnData.getText();}
     public String getPaymentAddressColumnData() {return paymentAddressColumnData.getText();}
 
-    //product table data getter
+    //product table data getters
     public List<String> getProductName() {
         List<String> productName = new ArrayList<>();
         for (WebElement element : productNameElements) {

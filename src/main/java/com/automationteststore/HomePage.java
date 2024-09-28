@@ -248,6 +248,34 @@ public class HomePage extends BasePage{
         cartNavLink.click();
     }
 
+    //homepage benefit (single brand) products 'add to cart' button click index getter
+    public void clickSingleBrandProductToCartButton(int productIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(brandScrollingProductsElements.get(productIndex)));
+        brandScrollingProductsElements.get(productIndex).click();
+    }
+    //individual 'add to cart' button click methods
+    public void clickSingleBrandProductToCart1Button(){
+        clickSingleBrandProductToCartButton(0);}
+    public void clickSingleBrandProductToCart2Button(){
+        clickSingleBrandProductToCartButton(1);}
+    public void clickSingleBrandProductToCart3Button(){
+        clickSingleBrandProductToCartButton(2);}
+    public void clickSingleBrandProductToCart4Button(){
+        clickSingleBrandProductToCartButton(3);}
+    public void clickSingleBrandProductToCart5Button(){
+        clickSingleBrandProductToCartButton(4);}
+    public void clickSingleBrandProductToCart6Button(){
+        clickSingleBrandProductToCartButton(5);}
+    public void clickSingleBrandProductToCart7Button(){
+        clickSingleBrandProductToCartButton(6);}
+    public void clickSingleBrandProductToCart8Button(){
+        clickSingleBrandProductToCartButton(7);}
+    public void clickSingleBrandProductToCart9Button(){
+        clickSingleBrandProductToCartButton(8);}
+    public void clickSingleBrandProductToCart10Button(){
+        clickSingleBrandProductToCartButton(9);}
+
     //login/register page link name getter
     public String getLoginRegisterLinkText(){return loginRegisterNavLink.getText();}
 
@@ -372,7 +400,8 @@ public class HomePage extends BasePage{
     public boolean isSpecialsAvailableProductsAddToCartButtonDisplayed() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", specialAvailableProductsAddToCartButton);
-        return specialAvailableProductsAddToCartButton.isDisplayed();}
+        return specialAvailableProductsAddToCartButton.isDisplayed();
+    }
     public boolean isBrandScrollingProductsDisplayed() {
         for (WebElement element : brandScrollingProductsElements) {
             if (!element.isDisplayed()) {

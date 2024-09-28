@@ -2127,6 +2127,73 @@ public class TestMethods extends BaseTest{
         logInvoicePageData(invoicePage);
     }
 
+    //single brand (benefit) product addition to cart test method
+    protected void addBenefitProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Benefit' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart1Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("BENEFIT", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //sort the products by name 'A to Z'
+        singleProductBrandPage.selectNameAToZOption();
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+    }
+
+    //single product page sort dropdown menu options selection (Name A to Z) method
+    protected void selectNameAToZSortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Name A to Z' option
+        singleProductBrandPage.selectNameAToZOption();
+    }
+    //single product page sort dropdown menu options selection (Name Z to A) method
+    protected void selectNameZToASortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Name Z to A' option
+        singleProductBrandPage.selectNameZToAOption();
+    }
+    //single product page sort dropdown menu options selection (Price low to high) method
+    protected void selectPriceLowToHighSortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Price Low to High' option
+        singleProductBrandPage.selectPriceLowToHighOption();
+    }
+    //single product page sort dropdown menu options selection (Price high to low) method
+    protected void selectPriceHighToLowSortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Price High to Low' option
+        singleProductBrandPage.selectPriceHighToLowOption();
+    }
+    //single product page sort dropdown menu options selection (Rating highest) method
+    protected void selectPriceRatingHighestSortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Rating highest' option
+        singleProductBrandPage.selectRatingHighestOption();
+    }
+    //single product page sort dropdown menu options selection (Rating lowest) method
+    protected void selectPriceRatingLowestSortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Rating lowest' option
+        singleProductBrandPage.selectRatingLowestOption();
+    }
+    //single product page sort dropdown menu options selection (Date new > old) method
+    protected void selectPriceDateNewOldSortOption(SingleProductBrandPage singleProductBrandPage){
+        //click product sort dropdown menu method
+        singleProductBrandPage.clickProductSortDropdownMenu();
+        //select 'Date new > old' option
+        singleProductBrandPage.selectDateNewOldOption();
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
@@ -2237,6 +2304,13 @@ public class TestMethods extends BaseTest{
         if(invoicePage.isOrderCommentDisplayed()) {
             logger.info("Order comment(s): " + invoicePage.getOrderComment());
         }
+    }
+    //single product brand available products logger
+    protected void logSingleProductBrandData(SingleProductBrandPage singleProductBrandPage){
+        System.out.println("Available products on single product brand page: " + "\n");
+        logger.info("Product name(s): " + singleProductBrandPage.getProductName());
+        logger.info("Product description(s): " + singleProductBrandPage.getProductDescription());
+        logger.info("Product unit price(s) (With old price if present): " + singleProductBrandPage.getProductUnitPrice());
     }
 
     //web page element assert methods
@@ -2609,6 +2683,37 @@ public class TestMethods extends BaseTest{
         if(!invoicePage.isOrderCommentDisplayed()){
             logger.info("The order history table hasn't got any comments posted there");
         }
+    }
+
+    //single brand page web element assert
+    protected void isSingleBrandPageWebElementDisplayed(SingleProductBrandPage singleProductBrandPage){
+        //assert single product brand page title is displayed
+        assertTrue(singleProductBrandPage.isBrandProductPageTitleDisplayed(), "The single brand product page title isn't displayed");
+        //assert single product brand page brand image icon is displayed
+        assertTrue(singleProductBrandPage.isBrandProductPageImageIconDisplayed(), "The single brand product page image icon isn't displayed");
+        //assert single product brand page sort dropdown menu is displayed
+        assertTrue(singleProductBrandPage.isSortDropdownMenuDisplayed(), "The single brand product page sort dropdown menu isn't displayed");
+        //assert single product brand page view list button is displayed
+        assertTrue(singleProductBrandPage.isViewListButtonDisplayed(), "The single brand product page view list button isn't displayed");
+        //assert single product brand page view grid button is displayed
+        assertTrue(singleProductBrandPage.isViewGridButtonDisplayed(), "The single brand product page view grid button isn't displayed");
+        //assert single product brand page product image is displayed
+        assertTrue(singleProductBrandPage.isProductImageDisplayed(), "The single brand product page product image isn't displayed");
+        //assert single product brand page product name is displayed
+        assertTrue(singleProductBrandPage.isProductNameDisplayed(), "The single brand product page product name isn't displayed");
+        //assert single product brand page product description is displayed
+        assertTrue(singleProductBrandPage.isProductDescriptionDisplayed(), "The single brand product page product description isn't displayed");
+        //assert single product brand page product view link is displayed
+        assertTrue(singleProductBrandPage.isProductViewLinkDisplayed(), "The single brand product page product view link isn't displayed");
+        //assert single product brand page product review link is displayed
+        assertTrue(singleProductBrandPage.isProductReviewLinkDisplayed(), "The single brand product page product review link isn't displayed");
+        //assert single product brand page product unit price is displayed
+        assertTrue(singleProductBrandPage.isProductUnitPriceDisplayed(), "The single brand product page product unit price isn't displayed");
+        //assert single product brand page product 'add to cart' button is displayed
+        assertTrue(singleProductBrandPage.isProductAddToCartButtonDisplayed(), "The single brand product page 'add to cart' button isn't displayed");
+        //assert single product brand page product view limit dropdown menu is displayed
+        assertTrue(singleProductBrandPage.isLimitProductViewDropdownMenuDisplayed(), "The single brand product page product limit view dropdown menu isn't displayed");
+
     }
 
 }
