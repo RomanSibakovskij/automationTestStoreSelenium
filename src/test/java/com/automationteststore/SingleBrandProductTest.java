@@ -74,5 +74,15 @@ public class SingleBrandProductTest extends TestMethods{
         addDoveProductsToCartTest(homePage);
     }
 
+    // Test 015g -> add Calvin Klein (single brand) products to cart test (as a non-registered user)
+    @Test
+    @DisplayName("Add Calvin Klein Products To Cart As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Cart")
+    @Tag("Calvin_Klein_Brand_Products")
+    void addCalvinKleinProductToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        addCalvinKleinProductsToCartTest(homePage);
+    }
+
 
 }

@@ -2377,8 +2377,78 @@ public class TestMethods extends BaseTest{
         logSingleProductBrandData(singleProductBrandPage);
         //click 'add to cart' button method
         singleProductBrandPage.clickAddBrandProductToCart1Button();
-        //click 'Cart' navlink
+        //click 'Cart' nav link
         homePage.clickCartNavLink();
+    }
+
+    //single brand (Calvin Klein) product addition to cart test method
+    protected void addCalvinKleinProductsToCartTest(HomePage homePage){
+        //web element assert
+        isHomePageWebElementDisplayed(homePage);
+        //click 'Calvin Klein' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart8Button();
+        SingleProductBrandPage singleProductBrandPage = new SingleProductBrandPage(driver);
+        //assert the user gets on the brand page
+        assertEquals("CALVIN KLEIN", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //sort the products by Date 'New > Old'
+        singleProductBrandPage.selectDateNewOldOption();
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        //log the available product data
+        logSingleProductBrandData(singleProductBrandPage);
+        //click 'add to cart' button methods
+        singleProductBrandPage.clickAddBrandProductToCart1Button();
+        singleProductBrandPage.clickAddBrandProductToCart3Button();
+        singleProductBrandPage.clickAddBrandProductToCart4Button();
+        singleProductBrandPage.clickAddBrandProductToCart10Button();
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Calvin Klein' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart8Button();
+        //assert the user gets on the brand page
+        assertEquals("CALVIN KLEIN", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        singleProductBrandPage.clickAddBrandProductToCart5Button();;
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Calvin Klein' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart8Button();
+        //assert the user gets on the brand page
+        assertEquals("CALVIN KLEIN", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        singleProductBrandPage.clickAddBrandProductToCart6Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Calvin Klein' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart8Button();
+        //assert the user gets on the brand page
+        assertEquals("CALVIN KLEIN", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        singleProductBrandPage.clickAddBrandProductToCart3Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
+        //return to homepage
+        homePage.clickHomePageLogo();
+        //click 'Calvin Klein' icon button on the brands scrolling list
+        homePage.clickSingleBrandProductToCart8Button();
+        //assert the user gets on the brand page
+        assertEquals("CALVIN KLEIN", singleProductBrandPage.getBrandProductPageTitle(), "The single product brand page title isn't displayed or the user is on the wrong page");
+        //click 'list view' option
+        singleProductBrandPage.clickPageListViewButton();
+        singleProductBrandPage.clickAddBrandProductToCart2Button();
+        //click single product page 'add to cart' button
+        singleProductPage.clickAddToCartButton();
     }
 
     //single product page sort dropdown menu options selection (Name A to Z) method
