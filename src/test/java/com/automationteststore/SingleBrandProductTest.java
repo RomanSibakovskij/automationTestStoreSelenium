@@ -104,5 +104,21 @@ public class SingleBrandProductTest extends TestMethods{
         addSephoraProductsToCartTest(homePage);
     }
 
+    // Test 016 -> add Benefit (single brand) products to checkout test (as a non-registered user)
+    @Test
+    @DisplayName("Add Benefit Products To Checkout As A Non-Registered User")
+    @Tag("Add_Single_Brand_Products_To_Checkout")
+    @Tag("Benefit_Products_To_Checkout")
+    void addBenefitProductToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        addBenefitProductsToCartTest(homePage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutTest(shoppingCartPage);
+        GuestAccountPage guestAccountPage = new GuestAccountPage(driver);
+        validGuestAccountCreationTest(guestAccountPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+    }
+
 
 }
