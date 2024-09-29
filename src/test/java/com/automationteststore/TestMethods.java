@@ -2523,7 +2523,7 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
     }
 
-    //apparel and accessories products 'add to cart' test method
+    //apparel and accessories products (women's shoes) 'add to cart' test method
     protected void apparelAccessoriesShoesAddToCartRegUserTest(){
         HomePage homePage = new HomePage(driver);
         //hover above 'Apparel and accessories' menu
@@ -2584,6 +2584,20 @@ public class TestMethods extends BaseTest{
         isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(singleProductPage);
         //click 'add to cart'
         singleProductPage.clickAddToCartButton();
+    }
+
+    //apparel and accessories products (t-shirts) 'add to cart' test method
+    protected void apparelAccessoriesTShirtsAddToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Apparel and accessories' menu
+        homePage.navigateToApparelAndAccessories();
+        //click 'Shoes' category option
+        homePage.clickTShirtsCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("T-SHIRTS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
     }
 
     //single product data loggers

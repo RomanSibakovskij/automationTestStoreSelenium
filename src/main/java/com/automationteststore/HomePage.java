@@ -137,6 +137,8 @@ public class HomePage extends BasePage{
 
     //click 'Shoes' category dropdown menu option method
     public void clickShoesCategoryLink(){shoesCategoryProductLink.click();}
+    //click 'T-Shirts' category dropdown menu option method
+    public void clickTShirtsCategoryLink(){tShirtsCategoryProductLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters
