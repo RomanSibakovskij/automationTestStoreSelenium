@@ -2560,7 +2560,30 @@ public class TestMethods extends BaseTest{
         isShoeColorCheckboxWebElementDisplayed(singleProductPage);
         //click 'add to cart'
         singleProductPage.clickAddToCartButton();
-
+        //hover above 'Apparel and accessories' menu
+        homePage.navigateToApparelAndAccessories();
+        //click 'Shoes' category option
+        homePage.clickShoesCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add shoes into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart3Button();
+        //shoe size(euro) dropdown menu web element assert(fiorella purple)
+        isShoeEuroSizeDropdownMenuWebElementDisplayed(singleProductPage);
+        //click 'add to cart'
+        singleProductPage.clickAddToCartButton();
+        //hover above 'Apparel and accessories' menu
+        homePage.navigateToApparelAndAccessories();
+        //click 'Shoes' category option
+        homePage.clickShoesCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add shoes into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
+        //shoe size(UK) and color dropdown menu web element assert(ruby shoe women's jada t-bar)
+        isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(singleProductPage);
+        //click 'add to cart'
+        singleProductPage.clickAddToCartButton();
     }
 
     //single product data loggers
@@ -3152,6 +3175,18 @@ public class TestMethods extends BaseTest{
         assertTrue(singleProductPage.isShoeBlueColorCheckboxDisplayed(), "The shoe blue color checkbox isn't displayed");
         //assert white shoe color checkbox is displayed
         assertTrue(singleProductPage.isShoeWhiteColorCheckboxDisplayed(), "The shoe white color checkbox isn't displayed");
+    }
+
+    //shoes size (euro) dropdown menu web element assert (fiorella purple peep toes)
+    protected void isShoeEuroSizeDropdownMenuWebElementDisplayed(SingleProductPage singleProductPage){
+        //assert shoe size (euro) dropdown menu is displayed
+        assertTrue(singleProductPage.isShoeEuroSizeDropdownMenuDisplayed(), "The shoe size (euro) dropdown menu isn't displayed");
+    }
+
+    //shoes size (UK) and color dropdown menu web element assert (ruby shoe women's jada t-bar)
+    protected void isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(SingleProductPage singleProductPage){
+        //assert shoe size (UK) and color dropdown menu is displayed
+        assertTrue(singleProductPage.isShoeUKSizeAndColorDropdownMenuDisplayed(), "The shoe size (UK) and color dropdown menu isn't displayed");
     }
 
 }

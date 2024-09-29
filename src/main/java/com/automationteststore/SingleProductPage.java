@@ -48,10 +48,10 @@ public class SingleProductPage extends BasePage{
     @FindBy(xpath = "//ul[@class='productinfo']/li[2]/a/img")
     private WebElement productManufacturer;
 
+    //separate single product web elements
     //fragrance checkbox option web elements (when present)
     @FindBy(xpath = "//input[@id='option335720']")
     private WebElement parfumeFragranceOption;
-
     //shoe size checkbox web elements
     @FindBy(xpath = "//input[@id='option344747']")
     private WebElement size3UKOption;
@@ -63,7 +63,6 @@ public class SingleProductPage extends BasePage{
     private WebElement size6UKOption;
     @FindBy(xpath = "//input[@id='option344751']")
     private WebElement size7UKOption;
-
     //shoes color checkboxes selector
     @FindBy(xpath = "//input[@id='option347763']")
     private WebElement blackColorOption;
@@ -75,6 +74,12 @@ public class SingleProductPage extends BasePage{
     private WebElement blueColorOption;
     @FindBy(xpath = "//input[@id='option347767']")
     private WebElement whiteColorOption;
+    //shoes size (euro) dropdown menu web element
+    @FindBy(xpath = "//select[@id='option342']")
+    private WebElement shoeSizeDropdownMenu;
+    //shoes size (UK) and color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option346']")
+    private WebElement shoeSizeAndColorDropdownMenu;
 
     public SingleProductPage(WebDriver driver) {
         super(driver);
@@ -199,5 +204,11 @@ public class SingleProductPage extends BasePage{
     public boolean isShoeGreenColorCheckboxDisplayed(){return greenColorOption.isDisplayed();}
     public boolean isShoeBlueColorCheckboxDisplayed(){return blueColorOption.isDisplayed();}
     public boolean isShoeWhiteColorCheckboxDisplayed(){return whiteColorOption.isDisplayed();}
+
+    //shoe size (euro) web element assert method(fiorella purple peep toes)
+    public boolean isShoeEuroSizeDropdownMenuDisplayed(){return shoeSizeDropdownMenu.isDisplayed();}
+
+    //shoe size (UK) and color web element assert method(ruby shoe women's jada)
+    public boolean isShoeUKSizeAndColorDropdownMenuDisplayed(){return shoeSizeAndColorDropdownMenu.isDisplayed();}
 
 }
