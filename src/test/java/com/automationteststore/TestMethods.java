@@ -2591,7 +2591,7 @@ public class TestMethods extends BaseTest{
         HomePage homePage = new HomePage(driver);
         //hover above 'Apparel and accessories' menu
         homePage.navigateToApparelAndAccessories();
-        //click 'Shoes' category option
+        //click 'T-Shirt' category option
         homePage.clickTShirtsCategoryLink();
         SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
@@ -2600,7 +2600,47 @@ public class TestMethods extends BaseTest{
         singleCategoryProductPage.clickPageListViewButton();
         //click to add t-shirt into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
-
+        MenTShirtsPage menTShirtsPage = new MenTShirtsPage(driver);
+        //men t-shirts web element assert(Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie)
+        isDesignerMenTShirtWebElementDisplayed(menTShirtsPage);
+        //click 'add to cart' button
+        menTShirtsPage.clickAddToCartButton();
+        //hover above 'Apparel and accessories' menu
+        homePage.navigateToApparelAndAccessories();
+        //click 'T-Shirt' category option
+        homePage.clickTShirtsCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add t-shirt into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //men t-shirts web element assert(Casual 3/4 Sleeve Baseball T-Shirt)
+        isCasualMenTShirtWebElementDisplayed(menTShirtsPage);
+        //test click dropdown menu (log if the element click produces errors)
+        menTShirtsPage.clickTShirtColourAndSizeDropdownMenu();
+        //try clicking color and size options (to verify if they're enabled or not)
+        menTShirtsPage.clickTShirtColourXXLRedOption();
+        //test click dropdown menu (log if the element click produces errors)
+        menTShirtsPage.clickTShirtColourAndSizeDropdownMenu();
+        //try clicking color and size options (to verify if they're enabled or not)
+        menTShirtsPage.clickTShirtColourXLRedOption();
+        //test click dropdown menu (log if the element click produces errors)
+        menTShirtsPage.clickTShirtColourAndSizeDropdownMenu();
+        //try clicking color and size options (to verify if they're enabled or not)
+        menTShirtsPage.clickTShirtColourSRedOption();
+        //test click dropdown menu (log if the element click produces errors)
+        menTShirtsPage.clickTShirtColourAndSizeDropdownMenu();
+        //try clicking color and size options (to verify if they're enabled or not)
+        menTShirtsPage.clickTShirtColourXXLBlueOption();
+        //test click dropdown menu (log if the element click produces errors)
+        menTShirtsPage.clickTShirtColourAndSizeDropdownMenu();
+        //try clicking color and size options (to verify if they're enabled or not)
+        menTShirtsPage.clickTShirtColourLBlueOption();
+        //test click dropdown menu (log if the element click produces errors)
+        menTShirtsPage.clickTShirtColourAndSizeDropdownMenu();
+        //try clicking color and size options (to verify if they're enabled or not)
+        menTShirtsPage.clickTShirtColourXXLYellowOption();
+        //click 'add to cart' button
+        menTShirtsPage.clickAddToCartButton();
     }
 
     //single product data loggers
@@ -3213,4 +3253,22 @@ public class TestMethods extends BaseTest{
         //assert 'add to cart' button is displayed
         assertTrue(womenShoesPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
     }
+    //men t-shirts page web element assert(Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie)
+    protected void isDesignerMenTShirtWebElementDisplayed(MenTShirtsPage menTShirtsPage){
+        //assert t-shirt color dropdown menu is displayed
+        assertTrue(menTShirtsPage.isTShirtColourDropdownMenuDisplayed(), "The t-shirt colour dropdown menu isn't displayed");
+        //assert t-shirt size dropdown menu is displayed
+        assertTrue(menTShirtsPage.isTShirtSizeDropdownMenuDisplayed(), "The t-shirt size dropdown menu isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(menTShirtsPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
+    }
+
+    //men t-shirts page web element assert(Casual 3/4 Sleeve Baseball T-Shirt)
+    protected void isCasualMenTShirtWebElementDisplayed(MenTShirtsPage menTShirtsPage){
+        //assert t-shirt color dropdown menu is displayed
+        assertTrue(menTShirtsPage.isTShirtColourAndSizeDropdownMenuDisplayed(), "The t-shirt colour and size dropdown menu isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(menTShirtsPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
+    }
+
 }

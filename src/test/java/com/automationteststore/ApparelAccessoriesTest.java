@@ -16,7 +16,7 @@ public class ApparelAccessoriesTest extends TestMethods{
         apparelAccessoriesShoesAddToCartRegUserTest();
     }
 
-    // Test 017a -> add apparel & accessories products (t-shirts) to cart as a registered user
+    // Test 017a -> add apparel & accessories products (men t-shirts) to cart as a registered user
     @Test
     @DisplayName("Add Apparel & Accessories Products (T-Shirts) To Cart as Registered User")
     @Tag("Apparel_And_Accessories_TShirts_To_Cart")

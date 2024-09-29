@@ -73,7 +73,7 @@ public class WomenShoesPage extends BasePage{
         size7UKOption.click();
     }
 
-    //single product 'add to cart' button click method
+    //'add to cart' button click method
     public void clickAddToCartButton(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
