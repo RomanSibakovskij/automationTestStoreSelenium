@@ -232,7 +232,7 @@ public class SingleBrandProductTest extends TestMethods{
         productCheckoutConfirmationTest(checkoutPage);
     }
 
-    // Test 015h -> add Bulgari (single brand) products to check out test (as a non-registered user)
+    // Test 016h -> add Bulgari (single brand) products to check out test (as a non-registered user)
     @Test
     @DisplayName("Add Bulgari Products To Checkout As A Non-Registered User")
     @Tag("Add_Single_Brand_Products_To_Checkout")

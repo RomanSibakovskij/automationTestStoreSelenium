@@ -1,6 +1,7 @@
 package com.automationteststore;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,8 +45,13 @@ public class HomePage extends BasePage{
     //homepage navbar category web elements
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[1]/a")
     private WebElement homeHoverMenu;
-    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[2]/a")
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[2]")
     private WebElement apparelAccessoriesHoverMenu;
+    //apparel and accessories hover menu option web elements
+    @FindBy(xpath = "//div[@class='subcategories']/ul[1]//a[@href='https://automationteststore.com/index.php?rt=product/category&path=68_69']")
+    private WebElement shoesCategoryProductLink;
+    @FindBy(xpath = "//div[@class='subcategories']/ul[1]//a[@href='https://automationteststore.com/index.php?rt=product/category&path=68_70']")
+    private WebElement tShirtsCategoryProductLink;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/a")
     private WebElement makeupHoverMenu;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/a")
@@ -120,6 +126,17 @@ public class HomePage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(automationStoreHeaderLogo));
         automationStoreHeaderLogo.click();
     }
+
+    //apparel and accessories hover menu method
+    public void navigateToApparelAndAccessories(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(apparelAccessoriesHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(apparelAccessoriesHoverMenu).perform();
+    }
+
+    //click 'Shoes' category dropdown menu option method
+    public void clickShoesCategoryLink(){shoesCategoryProductLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters

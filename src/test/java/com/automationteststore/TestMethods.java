@@ -62,6 +62,9 @@ public class TestMethods extends BaseTest{
         AccountPage accountPage = new AccountPage(driver);
         //assert the correct user is being displayed in the account dashboard
         assertEquals(createAccountPage.getFirstName(), accountPage.getFirstNameFromDashboardText(), "The first names don't match expectations");
+        HomePage homePage = new HomePage(driver);
+        //return to homepage from 'My Account' page
+        homePage.clickHomePageLogo();
     }
 
     //invalid user account registration test method (no first name)
@@ -2520,6 +2523,46 @@ public class TestMethods extends BaseTest{
         singleProductPage.clickAddToCartButton();
     }
 
+    //apparel and accessories products 'add to cart' test method
+    protected void apparelAccessoriesShoesAddToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Apparel and accessories' menu
+        homePage.navigateToApparelAndAccessories();
+        //click 'Shoes' category option
+        homePage.clickShoesCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("SHOES", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log available product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add shoes into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        //shoe page web element assert (shoe size checkboxes)
+        isNewLadiesShoeSizeCheckboxWebElementDisplayed(singleProductPage);
+        //select shoe size
+        singleProductPage.clickSize5UKOption();
+        //click 'add to cart'
+        singleProductPage.clickAddToCartButton();
+        //hover above 'Apparel and accessories' menu
+        homePage.navigateToApparelAndAccessories();
+        //click 'Shoes' category option
+        homePage.clickShoesCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add shoes into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //shoe color checkbox web element assert (women's high heel point toe stiletto)
+        isShoeColorCheckboxWebElementDisplayed(singleProductPage);
+        //click 'add to cart'
+        singleProductPage.clickAddToCartButton();
+
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
@@ -2634,9 +2677,23 @@ public class TestMethods extends BaseTest{
     //single product brand available products logger
     protected void logSingleProductBrandData(SingleProductBrandPage singleProductBrandPage){
         System.out.println("Available products on single product brand page: " + "\n");
-        logger.info("Product name(s): " + singleProductBrandPage.getProductName());
-        logger.info("Product description(s): " + singleProductBrandPage.getProductDescription());
-        logger.info("Product unit price(s) (With old price if present): " + singleProductBrandPage.getProductUnitPrice());
+        logger.info("Brand product name(s): " + singleProductBrandPage.getProductName());
+        logger.info("Brand product description(s): " + singleProductBrandPage.getProductDescription());
+        logger.info("Brand product unit price(s) (With old price if present): " + singleProductBrandPage.getProductUnitPrice());
+    }
+
+    //single product brand available products logger
+    protected void logSingleCategoryProductData(SingleCategoryProductPage singleCategoryProductPage){
+        System.out.println("Available products on single category product brand page: " + "\n");
+        logger.info("Selected category product name(s): " + singleCategoryProductPage.getProductName());
+        logger.info("Selected category product description(s): " + singleCategoryProductPage.getProductDescription());
+        if(singleCategoryProductPage.isProductAdditionalDescriptionDisplayed()){
+            logger.info("Selected category product additional description: " + singleCategoryProductPage.getProductAdditionalDescription());
+        }
+        if(singleCategoryProductPage.isProductExtendedDescriptionDisplayed()) {
+            logger.info("Selected category product extended description: " + singleCategoryProductPage.getProductExtendedDescription());
+        }
+        logger.info("Selected category product unit price(s) (With old price if present): " + singleCategoryProductPage.getProductUnitPrice());
     }
 
     //web page element assert methods
@@ -3040,6 +3097,61 @@ public class TestMethods extends BaseTest{
         //assert single product brand page product view limit dropdown menu is displayed
         assertTrue(singleProductBrandPage.isLimitProductViewDropdownMenuDisplayed(), "The single brand product page product limit view dropdown menu isn't displayed");
 
+    }
+    //single product category page web element assert
+    protected void isSingleCategoryPageWebElementDisplayed(SingleCategoryProductPage singleCategoryProductPage){
+        //assert single product brand page title is displayed
+        assertTrue(singleCategoryProductPage.isCategoryProductPageTitleDisplayed(), "The single brand product page title isn't displayed");
+        //assert single product brand page sort dropdown menu is displayed
+        assertTrue(singleCategoryProductPage.isSortDropdownMenuDisplayed(), "The single brand product page sort dropdown menu isn't displayed");
+        //assert single product brand page view list button is displayed
+        assertTrue(singleCategoryProductPage.isViewListButtonDisplayed(), "The single brand product page view list button isn't displayed");
+        //assert single product brand page view grid button is displayed
+        assertTrue(singleCategoryProductPage.isViewGridButtonDisplayed(), "The single brand product page view grid button isn't displayed");
+        //assert single product brand page product image is displayed
+        assertTrue(singleCategoryProductPage.isProductImageDisplayed(), "The single brand product page product image isn't displayed");
+        //assert single product brand page product name is displayed
+        assertTrue(singleCategoryProductPage.isProductNameDisplayed(), "The single brand product page product name isn't displayed");
+        //assert single product brand page product description is displayed
+        assertTrue(singleCategoryProductPage.isProductDescriptionDisplayed(), "The single brand product page product description isn't displayed");
+        //assert single product brand page product view link is displayed
+        assertTrue(singleCategoryProductPage.isProductViewLinkDisplayed(), "The single brand product page product view link isn't displayed");
+        //assert single product brand page product review link is displayed
+        assertTrue(singleCategoryProductPage.isProductReviewLinkDisplayed(), "The single brand product page product review link isn't displayed");
+        //assert single product brand page product unit price is displayed
+        assertTrue(singleCategoryProductPage.isProductUnitPriceDisplayed(), "The single brand product page product unit price isn't displayed");
+        //assert single product brand page product 'add to cart' button is displayed
+        assertTrue(singleCategoryProductPage.isProductAddToCartButtonDisplayed(), "The single brand product page 'add to cart' button isn't displayed");
+        //assert single product brand page product view limit dropdown menu is displayed
+        assertTrue(singleCategoryProductPage.isLimitProductViewDropdownMenuDisplayed(), "The single brand product page product limit view dropdown menu isn't displayed");
+    }
+
+    //shoes web element assert (new ladies high wedge heel toe)
+    protected void isNewLadiesShoeSizeCheckboxWebElementDisplayed(SingleProductPage singleProductPage){
+        //assert size 3 UK checkbox is displayed
+        assertTrue(singleProductPage.isShoeSize3UKCheckboxDisplayed(), "The shoe size 3 UK checkbox isn't displayed");
+        //assert size 4 UK checkbox is displayed
+        assertTrue(singleProductPage.isShoeSize4UKCheckboxDisplayed(), "The shoe size 4 UK checkbox isn't displayed");
+        //assert size 5 UK checkbox is displayed
+        assertTrue(singleProductPage.isShoeSize5UKCheckboxDisplayed(), "The shoe size 5 UK checkbox isn't displayed");
+        //assert size 6 UK checkbox is displayed
+        assertTrue(singleProductPage.isShoeSize6UKCheckboxDisplayed(), "The shoe size 6 UK checkbox isn't displayed");
+        //assert size 7 UK checkbox is displayed
+        assertTrue(singleProductPage.isShoeSize7UKCheckboxDisplayed(), "The shoe size 7 UK checkbox isn't displayed");
+    }
+
+    //shoes color checkbox web element assert (Women's high heel point toe stiletto)
+    protected void isShoeColorCheckboxWebElementDisplayed(SingleProductPage singleProductPage){
+        //assert black shoe color checkbox is displayed
+        assertTrue(singleProductPage.isShoeBlackColorCheckboxDisplayed(), "The shoe black color checkbox isn't displayed");
+        //assert red shoe color checkbox is displayed
+        assertTrue(singleProductPage.isShoeRedColorCheckboxDisplayed(), "The shoe red color checkbox isn't displayed");
+        //assert green shoe color checkbox is displayed
+        assertTrue(singleProductPage.isShoeGreenColorCheckboxDisplayed(), "The shoe green color checkbox isn't displayed");
+        //assert blue shoe color checkbox is displayed
+        assertTrue(singleProductPage.isShoeBlueColorCheckboxDisplayed(), "The shoe blue color checkbox isn't displayed");
+        //assert white shoe color checkbox is displayed
+        assertTrue(singleProductPage.isShoeWhiteColorCheckboxDisplayed(), "The shoe white color checkbox isn't displayed");
     }
 
 }
