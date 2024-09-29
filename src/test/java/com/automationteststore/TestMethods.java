@@ -2541,13 +2541,13 @@ public class TestMethods extends BaseTest{
         logSingleCategoryProductData(singleCategoryProductPage);
         //click to add shoes into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
-        SingleProductPage singleProductPage = new SingleProductPage(driver);
+        WomenShoesPage womenShoesPage = new WomenShoesPage(driver);
         //shoe page web element assert (shoe size checkboxes)
-        isNewLadiesShoeSizeCheckboxWebElementDisplayed(singleProductPage);
+        isNewLadiesShoeSizeCheckboxWebElementDisplayed(womenShoesPage);
         //select shoe size
-        singleProductPage.clickSize5UKOption();
+        womenShoesPage.clickSize5UKOption();
         //click 'add to cart'
-        singleProductPage.clickAddToCartButton();
+        womenShoesPage.clickAddToCartButton();
         //hover above 'Apparel and accessories' menu
         homePage.navigateToApparelAndAccessories();
         //click 'Shoes' category option
@@ -2557,9 +2557,9 @@ public class TestMethods extends BaseTest{
         //click to add shoes into cart
         singleCategoryProductPage.clickAddCategoryProductToCart2Button();
         //shoe color checkbox web element assert (women's high heel point toe stiletto)
-        isShoeColorCheckboxWebElementDisplayed(singleProductPage);
+        isShoeColorCheckboxWebElementDisplayed(womenShoesPage);
         //click 'add to cart'
-        singleProductPage.clickAddToCartButton();
+        womenShoesPage.clickAddToCartButton();
         //hover above 'Apparel and accessories' menu
         homePage.navigateToApparelAndAccessories();
         //click 'Shoes' category option
@@ -2569,9 +2569,9 @@ public class TestMethods extends BaseTest{
         //click to add shoes into cart
         singleCategoryProductPage.clickAddCategoryProductToCart3Button();
         //shoe size(euro) dropdown menu web element assert(fiorella purple)
-        isShoeEuroSizeDropdownMenuWebElementDisplayed(singleProductPage);
+        isShoeEuroSizeDropdownMenuWebElementDisplayed(womenShoesPage);
         //click 'add to cart'
-        singleProductPage.clickAddToCartButton();
+        womenShoesPage.clickAddToCartButton();
         //hover above 'Apparel and accessories' menu
         homePage.navigateToApparelAndAccessories();
         //click 'Shoes' category option
@@ -2581,9 +2581,9 @@ public class TestMethods extends BaseTest{
         //click to add shoes into cart
         singleCategoryProductPage.clickAddCategoryProductToCart4Button();
         //shoe size(UK) and color dropdown menu web element assert(ruby shoe women's jada t-bar)
-        isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(singleProductPage);
+        isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(womenShoesPage);
         //click 'add to cart'
-        singleProductPage.clickAddToCartButton();
+        womenShoesPage.clickAddToCartButton();
     }
 
     //apparel and accessories products (t-shirts) 'add to cart' test method
@@ -2598,6 +2598,9 @@ public class TestMethods extends BaseTest{
         assertEquals("T-SHIRTS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
         singleCategoryProductPage.clickPageListViewButton();
+        //click to add t-shirt into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+
     }
 
     //single product data loggers
@@ -3164,43 +3167,50 @@ public class TestMethods extends BaseTest{
     }
 
     //shoes web element assert (new ladies high wedge heel toe)
-    protected void isNewLadiesShoeSizeCheckboxWebElementDisplayed(SingleProductPage singleProductPage){
+    protected void isNewLadiesShoeSizeCheckboxWebElementDisplayed(WomenShoesPage womenShoesPage){
         //assert size 3 UK checkbox is displayed
-        assertTrue(singleProductPage.isShoeSize3UKCheckboxDisplayed(), "The shoe size 3 UK checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeSize3UKCheckboxDisplayed(), "The shoe size 3 UK checkbox isn't displayed");
         //assert size 4 UK checkbox is displayed
-        assertTrue(singleProductPage.isShoeSize4UKCheckboxDisplayed(), "The shoe size 4 UK checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeSize4UKCheckboxDisplayed(), "The shoe size 4 UK checkbox isn't displayed");
         //assert size 5 UK checkbox is displayed
-        assertTrue(singleProductPage.isShoeSize5UKCheckboxDisplayed(), "The shoe size 5 UK checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeSize5UKCheckboxDisplayed(), "The shoe size 5 UK checkbox isn't displayed");
         //assert size 6 UK checkbox is displayed
-        assertTrue(singleProductPage.isShoeSize6UKCheckboxDisplayed(), "The shoe size 6 UK checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeSize6UKCheckboxDisplayed(), "The shoe size 6 UK checkbox isn't displayed");
         //assert size 7 UK checkbox is displayed
-        assertTrue(singleProductPage.isShoeSize7UKCheckboxDisplayed(), "The shoe size 7 UK checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeSize7UKCheckboxDisplayed(), "The shoe size 7 UK checkbox isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(womenShoesPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
     }
 
     //shoes color checkbox web element assert (Women's high heel point toe stiletto)
-    protected void isShoeColorCheckboxWebElementDisplayed(SingleProductPage singleProductPage){
+    protected void isShoeColorCheckboxWebElementDisplayed(WomenShoesPage womenShoesPage){
         //assert black shoe color checkbox is displayed
-        assertTrue(singleProductPage.isShoeBlackColorCheckboxDisplayed(), "The shoe black color checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeBlackColorCheckboxDisplayed(), "The shoe black color checkbox isn't displayed");
         //assert red shoe color checkbox is displayed
-        assertTrue(singleProductPage.isShoeRedColorCheckboxDisplayed(), "The shoe red color checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeRedColorCheckboxDisplayed(), "The shoe red color checkbox isn't displayed");
         //assert green shoe color checkbox is displayed
-        assertTrue(singleProductPage.isShoeGreenColorCheckboxDisplayed(), "The shoe green color checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeGreenColorCheckboxDisplayed(), "The shoe green color checkbox isn't displayed");
         //assert blue shoe color checkbox is displayed
-        assertTrue(singleProductPage.isShoeBlueColorCheckboxDisplayed(), "The shoe blue color checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeBlueColorCheckboxDisplayed(), "The shoe blue color checkbox isn't displayed");
         //assert white shoe color checkbox is displayed
-        assertTrue(singleProductPage.isShoeWhiteColorCheckboxDisplayed(), "The shoe white color checkbox isn't displayed");
+        assertTrue(womenShoesPage.isShoeWhiteColorCheckboxDisplayed(), "The shoe white color checkbox isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(womenShoesPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
     }
 
     //shoes size (euro) dropdown menu web element assert (fiorella purple peep toes)
-    protected void isShoeEuroSizeDropdownMenuWebElementDisplayed(SingleProductPage singleProductPage){
+    protected void isShoeEuroSizeDropdownMenuWebElementDisplayed(WomenShoesPage womenShoesPage){
         //assert shoe size (euro) dropdown menu is displayed
-        assertTrue(singleProductPage.isShoeEuroSizeDropdownMenuDisplayed(), "The shoe size (euro) dropdown menu isn't displayed");
+        assertTrue(womenShoesPage.isShoeEuroSizeDropdownMenuDisplayed(), "The shoe size (euro) dropdown menu isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(womenShoesPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
     }
 
     //shoes size (UK) and color dropdown menu web element assert (ruby shoe women's jada t-bar)
-    protected void isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(SingleProductPage singleProductPage){
+    protected void isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(WomenShoesPage womenShoesPage){
         //assert shoe size (UK) and color dropdown menu is displayed
-        assertTrue(singleProductPage.isShoeUKSizeAndColorDropdownMenuDisplayed(), "The shoe size (UK) and color dropdown menu isn't displayed");
+        assertTrue(womenShoesPage.isShoeUKSizeAndColorDropdownMenuDisplayed(), "The shoe size (UK) and color dropdown menu isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(womenShoesPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
     }
-
 }
