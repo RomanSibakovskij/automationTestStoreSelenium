@@ -2586,6 +2586,9 @@ public class TestMethods extends BaseTest{
         isShoeUKSizeAndColorDropdownMenuWebElementDisplayed(womenShoesPage);
         //click 'add to cart'
         womenShoesPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
     //apparel and accessories products (t-shirts) 'add to cart' test method
@@ -2647,6 +2650,9 @@ public class TestMethods extends BaseTest{
         menTShirtsPage.clickTShirtColourXXLYellowOption();
         //click 'add to cart' button
         menTShirtsPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
     //makeup products 'add to cart' test method (cheeks)
@@ -2672,6 +2678,9 @@ public class TestMethods extends BaseTest{
         MakeupPage makeupPage = new MakeupPage(driver);
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
     //makeup products 'add to cart' test method (eyes)
@@ -2697,6 +2706,9 @@ public class TestMethods extends BaseTest{
         assertTrue(makeupPage.isEyesMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
     //makeup products 'add to cart' test method (face)
@@ -2722,6 +2734,49 @@ public class TestMethods extends BaseTest{
         assertTrue(makeupPage.isFaceMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
+    //makeup products 'add to cart' test method (lips)
+    protected void addLipsMakeupToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Lips' link
+        homePage.clickLipsCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("LIPS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add lips makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        MakeupPage makeupPage = new MakeupPage(driver);
+        //assert lips makeup dropdown menu is displayed
+        assertTrue(makeupPage.isLipsMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Lips' link
+        homePage.clickLipsCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add lips makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //assert rouge lips makeup dropdown menu is displayed
+        assertTrue(makeupPage.isRougeLipsMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
     //single product data loggers
@@ -2852,7 +2907,7 @@ public class TestMethods extends BaseTest{
         } else if(singleCategoryProductPage.isProductAdditionalDescriptionDisplayed()){
             logger.info("Selected category product additional description: " + singleCategoryProductPage.getProductAdditionalDescription());
         }
-        if(singleCategoryProductPage.isProductExtendedDescriptionDisplayed()) {
+        if(singleCategoryProductPage.isProductExtendedDescriptionDisplayed() && !singleCategoryProductPage.getProductExtendedDescription().isEmpty()) {
             logger.info("Selected category product extended description: " + singleCategoryProductPage.getProductExtendedDescription());
         }
         logger.info("Selected category product unit price(s) (With old price if present): " + singleCategoryProductPage.getProductUnitPrice());

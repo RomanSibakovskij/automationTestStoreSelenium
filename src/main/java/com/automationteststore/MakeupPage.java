@@ -18,6 +18,12 @@ public class MakeupPage extends BasePage{
     //makeup face color dropdown menu web element
     @FindBy(xpath = "//select[@id='option304']")
     private WebElement faceMakeupColorDropdownMenu;
+    //makeup lips color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option305']")
+    private WebElement lipsMakeupColorDropdownMenu;
+    //makeup rouge lips color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option306']")
+    private WebElement rougeLipsMakeupColorDropdownMenu;
 
     //'add to cart' button web element
     @FindBy(xpath = "//ul[@class='productpagecart']/li/a")
@@ -41,5 +47,7 @@ public class MakeupPage extends BasePage{
     //makeup page web element assert methods
     public boolean isEyesMakeupColorDropdownMenuDisplayed(){return eyesMakeupColorDropdownMenu.isDisplayed();}
     public boolean isFaceMakeupColorDropdownMenuDisplayed(){return faceMakeupColorDropdownMenu.isDisplayed();}
+    public boolean isLipsMakeupColorDropdownMenuDisplayed(){return lipsMakeupColorDropdownMenu.isDisplayed();}
+    public boolean isRougeLipsMakeupColorDropdownMenuDisplayed(){return rougeLipsMakeupColorDropdownMenu.isDisplayed();}
     
 }
