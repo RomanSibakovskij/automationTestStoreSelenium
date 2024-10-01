@@ -2855,6 +2855,32 @@ public class TestMethods extends BaseTest{
         logShoppingCartData(shoppingCartPage);
     }
 
+    //skincare products 'add to cart' test method (eyes)
+    protected void addEyesSkincareToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Skincare' menu
+        homePage.navigateToSkincare();
+        //click 'Skincare Eyes' link
+        homePage.clickEyesSkincareCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("EYES", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add skincare eyes products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

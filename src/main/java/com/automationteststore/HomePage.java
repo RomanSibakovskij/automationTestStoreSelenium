@@ -72,6 +72,18 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/a")
     private WebElement skincareHoverMenu;
+    //skincare hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=43_47']")
+    private WebElement eyesSkincareMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=43_46']")
+    private WebElement faceSkincareMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=43_45']")
+    private WebElement giftSetsSkincareMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=43_48']")
+    private WebElement handsNailsSkincareMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=43_44']")
+    private WebElement sunSkincareMenuLink;
+
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[5]/a")
     private WebElement fragranceHoverMenu;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/a")
@@ -174,6 +186,24 @@ public class HomePage extends BasePage{
     public void clickNailsCategoryLink(){nailsMenuLink.click();}
     //click 'Value Sets' category dropdown menu option method
     public void clickValueSetsCategoryLink(){valueSetsMenuLink.click();}
+
+    //makeup hover menu method
+    public void navigateToSkincare(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(skincareHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(skincareHoverMenu).perform();
+    }
+    //click 'Skincare Eyes' category dropdown menu option method
+    public void clickEyesSkincareCategoryLink(){eyesSkincareMenuLink.click();}
+    //click 'Skincare Face' category dropdown menu option method
+    public void clickFaceSkincareCategoryLink(){faceSkincareMenuLink.click();}
+    //click 'Skincare Gift Sets' category dropdown menu option method
+    public void clickGiftSetsSkincareCategoryLink(){giftSetsSkincareMenuLink.click();}
+    //click 'Skincare Hands and Nails' category dropdown menu option method
+    public void clickHandsNailsSkincareCategoryLink(){handsNailsSkincareMenuLink.click();}
+    //click 'Skincare Sun' category dropdown menu option method
+    public void clickSunSkincareCategoryLink(){sunSkincareMenuLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters
