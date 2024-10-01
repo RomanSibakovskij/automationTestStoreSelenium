@@ -8,9 +8,6 @@ import java.time.Duration;
 
 public class FragrancePage extends BasePage{
 
-    //fragrance category page title web element
-    @FindBy(xpath = "//span[@class='maintext']")
-    private WebElement categoryProductPageTitle;
     //men fragrance size dropdown menu web element
     @FindBy(xpath = "//select[@id='option316']")
     private WebElement menFragranceSizeDropdownMenu;
@@ -76,9 +73,6 @@ public class FragrancePage extends BasePage{
     public FragrancePage(WebDriver driver) {
         super(driver);
     }
-
-    //fragrance category page title getter
-    public String getCategoryProductPageTitle() {return categoryProductPageTitle.getText();}
 
     //bulgari aqua 'eau de parfum' checkbox click method
     public void selectBulgariEauDeParfum(){womenFragranceTypeParfumCheckbox.click();}
