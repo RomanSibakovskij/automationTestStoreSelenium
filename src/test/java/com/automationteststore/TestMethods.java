@@ -3182,7 +3182,7 @@ public class TestMethods extends BaseTest{
         logShoppingCartData(shoppingCartPage);
     }
 
-    //men body care products 'add to cart' test method
+    //men body care products 'add to cart' test method -> no product is available
     protected void addBodyAndShowerProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Fragrance' menu

@@ -197,7 +197,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addWomenFragranceToCartRegUserTest(singleCategoryProductPage);
     }
 
-    // Test 021 -> add men products (Body & Shower) to cart as a registered user
+    // Test 021 -> add men products (Body & Shower) to cart as a registered user (since none of the items is available, further testing here is aborted)
     @Test
     @DisplayName("Add Men Products (Body & Shower) To Cart as Registered User")
     @Tag("Men_Body_And_Shower_To_Cart")
