@@ -172,5 +172,17 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addMenFragranceToCartRegUserTest();
     }
 
+    // Test 020a -> add fragrance products (Women) to cart as a registered user
+    @Test
+    @DisplayName("Add Fragrance Products (Women) To Cart as Registered User")
+    @Tag("Fragrance_Women_To_Cart")
+    void addWomenFragranceToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addWomenFragranceToCartRegUserTest();
+    }
+
 
 }
