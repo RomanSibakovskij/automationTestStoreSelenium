@@ -2900,6 +2900,10 @@ public class TestMethods extends BaseTest{
         //click to add skincare face products into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         SkincarePage skincarePage = new SkincarePage(driver);
+        //general page web element assert
+        isSkincarePageWebElementDisplayed(skincarePage);
+        //assert gift wrapping checkbox is displayed
+        assertTrue(skincarePage.isSkincareGiftCheckboxDisplayed(), "The gift wrapping checkbox isn't displayed");
         //click 'add to cart' button
         skincarePage.clickAddToCartButton();
         //hover above 'Skincare' menu
@@ -2997,6 +3001,23 @@ public class TestMethods extends BaseTest{
         isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
         //log the product data
         logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add men fragrance products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart3Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart5Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        FragrancePage fragrancePage = new FragrancePage(driver);
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert men fragrance size dropdown menu is displayed
+        assertTrue(fragrancePage.isMenFragranceSizeDropdownMenuDisplayed(), "The men fragrance size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+
     }
 
 
@@ -3635,9 +3656,24 @@ public class TestMethods extends BaseTest{
         assertTrue(makeupPage.isStarRatingDisplayed(), "The star rating isn't displayed");
         //assert quantity input field is displayed
         assertTrue(makeupPage.isQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
-        //assert quantity input field is displayed
+        //assert 'add to cart' button is displayed
         assertTrue(makeupPage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
+    }
 
+    //skincare page web element assert
+    protected void isSkincarePageWebElementDisplayed(SkincarePage skincarePage){
+        //assert quantity input field is displayed
+        assertTrue(skincarePage.isSkincareQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(skincarePage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
+    }
+
+    //fragrance page web element assert
+    protected void isFragrancePageWebElementDisplayed(FragrancePage fragrancePage){
+        //assert quantity input field is displayed
+        assertTrue(fragrancePage.isQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
+        //assert 'add to cart' button is displayed
+        assertTrue(fragrancePage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
     }
 
 }

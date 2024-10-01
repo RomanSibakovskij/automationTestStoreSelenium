@@ -11,6 +11,9 @@ public class FragrancePage extends BasePage{
     //makeup category page title web element
     @FindBy(xpath = "//span[@class='maintext']")
     private WebElement categoryProductPageTitle;
+    //men fragrance size dropdown menu web element
+    @FindBy(xpath = "//select[@id='option316']")
+    private WebElement menFragranceSizeDropdownMenu;
 
     //fragrance quantity input field web element
     @FindBy(xpath = "//input[@id='product_quantity']")
@@ -34,6 +37,7 @@ public class FragrancePage extends BasePage{
     }
 
     //fragrance page web element assert methods
+    public boolean isMenFragranceSizeDropdownMenuDisplayed(){return menFragranceSizeDropdownMenu.isDisplayed();}
     public boolean isQuantityInputFieldDisplayed(){return makeupQuantityInputField.isDisplayed();}
     public boolean isAddToCartButtonDisplayed(){return addToCartButton.isDisplayed();}
 

@@ -38,7 +38,7 @@ public class SkincarePage extends BasePage{
 
     //skincare page web element assert methods
     public boolean isSkincareGiftCheckboxDisplayed() {return skincareGiftCheckbox.isDisplayed();}
-    public boolean isSkincareQuantityInputDisplayed() {return skincareQuantityInputField.isDisplayed();}
+    public boolean isSkincareQuantityInputFieldDisplayed() {return skincareQuantityInputField.isDisplayed();}
     public boolean isAddToCartButtonDisplayed() {return addToCartButton.isDisplayed();}
 
 }
