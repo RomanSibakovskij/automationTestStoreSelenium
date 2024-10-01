@@ -37,7 +37,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addCheeksMakeupToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addCheeksMakeupToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 018a -> add makeup products (Eyes) to cart as a registered user
@@ -49,7 +50,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addEyesMakeupToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addEyesMakeupToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 018b -> add makeup products (Face) to cart as a registered user
@@ -61,7 +63,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addFaceMakeupToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addFaceMakeupToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 018c -> add makeup products (Lips) to cart as a registered user
@@ -73,7 +76,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addLipsMakeupToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addLipsMakeupToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 018d -> add makeup products (Nails) to cart as a registered user
@@ -85,7 +89,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addNailsMakeupToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addNailsMakeupToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 018e -> add makeup products (Value Sets) to cart as a registered user
@@ -97,7 +102,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addValueSetsMakeupToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addValueSetsMakeupToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 019 -> add skincare products (Eyes) to cart as a registered user
@@ -109,7 +115,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addEyesSkincareToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addEyesSkincareToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 019a -> add skincare products (Face) to cart as a registered user
@@ -121,7 +128,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addFaceSkincareToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addFaceSkincareToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 019b -> add skincare products (Gift Ideas & Sets) to cart as a registered user
@@ -133,7 +141,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addGiftSetsSkincareToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addGiftSetsSkincareToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 019c -> add skincare products (Hands & Nails) to cart as a registered user (since none of the items is available, further testing here is aborted)
@@ -145,7 +154,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addHandsNailsSkincareToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addHandsNailsSkincareToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 019d -> add skincare products (Sun) to cart as a registered user (since none of the items is available, further testing here is aborted)
@@ -157,7 +167,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addSunSkincareToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addSunSkincareToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 020 -> add fragrance products (Men) to cart as a registered user
@@ -169,7 +180,8 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addMenFragranceToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addMenFragranceToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 020a -> add fragrance products (Women) to cart as a registered user
@@ -181,7 +193,21 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        addWomenFragranceToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addWomenFragranceToCartRegUserTest(singleCategoryProductPage);
+    }
+
+    // Test 021 -> add men products (Body & Shower) to cart as a registered user
+    @Test
+    @DisplayName("Add Men Products (Body & Shower) To Cart as Registered User")
+    @Tag("Men_Body_And_Shower_To_Cart")
+    void addMenBodyShowerToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addBodyAndShowerProductsToCart(singleCategoryProductPage);
     }
 
 

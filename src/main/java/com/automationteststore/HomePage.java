@@ -94,6 +94,17 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/a")
     private WebElement menHoverMenu;
+    //men body care hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_63']")
+    private WebElement menBodyShowerLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_59']")
+    private WebElement menFragranceSetsLink;
+    //men body care hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_61']")
+    private WebElement menShavingLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_60']")
+    private WebElement menSkincareLink;
+
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[7]/a")
     private WebElement haircareHoverMenu;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/a")
@@ -222,6 +233,22 @@ public class HomePage extends BasePage{
     public void clickMenFragranceCategoryLink(){fragranceMenMenuLink.click();}
     //click 'Fragrance Women' category dropdown menu option method
     public void clickWomenFragranceCategoryLink(){fragranceWomenMenuLink.click();}
+
+    //men body care hover menu method
+    public void navigateToMenCategory(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(menHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(menHoverMenu).perform();
+    }
+    //click 'Men Body & Shower' category dropdown menu option method
+    public void clickMenBodyShowerCategoryLink(){menBodyShowerLink.click();}
+    //click 'Men Fragrance Sets' category dropdown menu option method
+    public void clickMenFragranceSetsCategoryLink(){menFragranceSetsLink.click();}
+    //click 'Men Pre-Shave & Shaving' category dropdown menu option method
+    public void clickMenShavingCategoryLink(){menShavingLink.click();}
+    //click 'Men Skincare' category dropdown menu option method
+    public void clickMenSkincareCategoryLink(){menSkincareLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters

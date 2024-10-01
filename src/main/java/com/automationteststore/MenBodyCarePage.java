@@ -22,7 +22,7 @@ public class MenBodyCarePage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
     }
-    
+
     //men body care category page web element assert method
     public boolean isAddToCartButtonDisplayed(){return addToCartButton.isDisplayed();}
 

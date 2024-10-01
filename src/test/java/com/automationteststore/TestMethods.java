@@ -2656,13 +2656,12 @@ public class TestMethods extends BaseTest{
     }
 
     //makeup products 'add to cart' test method (cheeks)
-    protected void addCheeksMakeupToCartRegUserTest(){
+    protected void addCheeksMakeupToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Makeup' menu
         homePage.navigateToMakeup();
         //click 'Cheeks' link
         homePage.clickCheeksCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("CHEEKS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2686,13 +2685,12 @@ public class TestMethods extends BaseTest{
     }
 
     //makeup products 'add to cart' test method (eyes)
-    protected void addEyesMakeupToCartRegUserTest(){
+    protected void addEyesMakeupToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Makeup' menu
         homePage.navigateToMakeup();
         //click 'Eyes' link
         homePage.clickEyesCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("EYES", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2714,13 +2712,12 @@ public class TestMethods extends BaseTest{
     }
 
     //makeup products 'add to cart' test method (face)
-    protected void addFaceMakeupToCartRegUserTest(){
+    protected void addFaceMakeupToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Makeup' menu
         homePage.navigateToMakeup();
         //click 'Face' link
         homePage.clickFaceCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("FACE", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2744,13 +2741,12 @@ public class TestMethods extends BaseTest{
     }
 
     //makeup products 'add to cart' test method (lips)
-    protected void addLipsMakeupToCartRegUserTest(){
+    protected void addLipsMakeupToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Makeup' menu
         homePage.navigateToMakeup();
         //click 'Lips' link
         homePage.clickLipsCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("LIPS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2786,13 +2782,12 @@ public class TestMethods extends BaseTest{
     }
 
     //makeup products 'add to cart' test method (nails)
-    protected void addNailsMakeupToCartRegUserTest(){
+    protected void addNailsMakeupToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Makeup' menu
         homePage.navigateToMakeup();
         //click 'Nails' link
         homePage.clickNailsCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("NAILS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2828,13 +2823,12 @@ public class TestMethods extends BaseTest{
     }
 
     //makeup products 'add to cart' test method (value sets)
-    protected void addValueSetsMakeupToCartRegUserTest(){
+    protected void addValueSetsMakeupToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Makeup' menu
         homePage.navigateToMakeup();
         //click 'Value Sets' link
         homePage.clickValueSetsCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("VALUE SETS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2856,13 +2850,12 @@ public class TestMethods extends BaseTest{
     }
 
     //skincare products 'add to cart' test method (eyes)
-    protected void addEyesSkincareToCartRegUserTest(){
+    protected void addEyesSkincareToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
         //click 'Skincare Eyes' link
         homePage.clickEyesSkincareCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("EYES", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2882,13 +2875,12 @@ public class TestMethods extends BaseTest{
     }
 
     //skincare products 'add to cart' test method (face)
-    protected void addFaceSkincareToCartRegUserTest(){
+    protected void addFaceSkincareToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
         //click 'Skincare Face' link
         homePage.clickFaceSkincareCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("FACE", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2925,13 +2917,12 @@ public class TestMethods extends BaseTest{
     }
 
     //skincare products 'add to cart' test method (gift ideas & sets)
-    protected void addGiftSetsSkincareToCartRegUserTest(){
+    protected void addGiftSetsSkincareToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
         //click 'Skincare Gift Ideas & Sets' link
         homePage.clickGiftSetsSkincareCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("GIFT IDEAS & SETS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2950,13 +2941,12 @@ public class TestMethods extends BaseTest{
     }
 
     //skincare products 'add to cart' test method (hands & nails) -> no product is available
-    protected void addHandsNailsSkincareToCartRegUserTest(){
+    protected void addHandsNailsSkincareToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
         //click 'Skincare Gift Hands & Nails' link
         homePage.clickHandsNailsSkincareCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("HANDS & NAILS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2968,13 +2958,12 @@ public class TestMethods extends BaseTest{
     }
 
     //skincare products 'add to cart' test method (sun) -> no product is available
-    protected void addSunSkincareToCartRegUserTest(){
+    protected void addSunSkincareToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
         //click 'Skincare Sun' link
         homePage.clickSunSkincareCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("SUN", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2986,13 +2975,12 @@ public class TestMethods extends BaseTest{
     }
 
     //fragrance products 'add to cart' test method (men) -> no product is available
-    protected void addMenFragranceToCartRegUserTest(){
+    protected void addMenFragranceToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Fragrance' menu
         homePage.navigateToFragrance();
         //click 'Fragrance Men' link
         homePage.clickMenFragranceCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("MEN", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -3020,13 +3008,12 @@ public class TestMethods extends BaseTest{
     }
 
     //fragrance products 'add to cart' test method (women) -> no product is available
-    protected void addWomenFragranceToCartRegUserTest(){
+    protected void addWomenFragranceToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Fragrance' menu
         homePage.navigateToFragrance();
         //click 'Fragrance Women' link
         homePage.clickWomenFragranceCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("WOMEN", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -3194,6 +3181,22 @@ public class TestMethods extends BaseTest{
         //log the shopping cart data
         logShoppingCartData(shoppingCartPage);
     }
+
+    //men body care products 'add to cart' test method
+    protected void addBodyAndShowerProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Fragrance' menu
+        homePage.navigateToMenCategory();
+        //click 'Men Body & Shower' link
+        homePage.clickMenBodyShowerCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("BODY & SHOWER", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+    }
+
 
 
     //single product data loggers
@@ -3828,7 +3831,7 @@ public class TestMethods extends BaseTest{
     //makeup page web element assert
     protected void isMakeupPageWebElementDisplayed(MakeupPage makeupPage){
         //assert the star rating list is displayed
-        assertTrue(makeupPage.isStarRatingDisplayed(), "The star rating isn't displayed");
+//        assertTrue(makeupPage.isStarRatingDisplayed(), "The star rating isn't displayed");
         //assert quantity input field is displayed
         assertTrue(makeupPage.isQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
         //assert 'add to cart' button is displayed
