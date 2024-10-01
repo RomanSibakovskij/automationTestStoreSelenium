@@ -8,31 +8,33 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Apparel & Accessories Products (Shoes) To Cart as Registered User")
     @Tag("Apparel_And_Accessories_Shoes_To_Cart")
-    void addApparelAndAccessoriesShoesToCart(){
+    void addApparelAndAccessoriesShoesToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        apparelAccessoriesShoesAddToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        apparelAccessoriesShoesAddToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 017a -> add apparel & accessories products (men t-shirts) to cart as a registered user
     @Test
     @DisplayName("Add Apparel & Accessories Products (T-Shirts) To Cart as Registered User")
     @Tag("Apparel_And_Accessories_TShirts_To_Cart")
-    void addApparelAndAccessoriesTShirtsToCart(){
+    void addApparelAndAccessoriesTShirtsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
-        apparelAccessoriesTShirtsAddToCartRegUserTest();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        apparelAccessoriesTShirtsAddToCartRegUserTest(singleCategoryProductPage);
     }
 
     // Test 018 -> add makeup products (Cheeks) to cart as a registered user
     @Test
     @DisplayName("Add Makeup Products (Cheeks) To Cart as Registered User")
     @Tag("Makeup_Cheeks_To_Cart")
-    void addMakeupCheeksToCart(){
+    void addMakeupCheeksToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -45,7 +47,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Makeup Products (Eyes) To Cart as Registered User")
     @Tag("Makeup_Eyes_To_Cart")
-    void addMakeupEyesToCart(){
+    void addMakeupEyesToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -58,7 +60,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Makeup Products (Face) To Cart as Registered User")
     @Tag("Makeup_Face_To_Cart")
-    void addMakeupFaceToCart(){
+    void addMakeupFaceToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -71,7 +73,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Makeup Products (Lips) To Cart as Registered User")
     @Tag("Makeup_Lips_To_Cart")
-    void addMakeupLipsToCart(){
+    void addMakeupLipsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -84,7 +86,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Makeup Products (Nails) To Cart as Registered User")
     @Tag("Makeup_Nails_To_Cart")
-    void addMakeupNailsToCart(){
+    void addMakeupNailsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -97,7 +99,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Makeup Products (Value Sets) To Cart as Registered User")
     @Tag("Makeup_Value_Sets_To_Cart")
-    void addMakeupValueSetsToCart(){
+    void addMakeupValueSetsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -110,7 +112,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Skincare Products (Eyes) To Cart as Registered User")
     @Tag("Skincare_Eyes_To_Cart")
-    void addSkincareEyesToCart(){
+    void addSkincareEyesToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -123,7 +125,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Skincare Products (Face) To Cart as Registered User")
     @Tag("Skincare_Face_To_Cart")
-    void addSkincareFaceToCart(){
+    void addSkincareFaceToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -136,7 +138,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Skincare Products (Gift Ideas & Sets) To Cart as Registered User")
     @Tag("Skincare_Gift_Sets_To_Cart")
-    void addSkincareGiftSetsToCart(){
+    void addSkincareGiftSetsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -149,7 +151,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Skincare Products (Hands & Nails) To Cart as Registered User")
     @Tag("Skincare_Hands_Nails_To_Cart")
-    void addSkincareHandsNailsToCart(){
+    void addSkincareHandsNailsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -162,7 +164,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Skincare Products (Sun) To Cart as Registered User")
     @Tag("Skincare_Sun_To_Cart")
-    void addSkincareSunToCart(){
+    void addSkincareSunToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -175,7 +177,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Fragrance Products (Men) To Cart as Registered User")
     @Tag("Fragrance_Men_To_Cart")
-    void addMenFragranceToCart(){
+    void addMenFragranceToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -188,7 +190,7 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Fragrance Products (Women) To Cart as Registered User")
     @Tag("Fragrance_Women_To_Cart")
-    void addWomenFragranceToCart(){
+    void addWomenFragranceToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
@@ -201,13 +203,26 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
     @Test
     @DisplayName("Add Men Products (Body & Shower) To Cart as Registered User")
     @Tag("Men_Body_And_Shower_To_Cart")
-    void addMenBodyShowerToCart(){
+    void addMenBodyShowerToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
         SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
-        addBodyAndShowerProductsToCart(singleCategoryProductPage);
+        addMenBodyAndShowerProductsToCart(singleCategoryProductPage);
+    }
+
+    // Test 021 -> add men products (Fragrance Sets) to cart as a registered user (since none of the items is available, further testing here is aborted)
+    @Test
+    @DisplayName("Add Men Products (Fragrance Sets) To Cart as Registered User")
+    @Tag("Men_Fragrance_Sets_To_Cart")
+    void addMenFragranceSetsToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addMenFragranceSetProductsToCart(singleCategoryProductPage);
     }
 
 

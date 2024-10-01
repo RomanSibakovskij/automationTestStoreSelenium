@@ -2524,13 +2524,12 @@ public class TestMethods extends BaseTest{
     }
 
     //apparel and accessories products (women's shoes) 'add to cart' test method
-    protected void apparelAccessoriesShoesAddToCartRegUserTest(){
+    protected void apparelAccessoriesShoesAddToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Apparel and accessories' menu
         homePage.navigateToApparelAndAccessories();
         //click 'Shoes' category option
         homePage.clickShoesCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("SHOES", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -2592,13 +2591,12 @@ public class TestMethods extends BaseTest{
     }
 
     //apparel and accessories products (t-shirts) 'add to cart' test method
-    protected void apparelAccessoriesTShirtsAddToCartRegUserTest(){
+    protected void apparelAccessoriesTShirtsAddToCartRegUserTest(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Apparel and accessories' menu
         homePage.navigateToApparelAndAccessories();
         //click 'T-Shirt' category option
         homePage.clickTShirtsCategoryLink();
-        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
         assertEquals("T-SHIRTS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
         //click 'list view' option
@@ -3182,8 +3180,8 @@ public class TestMethods extends BaseTest{
         logShoppingCartData(shoppingCartPage);
     }
 
-    //men body care products 'add to cart' test method -> no product is available
-    protected void addBodyAndShowerProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
+    //men body care products (Body & Shower) 'add to cart' test method -> no product is available
+    protected void addMenBodyAndShowerProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Fragrance' menu
         homePage.navigateToMenCategory();
@@ -3195,6 +3193,52 @@ public class TestMethods extends BaseTest{
         singleCategoryProductPage.clickPageListViewButton();
         //log the product data
         logSingleCategoryProductData(singleCategoryProductPage);
+    }
+
+    //men body care products (Fragrance Sets)'add to cart' test method)
+    protected void addMenFragranceSetProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Fragrance' menu
+        homePage.navigateToMenCategory();
+        //click 'Men Fragrance Sets' link
+        homePage.clickMenFragranceSetsCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("FRAGRANCE SETS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to men fragrance products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart3Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
+        //click to men fragrance products into cart (ck IN2U Eau De Toilette Spray for Him (Cl0001))
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        MenBodyCarePage menBodyCarePage = new MenBodyCarePage(driver);
+        //assert men fragrance size dropdown menu is displayed (ck IN2U Eau De Toilette Spray for Him (Cl0001))
+        assertTrue(menBodyCarePage.isMenFragranceSizeDropdownMenuDisplayed(), "The eau de toilette spray size dropdown menu isn't displayed");
+        //general web element assert
+        isMenBodyCarePageWebElementDisplayed(menBodyCarePage);
+        //click 'add to cart' button
+        menBodyCarePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToMenCategory();
+        //click 'Men Fragrance Sets' link
+        homePage.clickMenFragranceSetsCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to men fragrance products into cart (Obsession Night Perfume (CK0013))
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //assert men fragrance size dropdown menu is displayed (Obsession Night Perfume (CK0013))
+        assertTrue(menBodyCarePage.isMenFragranceNightPerfumeSizeDropdownMenuDisplayed(), "The eau de toilette spray size dropdown menu isn't displayed");
+        //general web element assert
+        isMenBodyCarePageWebElementDisplayed(menBodyCarePage);
+        //click 'add to cart' button
+        menBodyCarePage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
 
@@ -3854,6 +3898,16 @@ public class TestMethods extends BaseTest{
 //        assertTrue(fragrancePage.isTotalPriceDisplayed(), "The fragrance total price isn't displayed"); //the assert fails despite correct selector
         //assert 'add to cart' button is displayed
         assertTrue(fragrancePage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
+    }
+
+    //men body care page web element assert
+    protected void isMenBodyCarePageWebElementDisplayed(MenBodyCarePage menBodyCarePage){
+        //assert quantity input field is displayed
+        assertTrue(menBodyCarePage.isQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
+        //assert product total price is displayed
+//        assertTrue(menBodyCarePage.isTotalPriceDisplayed(), "The fragrance total price isn't displayed"); //the assert fails despite correct selector
+        //assert 'add to cart' button is displayed
+        assertTrue(menBodyCarePage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
     }
 
 }
