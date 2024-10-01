@@ -3323,6 +3323,29 @@ public class TestMethods extends BaseTest{
         logShoppingCartData(shoppingCartPage);
     }
 
+    //hair care products (Shampoo)'add to cart' test method
+    protected void addHaircareShampooToCart(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Haircare' menu
+        homePage.navigateToHaircareCategory();
+        //click 'Conditioners' link
+        homePage.clickHaircareShampooCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("SHAMPOO", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to haircare conditioners products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
 
 
     //single product data loggers

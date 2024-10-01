@@ -284,4 +284,18 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addHaircareConditionersToCart(singleCategoryProductPage);
     }
 
+    // Test 022a -> add hair care products (Shampoo) to cart as a registered user
+    @Test
+    @DisplayName("Add Haircare Products (Shampoo) To Cart as Registered User")
+    @Tag("Haircare_Shampoo_Products_To_Cart")
+    @Tag("Haircare_Products_To_Cart")
+    void addHaircareShampooToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addHaircareShampooToCart(singleCategoryProductPage);
+    }
+
 }
