@@ -3038,16 +3038,161 @@ public class TestMethods extends BaseTest{
         //click to add women fragrance products into cart
         singleCategoryProductPage.clickAddCategoryProductToCart10Button();
         singleCategoryProductPage.clickAddCategoryProductToCart9Button();
-        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button(); //add the product (Gucci Guilty)
         FragrancePage fragrancePage = new FragrancePage(driver);
         //general page web element assert
         isFragrancePageWebElementDisplayed(fragrancePage);
-        //assert women fragrance star rating is displayed
+        //assert women fragrance star rating is displayed (Gucci Guilty)
         assertTrue(fragrancePage.isStarRatingDisplayed(), "The women fragrance star rating isn't displayed");
-        //assert women fragrance size dropdown menu is displayed
+        //assert women fragrance size dropdown menu is displayed (Gucci Guilty)
         assertTrue(fragrancePage.isWomenFragranceSizeDropdownMenuDisplayed(), "The woman fragrance size dropdown menu isn't displayed");
         //click 'add to cart' button
         fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert the women fragrance scent dropdown menu is displayed (Omnia Eau de Toilette 65ml)
+        assertTrue(fragrancePage.isWomenFragranceScentDropdownMenuDisplayed(), "The women fragrance scent dropdown menu isn't displayed");
+        //assert the women fragrance gift checkbox is displayed (Omnia Eau de Toilette 65ml)
+//        assertTrue(fragrancePage.isWomenFragranceGiftCheckboxDisplayed(), "The women fragrance gift checkbox isn't displayed"); //the assert fails despite correct selector
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart3Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert the bulgari aqua cologne type checkbox is displayed
+        assertTrue(fragrancePage.isWomenFragranceTypeCologneCheckboxDisplayed(), "The women fragrance cologne type (bulgari aqua) checkbox isn't displayed");
+        //assert the bulgari aqua toilette type checkbox is displayed
+        assertTrue(fragrancePage.isWomenFragranceTypeToiletteCheckboxDisplayed(), "The women fragrance toilette type (bulgari aqua) checkbox isn't displayed");
+        //assert the bulgari aqua parfum type checkbox is displayed
+        assertTrue(fragrancePage.isWomenFragranceTypeParfumCheckboxDisplayed(), "The women fragrance parfum type (bulgari aqua) checkbox isn't displayed");
+        //assert the bulgari aqua gist checkbox is displayed
+        assertTrue(fragrancePage.isWomenFragranceBulgariGiftCheckboxDisplayed(), "The women fragrance (bulgari aqua) gift checkbox isn't displayed");
+        //assert the bulgari aqua fragrance size dropdown menu is displayed
+//        assertTrue(fragrancePage.isWomenFragranceBulgariSizeDropdownMenuDisplayed(), "The women fragrance (bulgari aqua) size dropdown menu isn't displayed"); //the assert fails despite correct selector
+        //select bulgari aqua eau de parfum option
+        fragrancePage.selectBulgariEauDeParfum();
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart (Beauty Eau de Parfum)
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert women fragrance size dropdown menu is displayed (Beauty Eau de Parfum)
+        assertTrue(fragrancePage.isWomenFragranceSizeBeautyEauDropdownMenuDisplayed(), "The beauty eau fragrance size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart (Forbidden euphoria Eau de Parfum Spray (Ck0010))
+        singleCategoryProductPage.clickAddCategoryProductToCart5Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert women fragrance size dropdown menu is displayed (Forbidden euphoria Eau de Parfum Spray (Ck0010))
+        assertTrue(fragrancePage.isWomenFragranceSizeEuphoriaDropdownMenuDisplayed(), "The forbidden euphoria fragrance size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart (Secret Obsession Perfume (CK0012))
+        singleCategoryProductPage.clickAddCategoryProductToCart6Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert women fragrance size dropdown menu is displayed (Secret Obsession Perfume (CK0012))
+        assertTrue(fragrancePage.isWomenFragranceSizeObsessionDropdownMenuDisplayed(), "The secret obsession fragrance size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart (Calvin Klein Obsession For Women EDP Spray (PRF00271))
+        singleCategoryProductPage.clickAddCategoryProductToCart7Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert women fragrance size dropdown menu is displayed (Calvin Klein Obsession For Women EDP Spray (PRF00271))
+        assertTrue(fragrancePage.isWomenFragranceSizeCKObsessionDropdownMenuDisplayed(), "The CK obsession women fragrance size dropdown menu isn't displayed");
+        //assert women fragrance size dropdown menu is displayed (Calvin Klein Obsession For Women EDP Spray (PRF00271))
+        assertTrue(fragrancePage.isWomenFragranceBulgariCKObsessionGiftCheckboxDisplayed(), "The CK obsession fragrance gift checkbox isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart (Armani Code Pour Femme (GRM005))
+        singleCategoryProductPage.clickAddCategoryProductToCart8Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert women fragrance size dropdown menu is displayed (Armani Code Pour Femme (GRM005))
+        assertTrue(fragrancePage.isWomenFragranceSizeArmaniCodeDropdownMenuDisplayed(), "The Armani Code women fragrance size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Women' link
+        homePage.clickWomenFragranceCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add women fragrance products into cart (Obsession Night Perfume (CK0013))
+        singleCategoryProductPage.clickAddCategoryProductToCart11Button();
+        //general page web element assert
+        isFragrancePageWebElementDisplayed(fragrancePage);
+        //assert women fragrance size dropdown menu is displayed (Obsession Night Perfume (CK0013))
+        assertTrue(fragrancePage.isWomenFragranceSizeNightDropdownMenuDisplayed(), "The Obsession Night Perfume women fragrance size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        fragrancePage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
 

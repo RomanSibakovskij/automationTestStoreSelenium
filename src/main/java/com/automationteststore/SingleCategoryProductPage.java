@@ -163,6 +163,8 @@ public class SingleCategoryProductPage extends BasePage{
         clickAddCategoryProductToCartButton(8);}
     public void clickAddCategoryProductToCart10Button(){
         clickAddCategoryProductToCartButton(9);}
+    public void clickAddCategoryProductToCart11Button(){
+        clickAddCategoryProductToCartButton(10);}
 
     //single brand product sort dropdown menu options select methods
     public void selectDateOldNewOption(){sortDateOldNewOption.click();}
