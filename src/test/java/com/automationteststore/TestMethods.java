@@ -2945,6 +2945,24 @@ public class TestMethods extends BaseTest{
         logShoppingCartData(shoppingCartPage);
     }
 
+    //skincare products 'add to cart' test method (hands & nails) -> no product is available
+    protected void addHandsNailsSkincareToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Skincare' menu
+        homePage.navigateToSkincare();
+        //click 'Skincare Gift Ideas & Sets' link
+        homePage.clickHandsNailsSkincareCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("HANDS & NAILS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

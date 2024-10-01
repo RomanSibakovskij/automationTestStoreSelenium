@@ -136,5 +136,17 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addGiftSetsSkincareToCartRegUserTest();
     }
 
+    // Test 019c -> add skincare products (Hands & Nails) to cart as a registered user (since none of the items is available, further testing here is aborted)
+    @Test
+    @DisplayName("Add Skincare Products (Hands & Nails) To Cart as Registered User")
+    @Tag("Skincare_Hands_Nails_To_Cart")
+    void addSkincareHandsNailsToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addHandsNailsSkincareToCartRegUserTest();
+    }
+
 
 }
