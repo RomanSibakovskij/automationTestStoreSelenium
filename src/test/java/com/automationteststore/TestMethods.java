@@ -3195,7 +3195,7 @@ public class TestMethods extends BaseTest{
         logSingleCategoryProductData(singleCategoryProductPage);
     }
 
-    //men body care products (Fragrance Sets)'add to cart' test method)
+    //men body care products (Fragrance Sets)'add to cart' test method
     protected void addMenFragranceSetProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
         HomePage homePage = new HomePage(driver);
         //hover above 'Fragrance' menu
@@ -3239,6 +3239,44 @@ public class TestMethods extends BaseTest{
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         //log the shopping cart data
         logShoppingCartData(shoppingCartPage);
+    }
+
+    //men body care products (SkinCare)'add to cart' test method
+    protected void addMenSkincareProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Fragrance' menu
+        homePage.navigateToMenCategory();
+        //click 'Men Pre Shave & Shaving' link
+        homePage.clickMenSkincareCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("SKINCARE", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to men skincare products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
+    //men body care products (Pre Shave & Shaving)'add to cart' test method -> no product is available
+    protected void addMenShavingProductsToCart(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Fragrance' menu
+        homePage.navigateToMenCategory();
+        //click 'Men Pre Shave & Shaving' link
+        homePage.clickMenShavingCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("PRE-SHAVE & SHAVING", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
     }
 
 

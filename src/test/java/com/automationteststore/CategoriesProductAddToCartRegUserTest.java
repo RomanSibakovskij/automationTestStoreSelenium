@@ -212,10 +212,10 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addMenBodyAndShowerProductsToCart(singleCategoryProductPage);
     }
 
-    // Test 021 -> add men products (Fragrance Sets) to cart as a registered user (since none of the items is available, further testing here is aborted)
+    // Test 021a -> add men products (Fragrance Sets) to cart as a registered user
     @Test
     @DisplayName("Add Men Products (Fragrance Sets) To Cart as Registered User")
-    @Tag("Men_Fragrance_Sets_To_Cart")
+    @Tag("Men_Fragrance_Set_Products_To_Cart")
     void addMenFragranceSetsToCartTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
@@ -225,5 +225,30 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addMenFragranceSetProductsToCart(singleCategoryProductPage);
     }
 
+    // Test 021b -> add men products (Pre Shave & Shaving) to cart as a registered user (since none of the items is available, further testing here is aborted)
+    @Test
+    @DisplayName("Add Men Products (Fragrance Sets) To Cart as Registered User")
+    @Tag("Men_Shaving_Products_To_Cart")
+    void addMenShavingProductsToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addMenShavingProductsToCart(singleCategoryProductPage);
+    }
+
+    // Test 021c -> add men products (Skincare) to cart as a registered user
+    @Test
+    @DisplayName("Add Men Products (Skincare) To Cart as Registered User")
+    @Tag("Men_Skincare_Products_To_Cart")
+    void addMenSkincareProductsToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addMenSkincareProductsToCart(singleCategoryProductPage);
+    }
 
 }
