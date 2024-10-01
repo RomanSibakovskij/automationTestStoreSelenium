@@ -2902,6 +2902,22 @@ public class TestMethods extends BaseTest{
         SkincarePage skincarePage = new SkincarePage(driver);
         //click 'add to cart' button
         skincarePage.clickAddToCartButton();
+        //hover above 'Skincare' menu
+        homePage.navigateToSkincare();
+        //click 'Skincare Eyes' link
+        homePage.clickFaceSkincareCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add skincare eyes products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart3Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart5Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
     }
 
     //single product data loggers
