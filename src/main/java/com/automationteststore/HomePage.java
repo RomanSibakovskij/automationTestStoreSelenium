@@ -86,6 +86,12 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[5]/a")
     private WebElement fragranceHoverMenu;
+    //fragrance hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[5]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=49_51']")
+    private WebElement fragranceMenMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[5]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=49_50']")
+    private WebElement fragranceWomenMenuLink;
+
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/a")
     private WebElement menHoverMenu;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[7]/a")
@@ -187,7 +193,7 @@ public class HomePage extends BasePage{
     //click 'Value Sets' category dropdown menu option method
     public void clickValueSetsCategoryLink(){valueSetsMenuLink.click();}
 
-    //makeup hover menu method
+    //skincare hover menu method
     public void navigateToSkincare(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.visibilityOf(skincareHoverMenu));
@@ -204,6 +210,18 @@ public class HomePage extends BasePage{
     public void clickHandsNailsSkincareCategoryLink(){handsNailsSkincareMenuLink.click();}
     //click 'Skincare Sun' category dropdown menu option method
     public void clickSunSkincareCategoryLink(){sunSkincareMenuLink.click();}
+
+    //fragrance hover menu method
+    public void navigateToFragrance(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(fragranceHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(fragranceHoverMenu).perform();
+    }
+    //click 'Fragrance Men' category dropdown menu option method
+    public void clickMenFragranceCategoryLink(){fragranceMenMenuLink.click();}
+    //click 'Fragrance Women' category dropdown menu option method
+    public void clickWomenFragranceCategoryLink(){fragranceWomenMenuLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters

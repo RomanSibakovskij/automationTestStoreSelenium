@@ -2981,6 +2981,24 @@ public class TestMethods extends BaseTest{
         logSingleCategoryProductData(singleCategoryProductPage);
     }
 
+    //fragrance products 'add to cart' test method (men) -> no product is available
+    protected void addMenFragranceToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Fragrance' menu
+        homePage.navigateToFragrance();
+        //click 'Fragrance Men' link
+        homePage.clickMenFragranceCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("MEN", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+    }
+
 
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
