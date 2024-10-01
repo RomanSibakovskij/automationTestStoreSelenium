@@ -88,5 +88,17 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addNailsMakeupToCartRegUserTest();
     }
 
+    // Test 018e -> add makeup products (Value Sets) to cart as a registered user
+    @Test
+    @DisplayName("Add Makeup Products (Value Sets) To Cart as Registered User")
+    @Tag("Makeup_Value_Sets_To_Cart")
+    void addMakeupValueSetsToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addValueSetsMakeupToCartRegUserTest();
+    }
+
 
 }

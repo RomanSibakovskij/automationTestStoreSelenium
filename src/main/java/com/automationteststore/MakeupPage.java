@@ -30,6 +30,9 @@ public class MakeupPage extends BasePage{
     //makeup nails fluid shine color dropdown menu web element
     @FindBy(xpath = "//select[@id='option327']")
     private WebElement fluidShineNailsMakeupColorDropdownMenu;
+    //makeup color design set color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option308']")
+    private WebElement colorDesignMakeupColorDropdownMenu;
 
     //makeup star rating list web element
     @FindBy(xpath = "//ul[@class='rate']")
@@ -67,5 +70,6 @@ public class MakeupPage extends BasePage{
     public boolean isRougeLipsMakeupColorDropdownMenuDisplayed(){return rougeLipsMakeupColorDropdownMenu.isDisplayed();}
     public boolean isLacquerNailsMakeupColorDropdownMenuDisplayed(){return lacquerNailsMakeupColorDropdownMenu.isDisplayed();}
     public boolean isFluidShineNailsMakeupColorDropdownMenuDisplayed(){return fluidShineNailsMakeupColorDropdownMenu.isDisplayed();}
+    public boolean isColorDesignMakeupColorDropdownMenuDisplayed(){return colorDesignMakeupColorDropdownMenu.isDisplayed();}
     
 }

@@ -2827,6 +2827,34 @@ public class TestMethods extends BaseTest{
         logShoppingCartData(shoppingCartPage);
     }
 
+    //makeup products 'add to cart' test method (value sets)
+    protected void addValueSetsMakeupToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Value Sets' link
+        homePage.clickValueSetsCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("VALUE SETS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add value sets makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        MakeupPage makeupPage = new MakeupPage(driver);
+        //assert the color design dropdown menu is displayed
+        assertTrue(makeupPage.isColorDesignMakeupColorDropdownMenuDisplayed(), "The color design dropdown menu isn't displayed");
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
