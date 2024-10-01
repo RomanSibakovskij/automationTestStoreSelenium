@@ -3361,6 +3361,29 @@ public class TestMethods extends BaseTest{
         logSingleCategoryProductData(singleCategoryProductPage);
     }
 
+    //books products (Paperback) 'add to cart' test method
+    protected void addPaperbackToCartTest(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Books' menu
+        homePage.navigateToBooksCategory();
+        //click 'Audio CD' link
+        homePage.clickBooksPaperbackCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("PAPERBACK", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to book paperback products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

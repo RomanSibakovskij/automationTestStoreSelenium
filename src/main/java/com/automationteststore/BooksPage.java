@@ -8,10 +8,10 @@ import java.time.Duration;
 
 public class BooksPage extends BasePage{
 
-    //hair care quantity input field web element
+    //books quantity input field web element
     @FindBy(xpath = "//input[@id='product_quantity']")
     private WebElement hairCareQuantityInputField;
-    //hair care price web element
+    //books price web element
     @FindBy(xpath = "//label[@class='control-label']/span[@class='total-price']")
     private WebElement hairCareTotalPrice;
     //'add to cart' button web element

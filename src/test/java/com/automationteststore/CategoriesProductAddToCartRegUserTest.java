@@ -312,4 +312,18 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addAudioCDToCartTest(singleCategoryProductPage);
     }
 
+    // Test 023a -> add book products (Paperback) to cart as a registered user
+    @Test
+    @DisplayName("Add Book Products (Paperback) To Cart as Registered User")
+    @Tag("Book_Paperback_Products_To_Cart")
+    @Tag("Book_Products_To_Cart")
+    void addBookPaperbackToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addPaperbackToCartTest(singleCategoryProductPage);
+    }
+
 }
