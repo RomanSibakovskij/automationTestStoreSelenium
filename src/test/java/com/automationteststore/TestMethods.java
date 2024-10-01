@@ -2676,6 +2676,8 @@ public class TestMethods extends BaseTest{
         singleCategoryProductPage.clickAddCategoryProductToCart3Button();
         singleCategoryProductPage.clickAddCategoryProductToCart2Button();
         MakeupPage makeupPage = new MakeupPage(driver);
+        //general web element assert
+        isMakeupPageWebElementDisplayed(makeupPage);
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
@@ -2730,6 +2732,8 @@ public class TestMethods extends BaseTest{
         //click to add face makeup into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         MakeupPage makeupPage = new MakeupPage(driver);
+        //general web element assert
+        isMakeupPageWebElementDisplayed(makeupPage);
         //assert face makeup dropdown menu is displayed
         assertTrue(makeupPage.isFaceMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
         //click 'add to cart' button
@@ -2770,8 +2774,52 @@ public class TestMethods extends BaseTest{
         singleCategoryProductPage.clickPageListViewButton();
         //click to add lips makeup into cart
         singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //general web element assert
+        isMakeupPageWebElementDisplayed(makeupPage);
         //assert rouge lips makeup dropdown menu is displayed
         assertTrue(makeupPage.isRougeLipsMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
+    //makeup products 'add to cart' test method (nails)
+    protected void addNailsMakeupToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Nails' link
+        homePage.clickNailsCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("NAILS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add lips makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        MakeupPage makeupPage = new MakeupPage(driver);
+        //assert the nails color dropdown menu is displayed
+        assertTrue(makeupPage.isLacquerNailsMakeupColorDropdownMenuDisplayed(), "The lacquer nail color dropdown menu isn't displayed");
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Nails' link
+        homePage.clickNailsCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to add lips makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //general web element assert
+        isMakeupPageWebElementDisplayed(makeupPage);
+        //assert the fluid shine color dropdown menu is displayed
+        assertTrue(makeupPage.isFluidShineNailsMakeupColorDropdownMenuDisplayed(), "The fluid shine color dropdown menu isn't displayed");
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
@@ -3406,6 +3454,17 @@ public class TestMethods extends BaseTest{
         assertTrue(menTShirtsPage.isTShirtColourAndSizeDropdownMenuDisplayed(), "The t-shirt colour and size dropdown menu isn't displayed");
         //assert 'add to cart' button is displayed
         assertTrue(menTShirtsPage.isAddToCartButtonDisplayed(), "The 'add to cart' button' isn't displayed");
+    }
+
+    //makeup page web element assert
+    protected void isMakeupPageWebElementDisplayed(MakeupPage makeupPage){
+        //assert the star rating list is displayed
+        assertTrue(makeupPage.isStarRatingDisplayed(), "The star rating isn't displayed");
+        //assert quantity input field is displayed
+        assertTrue(makeupPage.isQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
+        //assert quantity input field is displayed
+        assertTrue(makeupPage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
+
     }
 
 }

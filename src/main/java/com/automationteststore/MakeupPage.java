@@ -24,7 +24,20 @@ public class MakeupPage extends BasePage{
     //makeup rouge lips color dropdown menu web element
     @FindBy(xpath = "//select[@id='option306']")
     private WebElement rougeLipsMakeupColorDropdownMenu;
+    //makeup nails lacquer color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option307']")
+    private WebElement lacquerNailsMakeupColorDropdownMenu;
+    //makeup nails fluid shine color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option327']")
+    private WebElement fluidShineNailsMakeupColorDropdownMenu;
 
+    //makeup star rating list web element
+    @FindBy(xpath = "//ul[@class='rate']")
+    private WebElement starRating;
+
+    //makeup lips quantity input field web element
+    @FindBy(xpath = "//input[@id='product_quantity']")
+    private WebElement makeupQuantityInputField;
     //'add to cart' button web element
     @FindBy(xpath = "//ul[@class='productpagecart']/li/a")
     private WebElement addToCartButton;
@@ -45,9 +58,14 @@ public class MakeupPage extends BasePage{
     }
 
     //makeup page web element assert methods
+    public boolean isStarRatingDisplayed(){return starRating.isDisplayed();}
+    public boolean isQuantityInputFieldDisplayed(){return makeupQuantityInputField.isDisplayed();}
+    public boolean isAddToCartButtonDisplayed(){return addToCartButton.isDisplayed();}
     public boolean isEyesMakeupColorDropdownMenuDisplayed(){return eyesMakeupColorDropdownMenu.isDisplayed();}
     public boolean isFaceMakeupColorDropdownMenuDisplayed(){return faceMakeupColorDropdownMenu.isDisplayed();}
     public boolean isLipsMakeupColorDropdownMenuDisplayed(){return lipsMakeupColorDropdownMenu.isDisplayed();}
     public boolean isRougeLipsMakeupColorDropdownMenuDisplayed(){return rougeLipsMakeupColorDropdownMenu.isDisplayed();}
+    public boolean isLacquerNailsMakeupColorDropdownMenuDisplayed(){return lacquerNailsMakeupColorDropdownMenu.isDisplayed();}
+    public boolean isFluidShineNailsMakeupColorDropdownMenuDisplayed(){return fluidShineNailsMakeupColorDropdownMenu.isDisplayed();}
     
 }
