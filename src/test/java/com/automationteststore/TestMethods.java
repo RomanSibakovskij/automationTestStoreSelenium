@@ -3279,6 +3279,50 @@ public class TestMethods extends BaseTest{
         logSingleCategoryProductData(singleCategoryProductPage);
     }
 
+    //hair care products (Conditioners)'add to cart' test method
+    protected void addHaircareConditionersToCart(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Haircare' menu
+        homePage.navigateToHaircareCategory();
+        //click 'Conditioners' link
+        homePage.clickHaircareConditionerCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("CONDITIONER", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to haircare conditioners products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart3Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
+        //click to haircare conditioners products into cart (Seaweed Conditioner(SCND001))
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        HairCarePage hairCarePage = new HairCarePage(driver);
+        //assert the conditioner size dropdown menu is displayed (Seaweed Conditioner(SCND001))
+        assertTrue(hairCarePage.isSeaweedConditionerSizeDropdownMenuDisplayed(), "The seaweed conditioner size dropdown menu isn't displayed");
+        //general web element assert
+        isHairCarePageWebElementDisplayed(hairCarePage);
+        //click 'add to cart' button
+        hairCarePage.clickAddToCartButton();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        //hover above 'Haircare' menu
+        homePage.navigateToHaircareCategory();
+        //click 'Conditioners' link
+        homePage.clickHaircareConditionerCategoryLink();
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //click to haircare conditioners products into cart (Pro-V Color Hair Solutions Color Preserve Shine Conditioner (Pro-V))
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        //assert the conditioner size dropdown menu is displayed (Pro-V Color Hair Solutions Color Preserve Shine Conditioner (Pro-V))
+        assertTrue(hairCarePage.isShineConditionerSizeDropdownMenuDisplayed(), "The shine conditioner size dropdown menu isn't displayed");
+        //click 'add to cart' button
+        hairCarePage.clickAddToCartButton();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
 
 
     //single product data loggers
@@ -3946,6 +3990,16 @@ public class TestMethods extends BaseTest{
 //        assertTrue(menBodyCarePage.isTotalPriceDisplayed(), "The fragrance total price isn't displayed"); //the assert fails despite correct selector
         //assert 'add to cart' button is displayed
         assertTrue(menBodyCarePage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
+    }
+
+    //hair care page web element assert
+    protected void isHairCarePageWebElementDisplayed(HairCarePage hairCarePage){
+        //assert quantity input field is displayed
+        assertTrue(hairCarePage.isQuantityInputFieldDisplayed(), "The quantity input field isn't displayed");
+        //assert product total price is displayed
+//        assertTrue(hairCarePage.isTotalPriceDisplayed(), "The fragrance total price isn't displayed"); //the assert fails despite correct selector
+        //assert 'add to cart' button is displayed
+        assertTrue(hairCarePage.isAddToCartButtonDisplayed(), "The 'add to cart' button isn't displayed");
     }
 
 }

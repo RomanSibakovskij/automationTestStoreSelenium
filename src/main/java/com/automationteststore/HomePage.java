@@ -99,7 +99,6 @@ public class HomePage extends BasePage{
     private WebElement menBodyShowerLink;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_59']")
     private WebElement menFragranceSetsLink;
-    //men body care hover menu option web elements
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_61']")
     private WebElement menShavingLink;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[6]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=58_60']")
@@ -107,6 +106,12 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[7]/a")
     private WebElement haircareHoverMenu;
+    //hair care hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[7]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=52_54']")
+    private WebElement hairConditionerLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[7]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=52_53']")
+    private WebElement hairShampooLink;
+
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/a")
     private WebElement booksHoverMenu;
     //homepage banner slider web element
@@ -249,6 +254,18 @@ public class HomePage extends BasePage{
     public void clickMenShavingCategoryLink(){menShavingLink.click();}
     //click 'Men Skincare' category dropdown menu option method
     public void clickMenSkincareCategoryLink(){menSkincareLink.click();}
+
+    //hair care hover menu method
+    public void navigateToHaircareCategory(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(haircareHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(haircareHoverMenu).perform();
+    }
+    //click 'Haircare Conditioner' category dropdown menu option method
+    public void clickHaircareConditionerCategoryLink(){hairConditionerLink.click();}
+    //click 'Haircare Shampoo' category dropdown menu option method
+    public void clickHaircareShampooCategoryLink(){hairShampooLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters
