@@ -2886,7 +2886,7 @@ public class TestMethods extends BaseTest{
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
-        //click 'Skincare Eyes' link
+        //click 'Skincare Face' link
         homePage.clickFaceSkincareCategoryLink();
         SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
@@ -2897,22 +2897,47 @@ public class TestMethods extends BaseTest{
         isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
         //log the product data
         logSingleCategoryProductData(singleCategoryProductPage);
-        //click to add skincare eyes products into cart
+        //click to add skincare face products into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         SkincarePage skincarePage = new SkincarePage(driver);
         //click 'add to cart' button
         skincarePage.clickAddToCartButton();
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
-        //click 'Skincare Eyes' link
+        //click 'Skincare Face' link
         homePage.clickFaceSkincareCategoryLink();
         //click 'list view' option
         singleCategoryProductPage.clickPageListViewButton();
-        //click to add skincare eyes products into cart
+        //click to add skincare face products into cart
         singleCategoryProductPage.clickAddCategoryProductToCart2Button();
         singleCategoryProductPage.clickAddCategoryProductToCart3Button();
         singleCategoryProductPage.clickAddCategoryProductToCart4Button();
         singleCategoryProductPage.clickAddCategoryProductToCart5Button();
+        //click 'Cart' navbar link
+        homePage.clickCartNavLink();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        //log the shopping cart data
+        logShoppingCartData(shoppingCartPage);
+    }
+
+    //skincare products 'add to cart' test method (gift ideas & sets)
+    protected void addGiftSetsSkincareToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Skincare' menu
+        homePage.navigateToSkincare();
+        //click 'Skincare Gift Ideas & Sets' link
+        homePage.clickGiftSetsSkincareCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("GIFT IDEAS & SETS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add skincare gift ideas & sets products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         //click 'Cart' navbar link
         homePage.clickCartNavLink();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);

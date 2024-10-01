@@ -124,5 +124,17 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addFaceSkincareToCartRegUserTest();
     }
 
+    // Test 019b -> add skincare products (Gift Ideas & Sets) to cart as a registered user
+    @Test
+    @DisplayName("Add Skincare Products (Gift Ideas & Sets) To Cart as Registered User")
+    @Tag("Skincare_Gift_Sets_To_Cart")
+    void addSkincareGiftSetsToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addGiftSetsSkincareToCartRegUserTest();
+    }
+
 
 }
