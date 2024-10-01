@@ -115,9 +115,9 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/a")
     private WebElement booksHoverMenu;
     //books hover menu option web elements
-    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=52_54']")
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=65_66']")
     private WebElement audioCDLink;
-    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=52_53']")
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=65_67']")
     private WebElement paperbackLink;
 
     //homepage banner slider web element

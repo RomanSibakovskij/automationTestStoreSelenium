@@ -3345,7 +3345,22 @@ public class TestMethods extends BaseTest{
         //log the shopping cart data
         logShoppingCartData(shoppingCartPage);
     }
-    
+
+    //books products (AudioCD) 'add to cart' test method -> no product is available
+    protected void addAudioCDToCartTest(SingleCategoryProductPage singleCategoryProductPage){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Books' menu
+        homePage.navigateToBooksCategory();
+        //click 'Audio CD' link
+        homePage.clickBooksAudioCDCategoryLink();
+        //assert the user got on the correct category page
+        assertEquals("AUDIO CD", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");

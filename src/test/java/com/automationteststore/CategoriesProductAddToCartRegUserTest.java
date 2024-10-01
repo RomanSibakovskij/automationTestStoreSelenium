@@ -298,4 +298,18 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addHaircareShampooToCart(singleCategoryProductPage);
     }
 
+    // Test 023 -> add book products (Audio CD) to cart as a registered user (since none of the items is available, further testing here is aborted)
+    @Test
+    @DisplayName("Add Book Products (Audio CD) To Cart as Registered User")
+    @Tag("Book_Audio_CD_Products_To_Cart")
+    @Tag("Book_Products_To_Cart")
+    void addBookAudioCDToCartTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addAudioCDToCartTest(singleCategoryProductPage);
+    }
+
 }
