@@ -2693,6 +2693,33 @@ public class TestMethods extends BaseTest{
         //click to add eyes makeup into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         MakeupPage makeupPage = new MakeupPage(driver);
+        //assert eyes makeup dropdown menu is displayed
+        assertTrue(makeupPage.isEyesMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
+    }
+
+    //makeup products 'add to cart' test method (face)
+    protected void addFaceMakeupToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Face' link
+        homePage.clickFaceCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("FACE", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add face makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        MakeupPage makeupPage = new MakeupPage(driver);
+        //assert face makeup dropdown menu is displayed
+        assertTrue(makeupPage.isFaceMakeupColorDropdownMenuDisplayed(), "The face makeup dropdown menu isn't displayed");
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
     }
@@ -2820,8 +2847,9 @@ public class TestMethods extends BaseTest{
     protected void logSingleCategoryProductData(SingleCategoryProductPage singleCategoryProductPage){
         System.out.println("Available products on single category product brand page: " + "\n");
         logger.info("Selected category product name(s): " + singleCategoryProductPage.getProductName());
-        logger.info("Selected category product description(s): " + singleCategoryProductPage.getProductDescription());
-        if(singleCategoryProductPage.isProductAdditionalDescriptionDisplayed()){
+        if(!singleCategoryProductPage.getProductDescription().equals(singleCategoryProductPage.getProductAdditionalDescription())){
+            logger.info("Selected category product description(s): " + singleCategoryProductPage.getProductDescription());
+        } else if(singleCategoryProductPage.isProductAdditionalDescriptionDisplayed()){
             logger.info("Selected category product additional description: " + singleCategoryProductPage.getProductAdditionalDescription());
         }
         if(singleCategoryProductPage.isProductExtendedDescriptionDisplayed()) {
