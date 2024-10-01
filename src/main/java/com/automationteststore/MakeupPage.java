@@ -12,6 +12,10 @@ public class MakeupPage extends BasePage{
     //makeup category page title web element
     @FindBy(xpath = "//span[@class='maintext']")
     private WebElement categoryProductPageTitle;
+    //makeup color dropdown menu web element
+    @FindBy(xpath = "//select[@id='option319']")
+    private WebElement eyesMakeupColorDropdownMenu;
+
     //'add to cart' button web element
     @FindBy(xpath = "//ul[@class='productpagecart']/li/a")
     private WebElement addToCartButton;
@@ -30,5 +34,8 @@ public class MakeupPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
     }
+
+    //makeup page web element assert methods
+    public boolean isEyesMakeupColorDropdownMenuDisplayed(){return eyesMakeupColorDropdownMenu.isDisplayed();}
     
 }

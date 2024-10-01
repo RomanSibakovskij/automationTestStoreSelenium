@@ -40,5 +40,17 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addCheeksMakeupToCartRegUserTest();
     }
 
+    // Test 018a -> add makeup products (Eyes) to cart as a registered user
+    @Test
+    @DisplayName("Add Makeup Products (Eyes) To Cart as Registered User")
+    @Tag("Makeup_Eyes_To_Cart")
+    void addMakeupEyesToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addEyesMakeupToCartRegUserTest();
+    }
+
 
 }

@@ -2602,6 +2602,8 @@ public class TestMethods extends BaseTest{
         singleCategoryProductPage.clickPageListViewButton();
         //web element assert
         isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
         //click to add t-shirt into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         MenTShirtsPage menTShirtsPage = new MenTShirtsPage(driver);
@@ -2661,6 +2663,8 @@ public class TestMethods extends BaseTest{
         singleCategoryProductPage.clickPageListViewButton();
         //web element assert
         isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
         //click to add cheeks makeup into cart
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         singleCategoryProductPage.clickAddCategoryProductToCart3Button();
@@ -2668,7 +2672,29 @@ public class TestMethods extends BaseTest{
         MakeupPage makeupPage = new MakeupPage(driver);
         //click 'add to cart' button
         makeupPage.clickAddToCartButton();
+    }
 
+    //makeup products 'add to cart' test method (eyes)
+    protected void addEyesMakeupToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Eyes' link
+        homePage.clickEyesCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("EYES", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+        //click to add eyes makeup into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart1Button();
+        MakeupPage makeupPage = new MakeupPage(driver);
+        //click 'add to cart' button
+        makeupPage.clickAddToCartButton();
     }
 
     //single product data loggers
