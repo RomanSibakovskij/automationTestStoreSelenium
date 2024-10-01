@@ -2950,7 +2950,7 @@ public class TestMethods extends BaseTest{
         HomePage homePage = new HomePage(driver);
         //hover above 'Skincare' menu
         homePage.navigateToSkincare();
-        //click 'Skincare Gift Ideas & Sets' link
+        //click 'Skincare Gift Hands & Nails' link
         homePage.clickHandsNailsSkincareCategoryLink();
         SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         //assert the user got on the correct category page
@@ -2962,6 +2962,25 @@ public class TestMethods extends BaseTest{
         //log the product data
         logSingleCategoryProductData(singleCategoryProductPage);
     }
+
+    //skincare products 'add to cart' test method (sun) -> no product is available
+    protected void addSunSkincareToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Skincare' menu
+        homePage.navigateToSkincare();
+        //click 'Skincare Sun' link
+        homePage.clickSunSkincareCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("SUN", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+        //web element assert
+        isSingleCategoryPageWebElementDisplayed(singleCategoryProductPage);
+        //log the product data
+        logSingleCategoryProductData(singleCategoryProductPage);
+    }
+
 
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){

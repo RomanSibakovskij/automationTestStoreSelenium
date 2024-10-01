@@ -148,5 +148,17 @@ public class CategoriesProductAddToCartRegUserTest extends TestMethods{
         addHandsNailsSkincareToCartRegUserTest();
     }
 
+    // Test 019d -> add skincare products (Sun) to cart as a registered user (since none of the items is available, further testing here is aborted)
+    @Test
+    @DisplayName("Add Skincare Products (Sun) To Cart as Registered User")
+    @Tag("Skincare_Sun_To_Cart")
+    void addSkincareSunToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addSunSkincareToCartRegUserTest();
+    }
+
 
 }
