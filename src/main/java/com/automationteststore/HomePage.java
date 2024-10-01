@@ -114,6 +114,12 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/a")
     private WebElement booksHoverMenu;
+    //books hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=52_54']")
+    private WebElement audioCDLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[8]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=52_53']")
+    private WebElement paperbackLink;
+
     //homepage banner slider web element
     @FindBy(xpath = "//div[@class='banner_container']")
     private WebElement bannerSlider;
@@ -266,6 +272,18 @@ public class HomePage extends BasePage{
     public void clickHaircareConditionerCategoryLink(){hairConditionerLink.click();}
     //click 'Haircare Shampoo' category dropdown menu option method
     public void clickHaircareShampooCategoryLink(){hairShampooLink.click();}
+
+    //books hover menu method
+    public void navigateToBooksCategory(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(booksHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(booksHoverMenu).perform();
+    }
+    //click 'Books Audio CD' category dropdown menu option method
+    public void clickBooksAudioCDCategoryLink(){audioCDLink.click();}
+    //click 'Books Paperback' category dropdown menu option method
+    public void clickBooksPaperbackCategoryLink(){paperbackLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters

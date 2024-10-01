@@ -3345,9 +3345,7 @@ public class TestMethods extends BaseTest{
         //log the shopping cart data
         logShoppingCartData(shoppingCartPage);
     }
-
-
-
+    
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
