@@ -37,7 +37,7 @@ public class MakeupPage extends BasePage{
     @FindBy(xpath = "//ul[@class='rate']")
     private WebElement starRating;
 
-    //makeup lips quantity input field web element
+    //makeup quantity input field web element
     @FindBy(xpath = "//input[@id='product_quantity']")
     private WebElement makeupQuantityInputField;
     //'add to cart' button web element
