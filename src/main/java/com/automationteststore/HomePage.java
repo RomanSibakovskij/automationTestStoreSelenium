@@ -45,6 +45,7 @@ public class HomePage extends BasePage{
     //homepage navbar category web elements
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[1]/a")
     private WebElement homeHoverMenu;
+
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[2]")
     private WebElement apparelAccessoriesHoverMenu;
     //apparel and accessories hover menu option web elements
@@ -52,8 +53,23 @@ public class HomePage extends BasePage{
     private WebElement shoesCategoryProductLink;
     @FindBy(xpath = "//div[@class='subcategories']/ul[1]//a[@href='https://automationteststore.com/index.php?rt=product/category&path=68_70']")
     private WebElement tShirtsCategoryProductLink;
-    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/a")
+
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]")
     private WebElement makeupHoverMenu;
+    //makeup hover menu option web elements
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=36_40']")
+    private WebElement cheeksMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=36_39']")
+    private WebElement eyesMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=36_38']")
+    private WebElement faceMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=36_41']")
+    private WebElement lipsMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=36_42']")
+    private WebElement nailsMenuLink;
+    @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[3]/div/ul/li/a[@href='https://automationteststore.com/index.php?rt=product/category&path=36_37']")
+    private WebElement valueSetsMenuLink;
+
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[4]/a")
     private WebElement skincareHoverMenu;
     @FindBy(xpath = "//ul[@class='nav-pills categorymenu']/li[5]/a")
@@ -134,11 +150,30 @@ public class HomePage extends BasePage{
         Actions actions = new Actions(driver);
         actions.moveToElement(apparelAccessoriesHoverMenu).perform();
     }
-
     //click 'Shoes' category dropdown menu option method
     public void clickShoesCategoryLink(){shoesCategoryProductLink.click();}
     //click 'T-Shirts' category dropdown menu option method
     public void clickTShirtsCategoryLink(){tShirtsCategoryProductLink.click();}
+
+    //makeup hover menu method
+    public void navigateToMakeup(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
+        wait.until(ExpectedConditions.visibilityOf(makeupHoverMenu));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(makeupHoverMenu).perform();
+    }
+    //click 'Cheeks' category dropdown menu option method
+    public void clickCheeksCategoryLink(){cheeksMenuLink.click();}
+    //click 'Eyes' category dropdown menu option method
+    public void clickEyesCategoryLink(){eyesMenuLink.click();}
+    //click 'Face' category dropdown menu option method
+    public void clickFaceCategoryLink(){faceMenuLink.click();}
+    //click 'Lips' category dropdown menu option method
+    public void clickLipsCategoryLink(){lipsMenuLink.click();}
+    //click 'Nails' category dropdown menu option method
+    public void clickNailsCategoryLink(){nailsMenuLink.click();}
+    //click 'Value Sets' category dropdown menu option method
+    public void clickValueSetsCategoryLink(){valueSetsMenuLink.click();}
 
     //homepage products list data getter methods
     //featured product names getters

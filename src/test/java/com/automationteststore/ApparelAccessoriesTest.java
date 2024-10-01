@@ -28,5 +28,17 @@ public class ApparelAccessoriesTest extends TestMethods{
         apparelAccessoriesTShirtsAddToCartRegUserTest();
     }
 
+    // Test 018 -> add makeup products (Cheeks) to cart as a registered user
+    @Test
+    @DisplayName("Add Makeup Products (Cheeks) To Cart as Registered User")
+    @Tag("Makeup_Cheeks_To_Cart")
+    void addMakeupCheeksToCart(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        addCheeksMakeupToCartRegUserTest();
+    }
+
 
 }

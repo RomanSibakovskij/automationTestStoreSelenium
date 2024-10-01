@@ -2643,6 +2643,20 @@ public class TestMethods extends BaseTest{
         menTShirtsPage.clickAddToCartButton();
     }
 
+    //makeup products 'add to cart' test method (cheeks)
+    protected void addCheeksMakeupToCartRegUserTest(){
+        HomePage homePage = new HomePage(driver);
+        //hover above 'Makeup' menu
+        homePage.navigateToMakeup();
+        //click 'Cheeks' link
+        homePage.clickCheeksCategoryLink();
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        //assert the user got on the correct category page
+        assertEquals("CHEEKS", singleCategoryProductPage.getCategoryProductPageTitle(), "The category title doesn't match or the user in on the wrong page");
+        //click 'list view' option
+        singleCategoryProductPage.clickPageListViewButton();
+    }
+
     //single product data loggers
     protected void logAsideProductData(SingleProductPage singleProductPage){
         System.out.println("Aside product list data: " + "\n");
