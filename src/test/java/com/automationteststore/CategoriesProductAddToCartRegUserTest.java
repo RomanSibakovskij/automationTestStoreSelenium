@@ -2,7 +2,7 @@ package com.automationteststore;
 
 import org.junit.jupiter.api.*;
 
-public class ApparelAccessoriesTest extends TestMethods{
+public class CategoriesProductAddToCartRegUserTest extends TestMethods{
 
     // Test 017 -> add apparel & accessories products (Shoes) to cart as a registered user
     @Test

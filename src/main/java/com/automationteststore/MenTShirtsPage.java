@@ -14,6 +14,7 @@ public class MenTShirtsPage extends BasePage{
     private WebElement tShirtColourDropdownMenu;
     @FindBy(xpath = "//select[@id='option351']")
     private WebElement tShirtSizeDropdownMenu;
+    //'add to cart' button web element
     @FindBy(xpath = "//ul[@class='productpagecart']/li/a")
     private WebElement addToCartButton;
 
