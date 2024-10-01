@@ -1443,6 +1443,20 @@ public class TestMethods extends BaseTest{
         loginRegisterPage.clickContinueButton();
     }
 
+    //add to check out test method (as a registered user)
+    protected void addSelectedProductsToCheckoutAsRegUserTest(ShoppingCartPage shoppingCartPage){
+        //assert the user gets on shopping cart page
+        assertEquals("SHOPPING CART", shoppingCartPage.getShoppingCartPageTitle(), "The shopping cart page title doesn't match expectations or user is on the wrong page");
+        //web element assert
+        isShoppingCartWebElementDisplayed(shoppingCartPage);
+        //display added to cart product data
+        logShoppingCartData(shoppingCartPage);
+        //log the error if any of the product quantities is greater than 1 (by default it should be 1)
+        shoppingCartPage.verifyProductQuantities();
+        //click checkout button
+        shoppingCartPage.clickCheckoutButton();
+    }
+
     //valid guest account creation test method
     protected void validGuestAccountCreationTest(GuestAccountPage guestAccountPage){
         //assert the user is on guest account page
