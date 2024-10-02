@@ -3223,8 +3223,8 @@ public class TestMethods extends BaseTest{
         //log the product data
         logSingleCategoryProductData(singleCategoryProductPage);
         //click to men fragrance products into cart
+        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
         singleCategoryProductPage.clickAddCategoryProductToCart3Button();
-        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
         //click to men fragrance products into cart (ck IN2U Eau De Toilette Spray for Him (Cl0001))
         singleCategoryProductPage.clickAddCategoryProductToCart1Button();
         MenBodyCarePage menBodyCarePage = new MenBodyCarePage(driver);
@@ -3243,7 +3243,7 @@ public class TestMethods extends BaseTest{
         //click 'list view' option
         singleCategoryProductPage.clickPageListViewButton();
         //click to men fragrance products into cart (Obsession Night Perfume (CK0013))
-        singleCategoryProductPage.clickAddCategoryProductToCart2Button();
+        singleCategoryProductPage.clickAddCategoryProductToCart4Button();
         //assert men fragrance size dropdown menu is displayed (Obsession Night Perfume (CK0013))
         assertTrue(menBodyCarePage.isMenFragranceNightPerfumeSizeDropdownMenuDisplayed(), "The eau de toilette spray size dropdown menu isn't displayed");
         //general web element assert
