@@ -224,4 +224,24 @@ public class CategoriesProductAddToCheckoutRegUserTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 027 -> add fragrance products (Men) to check out as a registered user
+    @Test
+    @DisplayName("Add Fragrance Products (Men) To Checkout as Registered User")
+    @Tag("Fragrance_Men_To_Checkout")
+    @Tag("Fragrance_Products_To_Checkout")
+    void addMenFragranceToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addMenFragranceToCartRegUserTest(singleCategoryProductPage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutAsRegUserTest(shoppingCartPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
 }
