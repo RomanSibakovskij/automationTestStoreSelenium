@@ -144,4 +144,24 @@ public class CategoriesProductAddToCheckoutRegUserTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 025e -> add makeup products (Value Sets) to check out as a registered user
+    @Test
+    @DisplayName("Add Makeup Products (Value Sets) To Checkout as Registered User")
+    @Tag("Makeup_Value_Sets_To_Checkout")
+    @Tag("Makeup_Products_To_Checkout")
+    void addMakeupValueSetsToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addValueSetsMakeupToCartRegUserTest(singleCategoryProductPage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutAsRegUserTest(shoppingCartPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
 }
