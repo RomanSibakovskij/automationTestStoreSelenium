@@ -164,4 +164,24 @@ public class CategoriesProductAddToCheckoutRegUserTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 026 -> add skincare products (Eyes) to check out as a registered user
+    @Test
+    @DisplayName("Add Skincare Products (Eyes) To Checkout as Registered User")
+    @Tag("Skincare_Eyes_To_Checkout")
+    @Tag("Skincare_Products_To_Checkout")
+    void addSkincareEyesToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addEyesSkincareToCartRegUserTest(singleCategoryProductPage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutAsRegUserTest(shoppingCartPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
 }
