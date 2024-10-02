@@ -49,13 +49,33 @@ public class CategoriesProductAddToCheckoutRegUserTest extends TestMethods{
     @DisplayName("Add Makeup Products (Cheeks) To Checkout as Registered User")
     @Tag("Makeup_Cheeks_To_Checkout")
     @Tag("Makeup_Products_To_Checkout")
-    void addMakeupCheeksToCartTest(){
+    void addMakeupCheeksToCheckoutTest(){
         HomePage homePage = new HomePage(driver);
         goToLoginRegisterPageTest(homePage);
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         validUserAccountCreationTest(createAccountPage);
         SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
         addCheeksMakeupToCartRegUserTest(singleCategoryProductPage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutAsRegUserTest(shoppingCartPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationTest(checkoutPage);
+        InvoicePage invoicePage = new InvoicePage(driver);
+        verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
+    }
+
+    // Test 025a -> add makeup products (Eyes) to check out as a registered user
+    @Test
+    @DisplayName("Add Makeup Products (Eyes) To Checkout as Registered User")
+    @Tag("Makeup_Eyes_To_Checkout")
+    @Tag("Makeup_Products_To_Checkout")
+    void addMakeupEyesToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addEyesMakeupToCartRegUserTest(singleCategoryProductPage);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         addSelectedProductsToCheckoutAsRegUserTest(shoppingCartPage);
         CheckoutPage checkoutPage = new CheckoutPage(driver);
