@@ -76,7 +76,7 @@ The Selenium test suite (with positive/negative test cases) of the test web stor
 55.	// Test 010f -> add special products to check out test (as a non-registered user) with invalid guest account creation (too long last name)
 56.	// Test 010g -> add special products to check out test (as a non-registered user) with invalid guest account creation (no email address)
 57.	// Test 010h -> add special products to check out test (as a non-registered user) with invalid guest account creation (invalid email address format)
-58.	// Test 010i -> add special products to check out test (as a non-registered user) with invalid guest account creation (existing email address) (The checkout is being complete)
+58.	// Test 010i -> add special products to check out test (as a non-registered user) with invalid guest account creation (existing email address)
 59.	// Test 010j -> add special products to check out test (as a non-registered user) with invalid guest account creation (no address1)
 60.	// Test 010k -> add special products to check out test (as a non-registered user) with invalid guest account creation (too short address1)
 61.	// Test 010l -> add special products to check out test (as a non-registered user) with invalid guest account creation (too long address1)
