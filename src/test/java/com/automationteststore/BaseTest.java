@@ -25,7 +25,7 @@ public class BaseTest {
         prefs.put("autofill.profile_enabled", false); // disables autofill for addresses //-> enable this with browser run
         prefs.put("profile.default_content_setting_values.notifications", 2); // block notifications //-> enable this with browser run
         options.setExperimentalOption("prefs", prefs);
-//        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1920,1080"); //this is necessary for CI run, disable once run in IDE and re-enable commented out options
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1920,1080"); //this is necessary for CI run, disable once run in IDE and re-enable commented out options
         driver = new ChromeDriver(options);
         driver.manage().window().maximize(); //-> enable this with browser run
         driver.get("https://automationteststore.com/");
