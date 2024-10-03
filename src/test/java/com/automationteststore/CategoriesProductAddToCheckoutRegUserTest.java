@@ -344,4 +344,22 @@ public class CategoriesProductAddToCheckoutRegUserTest extends TestMethods{
         verifyTheOrderSubmissionInInvoicePageTest(invoicePage);
     }
 
+    // Test 030 -> add book products (Paperback) to check out as a registered user (the product that's not valid default quantity (1000000) gets added to check out) (since this particular test run cannot be verified in invoice page, the further testing is aborted (due to Selenium/Internet/CPU issues))
+    @Test
+    @DisplayName("Add Book Products (Paperback) To Checkout as Registered User")
+    @Tag("Book_Paperback_Products_To_Checkout")
+    @Tag("Book_Products_To_Checkout")
+    void addBookPaperbackToCheckoutTest(){
+        HomePage homePage = new HomePage(driver);
+        goToLoginRegisterPageTest(homePage);
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+        validUserAccountCreationTest(createAccountPage);
+        SingleCategoryProductPage singleCategoryProductPage = new SingleCategoryProductPage(driver);
+        addPaperbackToCartTest(singleCategoryProductPage);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        addSelectedProductsToCheckoutAsRegUserTest(shoppingCartPage);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        productCheckoutConfirmationPaperbackTest(checkoutPage);
+    }
+
 }

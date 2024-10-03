@@ -57,10 +57,16 @@ public class CheckoutPage extends BasePage{
     private List<WebElement> productNameElements;
     @FindBy(xpath = "//table[@class='table confirm_products']//td[3]")
     private List<WebElement> productUnitPriceElements;
-    @FindBy(xpath = "//table[@class='table confirm_products']//td[4]")
+    @FindBy(xpath = "//div[@class='contentpanel']/div[1]/table//input")
     private List<WebElement> productQuantityElements;
+    //checkout page error web elements
+    @FindBy(xpath = "//strong[.= 'Products marked with *** are not available in the desired quantity or out of stock!']")
+    private WebElement productQuantityErrorMessage;
     @FindBy(xpath = "//table[@class='table confirm_products']//td[5]")
     private List<WebElement> productTotalPriceElements;
+    //checkout page remove product button web elements
+    private List<WebElement> productRemoveButtonElements = driver.findElements(By.xpath("//a[@class='btn btn-sm btn-default']"));
+
     @FindBy(css = "tr:nth-of-type(1) td:nth-of-type(2) .bold")
     private WebElement productSubTotalPrice;
     @FindBy(css = "tr:nth-of-type(2) td:nth-of-type(2) .bold")
@@ -76,6 +82,9 @@ public class CheckoutPage extends BasePage{
     private WebElement backButton;
     @FindBy(xpath = "//button[@id='checkout_btn']")
     private WebElement confirmButton;
+    //checkout page lower checkout button web element
+    @FindBy(xpath = "//a[@id='cart_checkout2']")
+    private WebElement lowerCheckoutButton;
     //checkout confirmation success message
     @FindBy(css = ".maintext")
     private WebElement checkoutSuccessMessage;
@@ -144,6 +153,19 @@ public class CheckoutPage extends BasePage{
             }
         }
     }
+    //change the product quantity to default ('1') if it's not in default setting method
+    public void rectifyProductQuantity(){
+        List<WebElement> productQuantities = productQuantityElements;
+        List<String> quantities = getProductQuantity();
+        for (int i = 0; i < quantities.size(); i++) {
+            String quantity = quantities.get(i);
+            if (!quantity.equals("1")) {
+                WebElement quantityElement = productQuantities.get(i);
+                quantityElement.clear();
+                quantityElement.sendKeys("1");
+            }
+        }
+    }
     public List<String> getProductPrice() {
         List<String> productTotalPrice = new ArrayList<>();
         for (WebElement element : productTotalPriceElements) {
@@ -151,6 +173,15 @@ public class CheckoutPage extends BasePage{
         }
         return productTotalPrice;
     }
+
+    //checkout page 'remove' button click index getter
+    public void clickRemoveProductFromCheckoutButton(int productIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(720));
+        wait.until(ExpectedConditions.elementToBeClickable(productRemoveButtonElements.get(productIndex)));
+        productRemoveButtonElements.get(productIndex).click();
+    }
+    public void clickRemoveProductFromCheckout1Button(){
+        clickRemoveProductFromCheckoutButton(0);}
 
     public String getProductSubTotalPrice() {return productSubTotalPrice.getText();}
     public String getProductFlatShippingRate() {return productFlatShippingRate.getText();}
@@ -161,12 +192,16 @@ public class CheckoutPage extends BasePage{
     //checkout success confirmation message getter
     public String getCheckoutSuccessMessage() {return checkoutSuccessMessage.getText();}
 
+    //checkout page product quantity error message getters
+    public String getProductQuantityErrorMessage(){return productQuantityErrorMessage.getText();}
+
     //'confirm checkout' button click method
     public void clickConfirmCheckoutButton(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));
         wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
-        confirmButton.click();
-    }
+        confirmButton.click();}
+    //'confirm checkout' button click method
+    public void clickLowerConfirmCheckoutButton(){lowerCheckoutButton.click();}
     //invoice page link click method
     public void clickInvoicePageLink(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(600));

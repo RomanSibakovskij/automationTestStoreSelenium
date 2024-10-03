@@ -13,31 +13,31 @@ public class BaseTest {
     @BeforeEach
     void setUp(){
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-search-engine-choice-screen");
-        // Add arguments to disable popups and notifications
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-save-password-bubble");
-        options.addArguments("disable-infobars");
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("credentials_enable_service", false); // disables Chrome password manager
-        prefs.put("profile.password_manager_enabled", false); // disables password save prompt
-        prefs.put("autofill.profile_enabled", false); // disables autofill for addresses
-        prefs.put("profile.default_content_setting_values.notifications", 2); // block notifications
-        options.setExperimentalOption("prefs", prefs);
-//        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1920,1080"); //this is necessary for CI run, disable once run in IDE and re-enable commented out options
+//        options.addArguments("--disable-search-engine-choice-screen");//-> enable this with browser run
+//        //add arguments to disable popups and notifications
+//        options.addArguments("--disable-notifications"); //-> enable this with browser run
+//        options.addArguments("--disable-popup-blocking"); //-> enable this with browser run
+//        options.addArguments("--disable-save-password-bubble"); //-> enable this with browser run
+//        options.addArguments("disable-infobars"); //-> enable this with browser run
+//        Map<String, Object> prefs = new HashMap<>(); //-> enable this with browser run
+//        prefs.put("credentials_enable_service", false); // disables Chrome password manager //-> enable this with browser run
+//        prefs.put("profile.password_manager_enabled", false); // disables password save prompt //-> enable this with browser run
+//        prefs.put("autofill.profile_enabled", false); // disables autofill for addresses //-> enable this with browser run
+//        prefs.put("profile.default_content_setting_values.notifications", 2); // block notifications //-> enable this with browser run
+//        options.setExperimentalOption("prefs", prefs);
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1920,1080"); //this is necessary for CI run, disable once run in IDE and re-enable commented out options
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize(); //-> enable this with browser run
         driver.get("https://automationteststore.com/");
     }
 
     @AfterEach
     public void close() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         driver.quit();
     }
 }
